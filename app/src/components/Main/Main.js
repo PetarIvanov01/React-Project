@@ -7,6 +7,8 @@ import LoginView from "../Views/Login/LoginView";
 import RegisterView from "../Views/Register/RegisterView";
 import CatalogView from "../Views/Goals/Catalog/Catalog";
 import ProfileView from "../Views/Profile/ProfileView";
+import CreateView from "../Views/CRUD/Create/CreateView";
+import CreateProfile from "../Views/CRUD/Create/CreateProfile";
 
 export default function Main() {
 
@@ -21,6 +23,8 @@ export default function Main() {
                 <Route path="/profile/:userId" element={<ProfileView />} />
                 <Route path="/login" element={<LoginView />} />
                 <Route path="/register" element={<RegisterView />} />
+                <Route path="/create" element={<CreateView />} />
+                <Route path="/create/profile" element={<CreateProfile />} />
             </Routes>
 
 
