@@ -6,25 +6,25 @@ export default function ProfileView() {
 
 
     return (
-        <CardContainer className="card-container">
+        <CardContainer >
 
-            <Profile className="profile">
-                <Avatar className="avatar" src="/imgs/Avatars/Avatar-1.png" alt="" />
-                <ProfileData className="profile-data">
+            <Profile >
+                <Avatar  src="/imgs/Avatars/Avatar-1.png" alt="" />
+                <ProfileData >
                     <StyledParagraph>Username: Nqkoisitam12</StyledParagraph>
                     <StyledParagraph>Email: geri@abv.bg</StyledParagraph>
                 </ProfileData>
-                <Followers className="folowers">
+                <Followers >
                     <StyledParagraph>Followers: 21</StyledParagraph>
                 </Followers>
             </Profile>
 
-            <Description className="description">
-                <AboutMe className="about-me">About Me</AboutMe>
-                <Desc className="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus gravida a lacus non pulvinar. Curabitur ultricies, magna a ultrices sodales, velit nisl rutrum neque, eget vehicula elit tellus eget nibh. Sed finibus porta nulla, sit amet sodales sed.</Desc>
+            <Description >
+                <AboutMe >About Me</AboutMe>
+                <Desc >Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias suscipit eaque iste nemo dolore autem obcaecati quis vitae ad ipsa omnis dicta a nam sit itaque voluptates, esse laboriosam illum veritatis repellat corporis harum debitis qui! Quas officiis obcaecati fugit ea, porro doloremque ducimus maxime sequi corrupti eum saepe eos. </Desc>
             </Description>
 
-            <Topics className="topics">
+            <Topics >
                 <h2>Topics</h2>
 
                 <TopicCardsView />
