@@ -25,9 +25,9 @@ export default function Header() {
 
                     <SignInStyle >
                         <Link to="/profile/:userId" >Profile</Link>
+                        <Link to="/create" >Create</Link>
                         <Link to="/logout" >Logout</Link>
                     </SignInStyle>}
-
 
             </nav>
         </HeaderStyle>
