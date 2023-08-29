@@ -11,6 +11,7 @@ export const CardContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     min-height: 900px;
+    width: 80%;
     border-radius: 100px;
     background-color: #c5c8cb;
     margin: 1em;

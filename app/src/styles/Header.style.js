@@ -24,10 +24,12 @@ export const HeaderStyle = styled.header`
 
 
     & .goals {
-        margin-left: 80px;
         padding: 7px 30px;
         background-color: #d9d9d9;
         border-radius: 5px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     & a {

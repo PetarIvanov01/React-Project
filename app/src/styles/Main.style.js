@@ -17,8 +17,8 @@ export const SectionStyle = styled.div`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100%;
-    height: 37em;
+    min-width: 100%;
+    height: 45vh;
     display: flex;
     justify-content: center;
 
@@ -34,6 +34,4 @@ export const SectionStyle = styled.div`
     &  .title > h2 {
         padding: 5px 20px;
     }
-
-
 `
