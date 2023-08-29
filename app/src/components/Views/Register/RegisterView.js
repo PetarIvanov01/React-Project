@@ -7,8 +7,6 @@ export default function RegisterView() {
         <RegisterStyle>
             <h2>Register</h2>
             <form action="#" method="post">
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" name="username" required="" />
                 <label htmlFor="email">Email:</label>
                 <input type="email" id="email" name="email" required="" />
                 <label htmlFor="password">Password:</label>
