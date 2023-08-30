@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { CreateContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/Create.style";
-import { AvatarImage, AvatarSelectorContainer, CustomSelect } from "../../../../styles/ViewsStyles/CRUDStyle/CreateProfile";
+import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect } from "../../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
+import { avatars } from "../../../../util/_mockAvatars";
 
 export default function CreateProfile() {
 
     const [selectedAvatar, setSelectedAvatar] = useState(null);
 
-    const avatars = [
-        { id: 1, src: '/imgs/Avatars/Avatar-1.png' },
-        { id: 2, src: '/imgs/Avatars/Avatar-2.png' },
-    ];
-
     const handleAvatarChange = (selectedOption) => {
         setSelectedAvatar(selectedOption);
-      };
+    };
+    
     return (
         <CreateContainerStyle>
 
@@ -24,18 +21,39 @@ export default function CreateProfile() {
                     <input type="text" id="username" name="username" required="" />
                     <label htmlFor="avatar">Choose your avatar image:</label>
                     <CustomSelect
+                    isClearable={true}
                         value={selectedAvatar}
                         onChange={handleAvatarChange}
                         options={avatars}
                         components={{
-                            Option: ({ innerProps, label, data }) => (
+                            Option: ({ innerProps, data }) => (
                                 <div {...innerProps}>
-                                    <AvatarImage src={data.src} alt={label} />
-                                    {label}
+                                    <AvatarImage  src={data.value} />
                                 </div>
-                            ),
+                            )
                         }}
                     />
+
+                    <label htmlFor="category">Category:</label>
+                    <CustomCategorySelect >
+                        <label htmlFor="sport">Sport
+                            <input type="checkbox" id="sport" name="sport" value="sport" />
+                        </label>
+
+                        <label htmlFor="lifestyle">Lifestyle
+                            <input type="checkbox" id="lifestyle" name="lifestyle" value="lifestyle" />
+                        </label>
+
+                        <label htmlFor="career">Career
+                            <input type="checkbox" id="career" name="career" value="career" />
+                        </label>
+                    </CustomCategorySelect>
+
+                    <div>
+                        <label htmlFor="aboutMe">About Me:
+                            <textarea name="aboutMe" id="aboutMe" cols="30" rows="5" ></textarea>
+                        </label>
+                    </div>
 
                     <button type="submit">Finished!</button>
                 </form>
@@ -44,3 +62,4 @@ export default function CreateProfile() {
         </CreateContainerStyle>
     )
 }
+
