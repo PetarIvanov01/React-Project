@@ -19,6 +19,7 @@ export const CardContainer = styled.div`
 `;
 
 export const Profile = styled.section`
+position: relative;
     background-color: #D9d9d9;
     border-radius: 25px;
     display: flex;
@@ -65,6 +66,7 @@ export const CardTopics = styled.div`
     width: 330px;
     margin: 12px 0;
     background-color: #c5c8cb;
+    position: relative;
 `;
 
 export const TopicsImage = styled.img`
@@ -105,7 +107,14 @@ export const DescriptionParagraph = styled.p`
     text-align: start;
 `;
 
-export const LearnMoreLink = styled.a`
-   
-`;
+export const EditProfileStyle = styled.div`
+    position: absolute;
+    right: 3em;
+`
+export const EditGoalStyle = styled.div`
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+`
+
 
