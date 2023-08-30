@@ -1,4 +1,5 @@
-import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, Topics } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
+import { Link } from "react-router-dom";
+import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, Topics, EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 import TopicCardsView from "./TopicsView";
 
 export default function ProfileView() {
@@ -9,7 +10,7 @@ export default function ProfileView() {
         <CardContainer >
 
             <Profile >
-                <Avatar  src="/imgs/Avatars/Avatar-1.png" alt="" />
+                <Avatar src="/imgs/Avatars/Avatar-1.png" alt="" />
                 <ProfileData >
                     <StyledParagraph>Username: Nqkoisitam12</StyledParagraph>
                     <StyledParagraph>Email: geri@abv.bg</StyledParagraph>
@@ -17,6 +18,11 @@ export default function ProfileView() {
                 <Followers >
                     <StyledParagraph>Followers: 21</StyledParagraph>
                 </Followers>
+
+                <EditProfileStyle>
+                    <Link to="/edit/profile/:id"><img src="/imgs/svg/edit.svg" alt="Edit Icon"/></Link>
+                </EditProfileStyle>
+
             </Profile>
 
             <Description >
