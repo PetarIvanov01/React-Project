@@ -7,8 +7,10 @@ import LoginView from "../Views/Login/LoginView";
 import RegisterView from "../Views/Register/RegisterView";
 import CatalogView from "../Views/Goals/Catalog/Catalog";
 import ProfileView from "../Views/Profile/ProfileView";
-import CreateView from "../Views/CRUD/Create/CreateView";
+import CreateGoalView from "../Views/CRUD/Create/CreateGoalView";
 import CreateProfile from "../Views/CRUD/Create/CreateProfile";
+import EditProfile from "../Views/CRUD/Edit/EditProfile";
+import EditGoalView from "../Views/CRUD/Edit/EditGoalView";
 
 export default function Main() {
 
@@ -23,10 +25,11 @@ export default function Main() {
                 <Route path="/profile/:userId" element={<ProfileView />} />
                 <Route path="/login" element={<LoginView />} />
                 <Route path="/register" element={<RegisterView />} />
-                <Route path="/create" element={<CreateView />} />
+                <Route path="/create" element={<CreateGoalView />} />
                 <Route path="/create/profile" element={<CreateProfile />} />
+                <Route path="/edit/profile/:userId" element={<EditProfile />} />
+                <Route path="/edit/goal/:goalId" element={<EditGoalView/>}/>
             </Routes>
-
 
         </MainStyle>
 
