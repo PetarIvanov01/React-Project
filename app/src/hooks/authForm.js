@@ -23,7 +23,7 @@ export default function useAuthForm(fields, setFields) {
                 : await login(fields.email, fields.password);
 
             setUser(user);
-            navigate("/goals");
+            isRegistering ? navigate("/create/profile") : navigate("/goals");
 
         } catch (error) {
             setFields((state) => ({ ...state, err: error.message }));
