@@ -80,21 +80,23 @@ const endPoints = {
 export async function onLogin(email, password) {
 
     const user = await post(endPoints.login, { email, password });
-    setDataToLocaleSt(user);
+    return setDataToLocaleSt(user);
 
 }
 
 export async function onRegister(email, password) {
 
     const user = await post(endPoints.register, { email, password });
-    setDataToLocaleSt(user);
+    return setDataToLocaleSt(user);
 
 }
 
 export function onLogout() {
 
-    get(endPoints.logout);
+    // get(endPoints.logout);
     clearUserData();
+
+    return null;
 }
 
 function setDataToLocaleSt(user) {
@@ -104,6 +106,8 @@ function setDataToLocaleSt(user) {
         token: user.token,
         id: user._id
     }
+
     setUserData(userData);
 
+    return userData;
 }
