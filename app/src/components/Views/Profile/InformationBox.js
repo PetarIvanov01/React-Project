@@ -4,7 +4,7 @@ import { BlurredBackground, InformationBoxContainer } from '../../../styles/View
 export default function InformationBox({ isVisible, topic, onClose }) {
   return (
     <div>
-      <BlurredBackground show={isVisible} />
+      <BlurredBackground $show={isVisible} />
       {isVisible && (
         <InformationBoxContainer>
           <img src="/imgs/goals-1.png" alt="" />

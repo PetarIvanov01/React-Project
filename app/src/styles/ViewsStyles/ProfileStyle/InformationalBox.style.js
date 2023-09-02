@@ -8,7 +8,7 @@ export const BlurredBackground = styled.div`
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5); 
   backdrop-filter: blur(10px); 
-  display: ${props => (props.show ? 'block' : 'none')};
+  display: ${props => (props.$show ? 'block' : 'none')};
 `;
 
 export const InformationBoxContainer = styled.div`
