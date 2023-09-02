@@ -11,6 +11,7 @@ import CreateGoalView from "../Views/CRUD/Create/CreateGoalView";
 import CreateProfile from "../Views/CRUD/Create/CreateProfile";
 import EditProfile from "../Views/CRUD/Edit/EditProfile";
 import EditGoalView from "../Views/CRUD/Edit/EditGoalView";
+import Logout from "../Views/Logout/LogoutFunc";
 
 export default function Main() {
 
@@ -25,10 +26,11 @@ export default function Main() {
                 <Route path="/profile/:userId" element={<ProfileView />} />
                 <Route path="/login" element={<LoginView />} />
                 <Route path="/register" element={<RegisterView />} />
+                <Route path="/logout" element={<Logout />} />
                 <Route path="/create" element={<CreateGoalView />} />
                 <Route path="/create/profile" element={<CreateProfile />} />
                 <Route path="/edit/profile/:userId" element={<EditProfile />} />
-                <Route path="/edit/goal/:goalId" element={<EditGoalView/>}/>
+                <Route path="/edit/goal/:goalId" element={<EditGoalView />} />
             </Routes>
 
         </MainStyle>
