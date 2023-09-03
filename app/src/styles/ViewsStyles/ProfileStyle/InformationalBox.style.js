@@ -38,6 +38,8 @@ export const InformationBoxContainer = styled.div`
     text-align: start;
     font-size: 16px;
     margin-bottom: 20px;
+    overflow: auto;
+
   }
 
   button {
