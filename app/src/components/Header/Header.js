@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
 
     const { user } = useAuth();
-    
+
     return (
         <HeaderStyle>
             <nav>
@@ -15,13 +15,13 @@ export default function Header() {
                     </Link>
                 </div>
                 <div className="goals">
-                    <Link to="/goals">Goals</Link>
+                    <Link to="/goals">Browse</Link>
                 </div>
 
                 {user ?
 
                     <SignInStyle >
-                        <Link to="/profile/:userId" >Profile</Link>
+                        <Link to={`/profile/${user.id}`} >Profile</Link>
                         <Link to="/create" >Create</Link>
                         <Link to="/logout" >Logout</Link>
                     </SignInStyle> :
