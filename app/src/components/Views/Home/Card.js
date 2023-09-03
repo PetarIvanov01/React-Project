@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom"
-import { CardsStyle } from "../../../../styles/ViewsStyles/GoalsStyle/CatalogCardsStyle.style"
+import { Link } from "react-router-dom";
+import { CardStyle } from "../../../styles/ViewsStyles/HomeStyle/CardStyle";
 
-export default function Card({ 
+export default function Card({
     avatarImg,
     category,
     username,
-    userId }) {
+    userId
+}) {
 
 
     return (
-        <CardsStyle >
+        <CardStyle >
             <div className="profile">
                 <img
                     className="avatar"
@@ -37,6 +38,6 @@ export default function Card({
             <Link to={`/profile/${userId || "userID"}`}>
                 Show Details
             </Link>
-        </CardsStyle>
+        </CardStyle>
     )
 }
