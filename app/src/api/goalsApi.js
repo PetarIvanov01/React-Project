@@ -12,6 +12,7 @@ const endpoints = {
     edit: (id) => `goals/${id}`,
     details: (id) => `goals/${id}`,
     delete: (id) => `goals/${id}`,
+    home: "goals?limit=2"
     // search: (query) => `data/shoes?where=brand%20LIKE%20%22${query}%22`,
 
 };
@@ -19,6 +20,10 @@ const endpoints = {
 export async function getCatalog() {
 
     return api.get(endpoints.catalog);
+}
+export async function getDataForHome() {
+
+    return api.get(endpoints.home)
 }
 export async function createGoal(data) {
 
