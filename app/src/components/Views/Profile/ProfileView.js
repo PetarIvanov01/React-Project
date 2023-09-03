@@ -1,41 +1,18 @@
-import { Link } from "react-router-dom";
-import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, Topics, EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
-import TopicCardsView from "./TopicsView";
+import { useParams } from "react-router-dom";
+import { ProfileProvider } from "../../../contexts/profile";
+import ProfileContainer from "./ProfileContainer";
 
 export default function ProfileView() {
 
+    const { userId } = useParams();
 
 
     return (
-        <CardContainer >
 
-            <Profile >
-                <Avatar src="/imgs/Avatars/Avatar-1.png" alt="" />
-                <ProfileData >
-                    <StyledParagraph>Username: Nqkoisitam12</StyledParagraph>
-                    <StyledParagraph>Email: geri@abv.bg</StyledParagraph>
-                </ProfileData>
-                <Followers >
-                    <StyledParagraph>Followers: 21</StyledParagraph>
-                </Followers>
+        <ProfileProvider userId={userId}>
+            
+            <ProfileContainer />
 
-                <EditProfileStyle>
-                    <Link to="/edit/profile/:id"><img src="/imgs/svg/edit.svg" alt="Edit Icon"/></Link>
-                </EditProfileStyle>
-
-            </Profile>
-
-            <Description >
-                <AboutMe >About Me</AboutMe>
-                <Desc >Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias suscipit eaque iste nemo dolore autem obcaecati quis vitae ad ipsa omnis dicta a nam sit itaque voluptates, esse laboriosam illum veritatis repellat corporis harum debitis qui! Quas officiis obcaecati fugit ea, porro doloremque ducimus maxime sequi corrupti eum saepe eos. </Desc>
-            </Description>
-
-            <Topics >
-                <h2>Topics</h2>
-
-                <TopicCardsView />
-
-            </Topics>
-        </CardContainer>
+        </ProfileProvider>
     );
 }
