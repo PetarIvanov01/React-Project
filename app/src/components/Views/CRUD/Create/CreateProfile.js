@@ -45,6 +45,7 @@ export default function CreateProfile() {
             );
         }
     };
+    
     async function onSubmitHandler(e) {
         e.preventDefault();
 
@@ -61,6 +62,7 @@ export default function CreateProfile() {
             navigate('/');
         }
         catch (error) {
+            navigate('/login')
             return;
         }
     }
