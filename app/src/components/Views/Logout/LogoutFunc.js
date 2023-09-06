@@ -7,12 +7,11 @@ export default function Logout() {
 
     const { setUser } = useAuth();
 
-    //TODO send req to the server for logout
     useEffect(() => {
         const result = logout()
         setUser(result);
 
-    }, [])
+    }, [setUser])
 
     return <Navigate to={'/'} />
 }

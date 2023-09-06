@@ -25,7 +25,6 @@ export default function Card({
                     <li>
                         <div className="category-li">
                             <p>{category || "sport"}</p>
-                            {/* <img src="./imgs/Icons/job.svg" alt="" /> */}
                         </div>
                     </li>
 
