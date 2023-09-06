@@ -9,17 +9,18 @@ export const Avatar = styled.img`
 export const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     min-height: 900px;
     width: 80%;
     border-radius: 100px;
     background-color: #c5c8cb;
-    margin: 1em;
+    /* margin: 1em; */
     padding: 1.5em;
 `;
 
 export const Profile = styled.section`
-position: relative;
+    margin: 2em 0;
+    position: relative;
     background-color: #D9d9d9;
     border-radius: 25px;
     display: flex;
@@ -35,6 +36,7 @@ export const ProfileData = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+
 `;
 
 export const StyledParagraph = styled.p`
@@ -44,7 +46,7 @@ export const StyledParagraph = styled.p`
 `;
 
 export const Description = styled.section`
-    margin: 30px 0;
+    margin: 2.5em 0;
 `;
 
 export const AboutMe = styled.p`
@@ -63,20 +65,23 @@ export const Desc = styled.p`
 `;
 
 export const CardTopics = styled.div`
-    width: 330px;
+    width: 21em;
     margin: 12px 0;
     background-color: #c5c8cb;
     position: relative;
+    display: flex;
+  flex-direction: column;
 `;
 
 export const TopicsImage = styled.img`
     width: 100%;
-    height: 175px;
+    max-height: 175px;
 `;
 
 export const Topics = styled.div`
     background-color: #d9d9d9;
     text-align: center;
+    margin: auto 0;
 `;
 
 export const Cards = styled.div`
@@ -100,7 +105,10 @@ export const CardTitle = styled.div`
 `;
 
 export const TopicDescription = styled.div`
+    display: flex;
+    flex-direction: column;
     padding: 10px;
+    flex: 1; /* Add this line to make it fill the available space */
 `;
 
 export const DescriptionParagraph = styled.p`
@@ -115,6 +123,7 @@ export const EditGoalStyle = styled.div`
     display: flex;
     gap: 1em;
     justify-content: center;
+    margin-top: auto;
 `
 
 
