@@ -22,9 +22,8 @@ export default function CreateGoalView() {
         e.preventDefault();
 
         try {
-
+            // const { item } =
             await createGoal(goal);
-
             //Todo navigate to the person profile
             navigate('/')
 

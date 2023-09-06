@@ -45,7 +45,7 @@ export default function CreateProfile() {
             );
         }
     };
-    
+
     async function onSubmitHandler(e) {
         e.preventDefault();
 
@@ -57,9 +57,9 @@ export default function CreateProfile() {
                 aboutMe: fields.aboutMe
             }
 
-            const profileData = await createProfile(data);
-            //Todo redirect to person profile;
-            navigate('/');
+            const { userId } = await createProfile(data);
+
+            navigate(`/profile/${userId}`);
         }
         catch (error) {
             navigate('/login')
@@ -109,7 +109,7 @@ export default function CreateProfile() {
 
                         <div>
                             <label htmlFor="aboutMe">About Me:
-                                <textarea name="aboutMe" id="aboutMe" cols="30" rows="5" onChange={onChangeHandle} >{fields.about}</textarea>
+                                <textarea name="aboutMe" id="aboutMe" cols="30" rows="5" onChange={onChangeHandle} >{fields.aboutMe}</textarea>
                             </label>
                         </div>
 
