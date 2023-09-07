@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { CreateContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/Create.style";
+import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
 import { createGoal } from "../../../../api/goalsApi";
 
 export default function CreateGoalView() {
@@ -22,10 +22,9 @@ export default function CreateGoalView() {
         e.preventDefault();
 
         try {
-            // const { item } =
-            await createGoal(goal);
-            //Todo navigate to the person profile
-            navigate('/')
+            
+            const { item } = await createGoal(goal);
+            navigate(`/profile/${item.owner}`)
 
         } catch (error) {
             alert(error.message);
@@ -35,7 +34,7 @@ export default function CreateGoalView() {
 
     return (
 
-        <CreateContainerStyle>
+        <FormContainerStyle>
             <h2>Create goal</h2>
 
             <form onSubmit={onSubmitHandler} action="#" method="post">
@@ -52,7 +51,7 @@ export default function CreateGoalView() {
                 <button type="submit">Create</button>
             </form>
 
-        </CreateContainerStyle>
+        </FormContainerStyle>
 
     )
 
