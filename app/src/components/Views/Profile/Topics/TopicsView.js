@@ -2,11 +2,14 @@ import { Cards } from "../../../../styles/ViewsStyles/ProfileStyle/Profile.style
 import { useState } from "react";
 import InformationBox from "../InformationBox";
 import TopicCards from "./TopicCard";
+import { useNavigate } from "react-router-dom";
 
 export default function TopicCardsView({ goals }) {
 
     const [showInformationBox, setShowInformationBox] = useState(false);
-    const [selectedTopic, setSelectedTopic] = useState(null);
+    const [selectedTopic, setSelectedTopic] = useState({});
+
+    const navigate = useNavigate();
 
     const handleLearnMoreClick = (topic) => {
         setSelectedTopic(topic);
@@ -14,7 +17,8 @@ export default function TopicCardsView({ goals }) {
     };
 
     const handleCloseBox = () => {
-        setSelectedTopic(null);
+        navigate(-1)
+        setSelectedTopic({});
         setShowInformationBox(false);
     };
 
