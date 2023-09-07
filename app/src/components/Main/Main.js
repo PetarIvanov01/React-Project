@@ -12,6 +12,7 @@ import CreateProfile from "../Views/CRUD/Create/CreateProfile";
 import EditProfile from "../Views/CRUD/Edit/EditProfile";
 import EditGoalView from "../Views/CRUD/Edit/EditGoalView";
 import Logout from "../Views/Logout/LogoutFunc";
+import DeleteGoalView from "../Views/CRUD/Delete/DeleteGoalView";
 
 export default function Main() {
 
@@ -23,14 +24,17 @@ export default function Main() {
             <Routes>
                 <Route path="/" element={<HomeView />} />
                 <Route path="/goals" element={<CatalogView />} />
-                <Route path="/profile/:userId" element={<ProfileView />} />
+
                 <Route path="/login" element={<LoginView />} />
                 <Route path="/register" element={<RegisterView />} />
-                <Route path="/logout" element={<Logout />} />
-                <Route path="/create" element={<CreateGoalView />} />
                 <Route path="/create/profile" element={<CreateProfile />} />
-                <Route path="/edit/profile/:userId" element={<EditProfile />} />
+                <Route path="/logout" element={<Logout />} />
+
+                <Route path="/create" element={<CreateGoalView />} />
                 <Route path="/edit/goal/:goalId" element={<EditGoalView />} />
+                <Route path="/profile/:userId/*" element={<ProfileView />} />
+                <Route path="/edit/profile/:userId" element={<EditProfile />} />
+                <Route path="/delete/goal/:goalId" element={<DeleteGoalView />} />
             </Routes>
 
         </MainStyle>

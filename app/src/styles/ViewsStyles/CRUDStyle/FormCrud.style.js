@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const CreateContainerStyle = styled.div`
+export const FormContainerStyle = styled.div`
 
     position: fixed;
     top: 50%;
@@ -14,6 +14,7 @@ export const CreateContainerStyle = styled.div`
     max-width: 400px;
 
     & h2 {
+        text-align: center;
         margin-bottom: 20px;
     }
 
@@ -25,12 +26,15 @@ export const CreateContainerStyle = styled.div`
     & input{
         height: 2em;
     }
+
     & select {
         display: block;
         margin-bottom: 15px;
     }
 
     & button {
+        display: block;
+        margin: 0 auto;
         background-color: #C5A78F;
         color: white;
         border: none;

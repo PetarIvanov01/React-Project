@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CreateContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/Create.style";
+import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
 import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect } from "../../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
 import { avatars } from "../../../../util/_mockAvatars";
 
@@ -11,8 +11,9 @@ export default function EditProfile() {
     const handleAvatarChange = (selectedOption) => {
         setSelectedAvatar(selectedOption);
     };
+    
     return (
-        <CreateContainerStyle>
+        <FormContainerStyle>
 
             <AvatarSelectorContainer>
                 <h2>Edit your profile</h2>
@@ -21,14 +22,14 @@ export default function EditProfile() {
                     <input type="text" id="username" name="username" required="" />
                     <label htmlFor="avatar">Choose your avatar image:</label>
                     <CustomSelect
-                    isClearable={true}
+                        isClearable={true}
                         value={selectedAvatar}
                         onChange={handleAvatarChange}
                         options={avatars}
                         components={{
                             Option: ({ innerProps, data }) => (
                                 <div {...innerProps}>
-                                    <AvatarImage  src={data.value} />
+                                    <AvatarImage src={data.value} />
                                 </div>
                             )
                         }}
@@ -59,7 +60,7 @@ export default function EditProfile() {
                 </form>
             </AvatarSelectorContainer>
 
-        </CreateContainerStyle>
+        </FormContainerStyle>
     )
 }
 

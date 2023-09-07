@@ -120,10 +120,16 @@ export const EditProfileStyle = styled.div`
     right: 3em;
 `
 export const EditGoalStyle = styled.div`
+
     display: flex;
     gap: 1em;
     justify-content: center;
     margin-top: auto;
+
+    & .owner-buttons {
+        display: flex;        
+        gap: 2em;
+    }
 `
 
 

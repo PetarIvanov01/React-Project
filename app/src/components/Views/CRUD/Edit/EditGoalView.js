@@ -1,4 +1,4 @@
-import { CreateContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/Create.style";
+import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style"
 
 //TODO Fetch the data and fill the fields
 export default function EditGoalView() {
@@ -6,7 +6,7 @@ export default function EditGoalView() {
 
     return (
 
-        <CreateContainerStyle>
+        <FormContainerStyle>
             <h2>Edit goal</h2>
 
             <form action="#" method="post">
@@ -23,7 +23,7 @@ export default function EditGoalView() {
                 <button type="submit">Edit</button>
             </form>
 
-        </CreateContainerStyle>
+        </FormContainerStyle>
 
     )
 

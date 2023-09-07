@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { CreateContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/Create.style";
+import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
 import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect } from "../../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
 import { avatars } from "../../../../util/_mockAvatars";
 import { BlurredBackground } from "../../../../styles/ViewsStyles/ProfileStyle/InformationalBox.style";
@@ -70,7 +70,7 @@ export default function CreateProfile() {
 
     return (
         <BlurredBackground $show={'true'}>
-            <CreateContainerStyle>
+            <FormContainerStyle>
 
                 <AvatarSelectorContainer>
                     <h2>Customize your profile</h2>
@@ -109,7 +109,7 @@ export default function CreateProfile() {
 
                         <div>
                             <label htmlFor="aboutMe">About Me:
-                                <textarea name="aboutMe" id="aboutMe" cols="30" rows="5" onChange={onChangeHandle} >{fields.aboutMe}</textarea>
+                                <textarea name="aboutMe" id="aboutMe" cols="30" rows="5" onChange={onChangeHandle} value={fields.aboutMe} ></textarea>
                             </label>
                         </div>
 
@@ -117,7 +117,7 @@ export default function CreateProfile() {
                     </form>
                 </AvatarSelectorContainer>
 
-            </CreateContainerStyle>
+            </FormContainerStyle>
         </BlurredBackground>
     )
 }
