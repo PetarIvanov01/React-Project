@@ -1,11 +1,32 @@
+import { useEffect, useState } from "react";
+import { useAuth } from "../../../contexts/auth";
+
 import { Link } from "react-router-dom";
-import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, Topics, EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
-import TopicCardsView from "./TopicsView";
-import { useProfile } from "../../../contexts/profile";
+import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 
-export default function ProfileContainer({ }) {
+import { getProfileDetails } from "../../../api/profileApi";
 
-    const { profile } = useProfile();
+import TopicsContainer from "./Topics/Topics";
+import NoTopics from "./Topics/NoTopics";
+
+export default function ProfileContainer({ userId }) {
+
+    const { user } = useAuth();
+    const [profile, setProfileData] = useState({});
+
+    useEffect(() => {
+
+        getProfileDetails(userId).then(profile => {
+            setProfileData({ ...profile, userId: userId })
+        })
+            .catch(err => console.log(err))
+
+
+    }, [userId])
+
+
+    const isOwner = user?.id === profile?.userId
+
 
     return (
         <CardContainer >
@@ -13,17 +34,20 @@ export default function ProfileContainer({ }) {
                 <Avatar src={profile?.avatarImg} alt="" />
                 <ProfileData >
                     <StyledParagraph>Username: {profile?.username}</StyledParagraph>
-                    {/* <StyledParagraph>Email: {profile?.username}</StyledParagraph> */}
+                    {isOwner && <StyledParagraph>Email: {user?.email}</StyledParagraph>}
                 </ProfileData>
                 <Followers >
                     {/* Todo make followers req */}
                     <StyledParagraph>Followers: 21</StyledParagraph>
                 </Followers>
 
-                <EditProfileStyle>
-                    {/* TODO edit user id */}
-                    <Link to={`/edit/profile/${profile?.id}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
-                </EditProfileStyle>
+                {isOwner ?
+                    <EditProfileStyle>
+                        <Link to={`/edit/profile/${profile?.userId}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
+                    </EditProfileStyle>
+                    :
+                    ''
+                }
 
             </Profile>
 
@@ -32,12 +56,8 @@ export default function ProfileContainer({ }) {
                 <Desc >{profile?.about}</Desc>
             </Description>
 
-            <Topics >
-                <h2>Topics</h2>
+            {profile.goals?.length ? <TopicsContainer goals={profile?.goals} /> : <NoTopics owner={profile?.userId === user?.id} />}
 
-                <TopicCardsView goals={profile.goals} />
-
-            </Topics>
         </CardContainer>
     )
 }
