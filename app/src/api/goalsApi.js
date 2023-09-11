@@ -39,7 +39,7 @@ export async function deleteGoal(id) {
 }
 export async function editGoal(id, data) {
 
-    return api.put(endpoints.edit + id, data)
+    return api.put(endpoints.edit(id), data)
 }
 // export async function searchShoes(querry) {
 
