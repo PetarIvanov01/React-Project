@@ -1,73 +1,54 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useProfileState from "../../../../hooks/profileReducer";
 
 import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
 import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect } from "../../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
 import { avatars } from "../../../../util/_mockAvatars";
-import { editProfile, getProfileDetails } from "../../../../api/profileApi";
+
+import { editProfile, getProfileDetails } from "../../../../api/services/profileApi";
 
 export default function EditProfile() {
 
     const navigate = useNavigate();
     const { userId } = useParams();
-    const [selectedAvatar, setSelectedAvatar] = useState(null);
-    const [selectedBox, setSelectedBox] = useState([]);
-    const [profile, setProfile] = useState({
-        username: '',
-        about: '',
-        avatarImg: ''
-    })
+
+    const { handleEditForm,
+        chooseAvatar,
+        setAboutMe,
+        setUsername,
+        toggleCategory,
+        state } = useProfileState();
+
 
     useEffect(() => {
 
         getProfileDetails(userId)
             .then(d => {
-                setProfile(d);
-
-                setSelectedBox([d.category]);
+                handleEditForm({
+                    type: 'editform',
+                    payload: {
+                        username: d.username,
+                        aboutMe: d.aboutMe,
+                        categories: [d.category],
+                        avatar: d.avatarImg
+                    }
+                })
             })
             .catch(err => console.log(err.message))
 
-    }, [userId])
+    }, [userId, handleEditForm])
 
-    const handleAvatarChange = (selectedOption) => {
-        setSelectedAvatar(selectedOption);
-    };
-
-    const onChangeHandler = (e) => {
-        setProfile((state) => ({ ...state, [e.target.name]: e.target.value }))
-    }
-
-    const onClickHandle = (e) => {
-
-        const checkboxName = e.target.name;
-
-        if (selectedBox.length >= 1) {
-            e.target.checked = false;
-            setSelectedBox((prevSelected) =>
-                prevSelected.filter((name) => name !== checkboxName)
-            );
-            return
-        }
-        if (e.target.checked) {
-            setSelectedBox((prevSelected) => [...prevSelected, checkboxName]);
-        }
-        else {
-            setSelectedBox((prevSelected) =>
-                prevSelected.filter((name) => name !== checkboxName)
-            );
-        }
-    };
 
     async function onSubmitHandler(e) {
         e.preventDefault();
 
         try {
             const data = {
-                username: profile.username,
-                avatarImg: selectedAvatar.value,
-                category: selectedBox[0],
-                aboutMe: profile.about
+                username: state.username,
+                avatarImg: state.avatar.value,
+                category: state.categories[0],
+                aboutMe: state.aboutMe
             }
 
             await editProfile(userId, data)
@@ -87,13 +68,12 @@ export default function EditProfile() {
                 <h2>Edit your profile</h2>
                 <form onSubmit={onSubmitHandler} action="#" method="post">
                     <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" required="" onChange={onChangeHandler} value={profile.username} />
+                    <input type="text" id="username" name="username" required="" onChange={setUsername} value={state.username} />
                     <label htmlFor="avatar">Choose your avatar image:</label>
                     <CustomSelect
                         isClearable={true}
-                        defaultValue={profile.avatarImg}
-                        value={selectedAvatar}
-                        onChange={handleAvatarChange}
+                        value={state.avatar}
+                        onChange={chooseAvatar}
                         options={avatars}
                         components={{
                             Option: ({ innerProps, data }) => (
@@ -107,21 +87,21 @@ export default function EditProfile() {
                     <label htmlFor="category">Category:</label>
                     <CustomCategorySelect >
                         <label htmlFor="sport">Sport
-                            <input type="checkbox" id="sport" name="sport" checked={selectedBox.includes('sport')} onChange={onClickHandle} />
+                            <input type="checkbox" id="sport" name="sport" checked={state.categories.includes('sport')} onChange={toggleCategory} value="sport" />
                         </label>
 
                         <label htmlFor="lifestyle">Lifestyle
-                            <input type="checkbox" id="lifestyle" name="lifestyle" checked={selectedBox.includes('lifestyle')} onChange={onClickHandle} />
+                            <input type="checkbox" id="lifestyle" name="lifestyle" checked={state.categories.includes('lifestyle')} onChange={toggleCategory} value="lifestyle" />
                         </label>
 
                         <label htmlFor="career">Career
-                            <input type="checkbox" id="career" name="career" checked={selectedBox.includes('career')} onChange={onClickHandle} />
+                            <input type="checkbox" id="career" name="career" checked={state.categories.includes('career')} onChange={toggleCategory} value="career" />
                         </label>
                     </CustomCategorySelect>
 
                     <div>
                         <label htmlFor="aboutMe">About Me:
-                            <textarea name="about" id="about" cols="30" rows="5" onChange={onChangeHandler} value={profile.about}></textarea>
+                            <textarea name="aboutMe" id="aboutMe" cols="30" rows="5" onChange={setAboutMe} value={state.aboutMe}></textarea>
                         </label>
                     </div>
 
