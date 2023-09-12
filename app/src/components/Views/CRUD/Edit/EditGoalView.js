@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style"
 import { useEffect, useState } from "react";
-import { editGoal, getDetails } from "../../../../api/goalsApi";
+
+import { editGoal, getDetails } from "../../../../api/services/goalsApi";
 
 export default function EditGoalView() {
 

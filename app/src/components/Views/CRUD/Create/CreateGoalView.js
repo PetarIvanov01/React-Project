@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
-import { createGoal } from "../../../../api/goalsApi";
+import { createGoal } from "../../../../api/services/goalsApi";
 
 export default function CreateGoalView() {
 

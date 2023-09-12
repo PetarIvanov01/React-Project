@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { getDetails, getCatalog, getDataForHome } from '../api/goalsApi';
+import { getDetails, getCatalog, getDataForHome } from '../api/services/goalsApi';
 
 const HomeContext = createContext();
 

@@ -6,7 +6,7 @@ import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelec
 import { avatars } from "../../../../util/_mockAvatars";
 import { BlurredBackground } from "../../../../styles/ViewsStyles/ProfileStyle/InformationalBox.style";
 
-import { createProfile } from "../../../../api/profileApi";
+import { createProfile } from "../../../../api/services/profileApi";
 
 export default function CreateProfile() {
 

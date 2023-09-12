@@ -11,7 +11,8 @@ const ACTION_TYPE = {
     USERNAME: 'username',
     ABOUTME: 'aboutMe',
     CATEGORY: 'category',
-    AVATAR: 'avatar'
+    AVATAR: 'avatar',
+    EDITFORM: 'editform'
 };
 
 function reducer(state, action) {
@@ -29,6 +30,9 @@ function reducer(state, action) {
         case ACTION_TYPE.AVATAR:
             return { ...state, avatar: action.payload };
 
+        case ACTION_TYPE.EDITFORM:
+            return { ...state, ...action.payload };
+            
         default:
             return state;
     }
@@ -54,18 +58,13 @@ export default function useProfileState() {
         if (state.categories.length >= 1) {
             e.target.checked = false;
             categories = state.categories.filter((name) => name !== checkboxName);
-            return dispatch({ type: ACTION_TYPE.CATEGORY, payload: categories });
         }
         else {
-            // (e.target.checked)
             categories = [...state.categories, checkboxName]
-            return dispatch({ type: ACTION_TYPE.CATEGORY, payload: categories });
         }
-        // else {
-        //     console.log('here3');
-        //     categories = state.categories.filter((name) => name !== checkboxName)
-        //     return dispatch({ type: ACTION_TYPE.CATEGORY, payload: categories });
-        // }
+
+        return dispatch({ type: ACTION_TYPE.CATEGORY, payload: categories });
+
     };
 
     const chooseAvatar = (selected) => {
@@ -77,6 +76,7 @@ export default function useProfileState() {
         setAboutMe,
         setUsername,
         toggleCategory,
+        handleEditForm: dispatch,
         state
     }
 }

@@ -1,4 +1,4 @@
-import * as api from "./requester"
+import * as api from "../requester"
 
 const endpoints = {
 

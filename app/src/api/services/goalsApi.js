@@ -1,5 +1,5 @@
-import * as api from "./requester"
-export * as api from "./requester"
+import * as api from "../requester"
+export * as api from "../requester"
 
 export const login = api.onLogin;
 export const register = api.onRegister;

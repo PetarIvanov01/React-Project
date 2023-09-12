@@ -4,7 +4,7 @@ import { useAuth } from "../../../contexts/auth";
 import { Link } from "react-router-dom";
 import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 
-import { getProfileDetails } from "../../../api/profileApi";
+import { getProfileDetails } from "../../../api/services/profileApi";
 
 import TopicsContainer from "./Topics/Topics";
 import NoTopics from "./Topics/NoTopics";
@@ -53,7 +53,7 @@ export default function ProfileContainer({ userId }) {
 
             <Description >
                 <AboutMe >About Me</AboutMe>
-                <Desc >{profile?.about}</Desc>
+                <Desc >{profile?.aboutMe}</Desc>
             </Description>
 
             {profile.goals?.length ? <TopicsContainer goals={profile?.goals} /> : <NoTopics owner={profile?.userId === user?.id} />}

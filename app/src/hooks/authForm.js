@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth";
-import { login, register } from "../api/goalsApi";
+
+import { login, register } from "../api/services/goalsApi";
 
 export default function useAuthForm(fields, setFields) {
 
