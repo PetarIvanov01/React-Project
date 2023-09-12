@@ -1,6 +1,5 @@
 import { clearUserData, getUserData, setUserData } from "./user.js";
 
-
 let host = 'http://localhost:5000/api/';
 
 async function request(url, option) {
@@ -8,14 +7,14 @@ async function request(url, option) {
     try {
         const response = await fetch(host + url, option);
 
-        if (response.ok == false) {
-            if (response.status == 403) {
+        if (response.ok === false) {
+            if (response.status === 403) {
                 clearUserData();
             }
-            const error = await response.json()
+            const error = await response.json();
             throw new Error(error.message);
         }
-        if (response.status == 204) {
+        if (response.status === 204) {
             return response
         }
         else {
@@ -38,12 +37,12 @@ function createOptions(method = 'get', data) {
     }
 
     const user = getUserData();
-    if (user != null) {
+    if (user !== null) {
         option.headers['Authorization'] = user.token;
     }
 
 
-    if (data != undefined) {
+    if (data !== undefined) {
         option.headers['Content-Type'] = 'application/json';
         option.body = JSON.stringify(data);
     }
