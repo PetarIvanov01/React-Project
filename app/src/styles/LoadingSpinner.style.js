@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const spin = keyframes`
@@ -28,12 +28,25 @@ const Spinner = styled.div`
   animation: ${spin} 1s linear infinite;
 `;
 
-const LoadingSpinner = () => {
-  return (
+const LoadingSpinner = ({setSpinner}) => {
+  const [showSpinner, setShowSpinner] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+
+      setShowSpinner(false);
+      setSpinner(true);
+
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [setSpinner]);
+
+  return showSpinner ? (
     <SpinnerOverlay>
       <Spinner />
     </SpinnerOverlay>
-  );
+  ) : null;
 };
 
 export default LoadingSpinner;
