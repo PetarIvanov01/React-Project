@@ -82,4 +82,8 @@ export const CardStyle = styled.div`
                 background-color: #bbbec2;
         }
 
+        h3 {
+            text-align: center;
+        }
+
 `
