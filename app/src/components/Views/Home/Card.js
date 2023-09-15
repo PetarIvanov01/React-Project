@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { CardStyle } from "../../../styles/ViewsStyles/HomeStyle/CardStyle";
+import { cardDescCutter } from "../../../util/cutter";
 
 export default function Card({
     avatarImg,
     category,
     username,
-    userId
+    userId,
+    goals
 }) {
-
 
     return (
         <CardStyle >
@@ -31,8 +32,10 @@ export default function Card({
                 </ul>
             </div>
             <div className="posts">
-                {/* //TODO display part of his goals make a trim func */}
-                <p>IT career: Lorem ipsum jahl oal asl elisa dlai.</p>
+                {goals?.length ?
+                    goals.map(e => <p key={e._id}><strong>{e.title}</strong>: {cardDescCutter(e.description)}</p>)
+                    :
+                    <h3>Ops, no content available!</h3>}
             </div>
             <Link to={`/profile/${userId || "userID"}`}>
                 Show Details
