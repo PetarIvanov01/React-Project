@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCatalogGoals } from "../../../../contexts/catalog";
 import LoadingSpinner from "../../../../styles/LoadingSpinner.style";
 import { CatalogCardsStyle } from "../../../../styles/ViewsStyles/GoalsStyle/CatalogCardsStyle.style"
@@ -9,6 +9,11 @@ export default function CatalogCardsContainer() {
     const { goals } = useCatalogGoals();
     const [load, setSpinner] = useState(false);
 
+    useEffect(() => {
+        if (goals) {
+            setSpinner(false);
+        }
+    }, [goals])
 
     return (
 
