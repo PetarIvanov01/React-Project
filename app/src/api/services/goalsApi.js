@@ -12,8 +12,8 @@ const endpoints = {
     edit: (id) => `goals/${id}`,
     details: (id) => `goals/${id}`,
     delete: (id) => `goals/${id}`,
-    home: "goals?limit=2"
-    // search: (query) => `data/shoes?where=brand%20LIKE%20%22${query}%22`,
+    home: "goals?limit=2",
+    search: (name) => `goals/search?name=${name}`
 
 };
 
@@ -41,7 +41,7 @@ export async function editGoal(id, data) {
 
     return api.put(endpoints.edit(id), data)
 }
-// export async function searchShoes(querry) {
-
-//     return api.get(endpoints.search(querry));
-// }
+export async function searchByName(name) {
+    
+    return api.get(endpoints.search(name));
+}
