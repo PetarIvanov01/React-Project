@@ -14,7 +14,7 @@ export default function TopicCards({
     const { userId } = useParams();
     const { user } = useAuth();
 
-    const isOwner = user.id === userId;
+    const isOwner = user?.id === userId;
 
     const shortDesc = descCutter(description);
 
