@@ -1,8 +1,9 @@
 import GoalsProvider from "../../../../contexts/catalog"
 import { Container } from "../../../../styles/ViewsStyles/GoalsStyle/Container.style"
-import { SearchContainer, SearchInput } from "../../../../styles/ViewsStyles/GoalsStyle/Search.style"
+
 import Pagination from "../Pagination/Pagination"
 import CatalogCardsContainer from "./CatalogCards"
+import SearchForm from "./SearchForm"
 
 export default function CatalogView() {
 
@@ -11,12 +12,8 @@ export default function CatalogView() {
         <Container>
 
             <GoalsProvider>
-                
-                <SearchContainer>
-                    <form >
-                        <SearchInput type="text" placeholder="Search by name or category" />
-                    </form>
-                </SearchContainer>
+
+                <SearchForm />
 
                 <CatalogCardsContainer />
 
