@@ -21,6 +21,7 @@ export const SectionStyle = styled.div`
     height: 45vh;
     display: flex;
     justify-content: center;
+    flex-grow: 1;
 
 
     & .title {
