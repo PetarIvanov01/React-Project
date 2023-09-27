@@ -72,7 +72,6 @@ export async function del(url) {
 const endPoints = {
     login: 'user/login',
     register: 'user/register',
-    //TODO logout on the server;
     logout: 'user/logout'
 }
 
@@ -92,7 +91,6 @@ export async function onRegister(email, password) {
 
 export function onLogout() {
 
-    // get(endPoints.logout);
     clearUserData();
 
     return null;
