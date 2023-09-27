@@ -28,19 +28,18 @@ const Spinner = styled.div`
   animation: ${spin} 1s linear infinite;
 `;
 
-const LoadingSpinner = ({setSpinner}) => {
+const LoadingSpinner = () => {
   const [showSpinner, setShowSpinner] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
 
       setShowSpinner(false);
-      setSpinner(true);
 
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [setSpinner]);
+  }, []);
 
   return showSpinner ? (
     <SpinnerOverlay>
