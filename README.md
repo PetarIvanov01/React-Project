@@ -1,1 +1,50 @@
-# React-Project
+# Blog for Goals
+
+## Project Overview
+Blog for Goals is a web application designed to allow users to share their personal goals with others. This project serves as a learning experience, focusing on best practices and delivering a good user experience (UX) and user interface (UI).
+
+## Project Scope
+### Features
+- **Authentication:** Users can register and log in, with the ability to customize their profiles (Username, Avatar image, Category, and About Me) during registration.
+- **Search:** Everyone can search for users by their names.
+- **Home View:** Non-registered users are greeted with two of the most followed people.
+- **Catalog View:** Users can view all profiles and search by name.
+- **Profile Details:** Users can access detailed information about a profile by clicking "Show Details" on the catalog page. Information includes Username, Followers, About Me, and the user's created goals.
+- **Goals (Registered Users):** Registered users can create, edit, and delete their goals. Each user can have up to two goals.
+- **Future Features:** Pagination for the catalog view, allowing users to follow other profiles.
+
+## Installation and Getting Started
+To set up the project:
+1. Clone the repository.
+2. Navigate to the project folder.
+3. Install all dependencies using `npm install`.
+4. Run the project and enjoy!
+
+Make sure to have the [RESTful API](https://github.com/PetarIvanov01/RESTful-API) running as a backend service to use the web app.
+
+## Usage
+### Home View
+![Home View Image](/readme-screenshots/Home-View.JPG)
+### Catalog View
+![Catalog View Image](/readme-screenshots/Catalog-View.JPG)
+### Register View
+![Register View Image](/readme-screenshots/Register-View.JPG)
+### Login View
+![Login View Image](/readme-screenshots/Login-View.JPG)
+### Create Profile View
+![Create Profile View Image](/readme-screenshots/Custom-Profile.JPG)
+### Profile View
+![Profile View Image](/readme-screenshots/Own-Profile-View.JPG)
+### Goal Information
+![Goal Information View Image](/readme-screenshots/Read-Goal-View.JPG)
+
+## Deployment
+Deployment details will be added in the future once I have learned how to deploy the web app.
+
+## Technologies
+- React library
+- React-router-dom
+- styled-components
+
+## License
+This project is licensed under the [MIT License](LICENSE).
