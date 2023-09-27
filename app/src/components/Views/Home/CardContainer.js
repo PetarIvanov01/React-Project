@@ -2,12 +2,10 @@ import { CardContainerStyle } from "../../../styles/ViewsStyles/HomeStyle/CardsC
 import Card from "./Card";
 import { useCatalogGoals } from "../../../contexts/catalog";
 import LoadingSpinner from "../../../styles/LoadingSpinner.style";
-import { useState } from "react";
 
 export default function CardContainer() {
 
     const { goals } = useCatalogGoals();
-    const [load, setSpinner] = useState(false);
 
     return (
         <CardContainerStyle >
@@ -16,7 +14,7 @@ export default function CardContainer() {
 
                 :
                 <>
-                    <LoadingSpinner setSpinner={setSpinner} />
+                    <LoadingSpinner />
                     <Card />
                 </>}
 
