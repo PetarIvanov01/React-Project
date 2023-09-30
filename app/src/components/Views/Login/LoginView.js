@@ -19,7 +19,7 @@ export default function LoginView() {
             <h2>Login</h2>
             {fields.err ? <h3>{fields.err}</h3> : ''}
             <br />
-            <form onSubmit={onSubmitHandler} action="#" method="post">
+            <form onSubmit={(e) => onSubmitHandler(e, false)} action="#" method="post">
                 <label htmlFor="email">Email:</label>
                 <input type="email"
                     id="email"

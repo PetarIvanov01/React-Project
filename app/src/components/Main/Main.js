@@ -16,6 +16,7 @@ import DeleteGoalView from "../Views/CRUD/Delete/DeleteGoalView";
 
 export default function Main() {
 
+    //TODO Add guards for not authorized requests
 
     return (
 

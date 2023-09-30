@@ -6,7 +6,7 @@ export default function Footer() {
     return (
         <FooterStlye >
             <div className="copyrights">
-                <p>© Copyright 2023</p>
+                <p>© Copyright {new Date().getFullYear()}</p>
             </div>
             <div className="icons">
                 <ul>
