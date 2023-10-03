@@ -10,7 +10,7 @@ export default function HomeView() {
                     <h2>Share your goals with people and grow together</h2>
                 </div>
             </SectionStyle>
-            
+
             <SectionCards />
         </>
     )
