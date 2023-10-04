@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import useProfileState from "../../../../hooks/profileReducer";
 
 import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
@@ -7,10 +8,13 @@ import { avatars } from "../../../../util/_mockAvatars";
 import { BlurredBackground } from "../../../../styles/ViewsStyles/ProfileStyle/InformationalBox.style";
 
 import { createProfile } from "../../../../api/services/profileApi";
+import validateData from "../../../../util/validateDataForProfile";
 
 export default function CreateProfile() {
 
     const navigate = useNavigate();
+
+    const [error, setError] = useState('');
 
     const { toggleCategory,
         setUsername,
@@ -28,14 +32,14 @@ export default function CreateProfile() {
                 category: state.categories[0],
                 aboutMe: state.aboutMe
             }
+            validateData(data, setError);
 
             const { userId } = await createProfile(data);
 
             navigate(`/profile/${userId}`);
         }
         catch (error) {
-            navigate('/login')
-            return;
+            setError(error.message);
         }
     }
 
@@ -44,7 +48,8 @@ export default function CreateProfile() {
             <FormContainerStyle>
 
                 <AvatarSelectorContainer>
-                    <h2>Customize your profile</h2>
+                    <h2 >Customize your profile</h2>
+                    {error && <h2 className="error" >{error}</h2>}
                     <form onSubmit={onSubmitHandler} action="#" method="post">
                         <label htmlFor="username">Username:</label>
                         <input type="text" id="username" name="username" required="" onChange={setUsername} value={state.username} />
