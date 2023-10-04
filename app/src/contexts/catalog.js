@@ -13,7 +13,6 @@ export default function GoalsProvider({ children, view }) {
 
         setGoalsData(items.results);
         setIfGoals(true)
-        
     }
 
     useEffect(() => {
@@ -21,12 +20,13 @@ export default function GoalsProvider({ children, view }) {
         if (view === 'home') {
             getDataForHome().then(({ items }) => {
                 setParams(items);
-            })
+            }).catch((err) => console.log(err))
         }
         else {
             getCatalog().then(({ items }) => {
                 setParams(items);
-            })
+            }).catch((err) => console.log(err))
+
         }
 
     }, [view])
