@@ -28,7 +28,6 @@ export default function useAuthForm(fields, setFields) {
 
         } catch (error) {
             setFields((state) => ({ ...state, err: error.message }));
-            console.error(error);
         }
     }
 

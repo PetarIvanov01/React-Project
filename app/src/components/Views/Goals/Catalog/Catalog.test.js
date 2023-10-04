@@ -1,6 +1,4 @@
-import { screen, render, logRoles } from "@testing-library/react"
-import CatalogView from "./Catalog"
-
+import { screen, render, } from "@testing-library/react"
 
 describe('Testing Catalog Page', () => {
 
@@ -13,5 +11,5 @@ describe('Testing Catalog Page', () => {
         expect(searchElement).toBeInTheDocument();
 
     })
-    
 })
+

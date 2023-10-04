@@ -9,6 +9,10 @@ export const MainStyle = styled.main`
     justify-content: center;
     padding-bottom: 20px;
 
+    .error{
+        color: red;
+    }
+
 `
 
 export const SectionStyle = styled.div`
