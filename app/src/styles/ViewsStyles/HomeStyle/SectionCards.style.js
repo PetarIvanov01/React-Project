@@ -9,8 +9,10 @@ export const SectionCardsStyle = styled.div`
     & .more-info {
         width: max-content;
         margin: 0 auto;
-        background-color: #bbbec2;
-
+        background: #bbbec2; 
+        border: 6px solid #BDBDBD;
+        border-radius: 15px;
+        
         & h3 { 
             padding: 16px 20px;
         }

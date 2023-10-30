@@ -27,6 +27,11 @@ export const FormContainerStyle = styled.div`
         height: 2em;
     }
 
+    & textarea {
+        max-width: 100%;
+        max-height: 300px;
+    }
+
     & select {
         display: block;
         margin-bottom: 15px;
