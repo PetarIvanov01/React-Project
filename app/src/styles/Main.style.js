@@ -18,6 +18,7 @@ export const MainStyle = styled.main`
 export const SectionStyle = styled.div`
 
     background-image: url("/imgs/imgView.jpeg");
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
