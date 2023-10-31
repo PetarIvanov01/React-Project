@@ -18,16 +18,13 @@ export const MainStyle = styled.main`
 export const SectionStyle = styled.div`
 
     background-image: url("/imgs/imgView.jpeg");
-
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     min-width: 100%;
-    height: 45vh;
     display: flex;
     justify-content: center;
     flex-grow: 1;
-
 
     & .title {
         height: 82px;

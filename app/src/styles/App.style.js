@@ -11,5 +11,5 @@ export const ContainerStyle = styled.div`
 	border: solid #6E6C6E 2px; 
 	box-shadow: 0 3px 38px rgba(77, 78, 79, 0.7); 
 	-webkit-box-shadow: 0 3px 38px rgba(77, 78, 79, 0.7); 
-	-moz-box-shadow: 0 3px 38px rgba(77, 78, 79, 0.7); 
+	-moz-box-shadow: 0 3px 38px rgba(77, 78, 79, 0.7);
 `;

@@ -5,9 +5,9 @@ import Card from "./Card";
 
 export default function CatalogCardsContainer() {
 
-    const { goals, hasGoals } = useCatalogGoals();
+    const { goals } = useCatalogGoals();
 
-    if (goals.length === 0 && hasGoals) {
+    if (goals.length === 0) {
         return <h2>Oops! Looks like we're all alone in the profile party!</h2>
     }
 
@@ -15,7 +15,7 @@ export default function CatalogCardsContainer() {
 
         <CatalogCardsStyle >
 
-            {hasGoals ? goals.map(g => <Card key={g._id} {...g} />)
+            {goals.length !== 0 ? goals.map(g => <Card key={g._id} {...g} />)
                 :
                 <LoadingSpinner />}
 
