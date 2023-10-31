@@ -6,20 +6,25 @@ export const register = api.onRegister;
 export const logout = api.onLogout;
 
 const endpoints = {
-
+    query: (query, data) => `goals?${query}=${data}`,
     catalog: "goals",
     create: "goals",
     edit: (id) => `goals/${id}`,
     details: (id) => `goals/${id}`,
     delete: (id) => `goals/${id}`,
     home: "goals?limit=2",
-    search: (name) => `goals/search?name=${name}`
 
 };
 
-export async function getCatalog() {
+export async function getCatalog(data, query) {
+
+
+    if (query) {
+        return api.get(endpoints.query(query, data));
+    }
 
     return api.get(endpoints.catalog);
+
 }
 export async function getDataForHome() {
 
@@ -40,8 +45,4 @@ export async function deleteGoal(id) {
 export async function editGoal(id, data) {
 
     return api.put(endpoints.edit(id), data)
-}
-export async function searchByName(name) {
-    
-    return api.get(endpoints.search(name));
 }
