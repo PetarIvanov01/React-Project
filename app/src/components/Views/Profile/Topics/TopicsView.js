@@ -24,7 +24,7 @@ export default function TopicCardsView({ goals }) {
 
     return (
         <>
-            <Cards className="cards">
+            <Cards>
 
                 {goals?.map(g => <TopicCards key={g._id} {...g} handleLearnMoreClick={handleLearnMoreClick} />)}
 

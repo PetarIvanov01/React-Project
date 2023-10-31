@@ -6,7 +6,7 @@ export default function TopicsContainer({ goals }) {
 
     return (
         <Topics >
-            <h2>Topics</h2>
+            <h2>Personal Goals</h2>
 
             <TopicCardsView goals={goals} />
 

@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { CardTitle, CardTopics, DescriptionParagraph, EditGoalStyle, TopicDescription, TopicsImage } from "../../../../styles/ViewsStyles/ProfileStyle/Profile.style";
+import { CardTitle, CardTopics, DescriptionParagraph, EditGoalStyle, TopicDescription, TopicsImage } from "../../../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
 import { useAuth } from "../../../../contexts/auth";
 import { descCutter } from "../../../../util/cutter";
 
@@ -19,7 +19,7 @@ export default function TopicCards({
     const shortDesc = descCutter(description);
 
     return (
-        <CardTopics className="card-topics">
+        <CardTopics>
             <TopicsImage src={image} alt="" />
 
             <CardTitle>
@@ -31,12 +31,12 @@ export default function TopicCards({
                 <EditGoalStyle>
 
                     <Link to={_id} onClick={() => handleLearnMoreClick({ image, title, description  })}  >Learn more...</Link>
-                    {isOwner ?
+                    {isOwner &&
                         <div className="owner-buttons">
                             <Link to={`/edit/goal/${_id}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
                             <Link to={`/delete/goal/${_id}`}><img src="/imgs/svg/delete.svg" alt="Delete Icon" /></Link>
                         </div>
-                        : ''}
+                        }
                 </EditGoalStyle>
             </TopicDescription>
 
