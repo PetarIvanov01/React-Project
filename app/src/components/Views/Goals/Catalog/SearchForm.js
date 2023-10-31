@@ -1,30 +1,31 @@
 import { useState } from "react";
 import { SearchContainer, SearchInput } from "../../../../styles/ViewsStyles/GoalsStyle/Search.style";
-import { searchByName } from "../../../../api/services/goalsApi";
-import { useCatalogGoals } from "../../../../contexts/catalog";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchForm() {
 
-    const { setGoalsData } = useCatalogGoals();
+    const navigate = useNavigate();
 
     const [query, setSearchQuery] = useState({
         search: ''
     });
 
     const onChangeHandler = (e) => {
-        return setSearchQuery((state) => ({ ...state, [e.target.name]: e.target.value }));
+        setSearchQuery((state) => ({ ...state, [e.target.name]: e.target.value }));
     }
 
-    async function onSubmitHandler(e) {
+    function onSubmitHandler(e) {
         e.preventDefault();
 
-        const { items } = await searchByName(query.search);
-        setGoalsData(items);
-
-        setSearchQuery(() => ({ search: '' }));
+        if (query.search) {
+            navigate(`/goals?search=${query.search}`);
+        }
+        else {
+            navigate(`/goals`);
+        }
     }
 
-    
+
     return (
         <SearchContainer>
             <form onSubmit={onSubmitHandler}>
