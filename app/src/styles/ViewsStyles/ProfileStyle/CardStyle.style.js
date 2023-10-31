@@ -13,11 +13,12 @@ export const CardTopics = styled.div`
 export const TopicsImage = styled.img`
     width: 100%;
     height: 175px;
+    border-bottom: 2px solid #A196A1;
 `;
 
 export const CardTitle = styled.div`
     padding: 5px 0;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid #A196A1;
 `;
 
 export const TopicDescription = styled.div`

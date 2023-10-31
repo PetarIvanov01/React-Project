@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../../contexts/auth";
 
 import { Link } from "react-router-dom";
-import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
+import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 
 import { getProfileDetails } from "../../../api/services/profileApi";
 
 import TopicsContainer from "./Topics/Topics";
 import NoTopics from "./Topics/NoTopics";
+import { EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
 
 export default function ProfileContainer({ userId }) {
 
@@ -41,14 +42,11 @@ export default function ProfileContainer({ userId }) {
                     <StyledParagraph>Followers: 21</StyledParagraph>
                 </Followers>
 
-                {isOwner ?
+                {isOwner &&
                     <EditProfileStyle>
                         <Link to={`/edit/profile/${profile?.userId}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
                     </EditProfileStyle>
-                    :
-                    ''
                 }
-
             </Profile>
 
             <Description >
