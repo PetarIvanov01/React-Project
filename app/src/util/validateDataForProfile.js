@@ -8,7 +8,8 @@ export default function validateData({
 
     try {
 
-        if (!username || !avatarImg || category.length || !aboutMe) {
+        if (username === '' || avatarImg === undefined || category === undefined || aboutMe === '') {
+
             throw new Error('All fields are required!');
         }
 
