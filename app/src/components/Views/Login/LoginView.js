@@ -1,6 +1,7 @@
-import { LoginContainerStyle } from "../../../styles/ViewsStyles/LoginStyle/Login.style";
 import { useState } from "react";
 import useAuthForm from "../../../hooks/authForm";
+import {  LoginFormStyle } from "./Login.style";
+import { ButtonStyle, InputField } from "../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 
 export default function LoginView() {
 
@@ -14,30 +15,40 @@ export default function LoginView() {
     const { onChangeHandler, onSubmitHandler } = useAuthForm(fields, setFields);
 
     return (
-        <LoginContainerStyle>
+        <LoginFormStyle>
 
             <h2>Login</h2>
             {fields.err ? <h3>{fields.err}</h3> : ''}
-            <br />
             <form onSubmit={(e) => onSubmitHandler(e, false)} action="#" method="post">
-                <label htmlFor="email">Email:</label>
-                <input type="email"
-                    id="email"
-                    name="email"
-                    required=""
-                    onChange={onChangeHandler}
-                    value={fields.email} />
-                <label htmlFor="password">Password:</label>
-                <input type="password"
-                    id="password"
-                    name="password"
-                    required=""
-                    onChange={onChangeHandler}
-                    value={fields.password} />
-                <button type="submit">Login</button>
+
+                <InputField>
+                    <input type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Email..."
+                        required=""
+                        onChange={onChangeHandler}
+                        value={fields.email} />
+                </InputField>
+
+                <InputField>
+                    <input type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password..."
+                        required=""
+                        onChange={onChangeHandler}
+                        value={fields.password} />
+                </InputField>
+
+                <ButtonStyle>
+                    <button type="submit">Login</button>
+                </ButtonStyle>
             </form>
 
-        </LoginContainerStyle>
+        </LoginFormStyle>
 
     )
 }
+
+
