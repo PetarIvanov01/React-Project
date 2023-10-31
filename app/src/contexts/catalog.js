@@ -1,39 +1,38 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { getCatalog, getDataForHome } from '../api/services/goalsApi';
+import useQuery from '../hooks/useQuery';
 
 const HomeContext = createContext();
 
 export default function GoalsProvider({ children, view }) {
 
+    const [pages, setPages] = useState({});
     const [goals, setGoalsData] = useState([]);
-    const [hasGoals, setIfGoals] = useState(false);
-
+    const { query, data } = useQuery();
 
     function setParams(items) {
-
+        setPages(items)
         setGoalsData(items.results);
-        setIfGoals(true)
     }
 
     useEffect(() => {
-
         if (view === 'home') {
             getDataForHome().then(({ items }) => {
                 setParams(items);
             }).catch((err) => console.log(err))
         }
         else {
-            getCatalog().then(({ items }) => {
+            getCatalog(data, query).then(({ items }) => {
                 setParams(items);
             }).catch((err) => console.log(err))
 
         }
 
-    }, [view])
+    }, [view, query, data])
 
 
     return (
-        <HomeContext.Provider value={{ goals, setGoalsData, hasGoals }}>
+        <HomeContext.Provider value={{ goals, pages }}>
 
             {children}
         </HomeContext.Provider>
