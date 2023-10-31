@@ -4,7 +4,6 @@ export const CardContainerStyle = styled.section`
 
     display: flex;
     gap: 5em;
-
     
 
     & .more-info {

@@ -2,15 +2,17 @@ import { styled } from "styled-components";
 
 export const CardStyle = styled.div`
 
-        min-width: 400px;
-        min-height: 380px;
-        background-color: #c5c8cb;
+        max-width: 400px;
+        max-height: 380px;
         margin: 3.5em 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
+        background: #c5c8cb;
+        border: 7px solid #BDBDBD;
+        border-radius: 4px 18px 18px 17px;
+ 
 
         & .profile {
             margin-top: 10px;

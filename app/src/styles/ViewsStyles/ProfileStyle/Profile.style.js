@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const Avatar = styled.img`
     width: 95px;
     height: 87px;
@@ -7,18 +8,19 @@ export const Avatar = styled.img`
 `;
 
 export const CardContainer = styled.div`
+
     display: flex;
     flex-direction: column;
-    /* justify-content: space-evenly; */
     min-height: 900px;
-    width: 80%;
-    border-radius: 100px;
-    background-color: #c5c8cb;
-    /* margin: 1em; */
+    width: 50em;
     padding: 1.5em;
+    background: #c5c8cb;
+    border: 7px solid #BDBDBD;
+    border-radius: 0 50px;
 `;
 
 export const Profile = styled.section`
+    border: 3px solid #A196A1 ;
     margin: 2em 0;
     position: relative;
     background-color: #D9d9d9;
@@ -58,35 +60,33 @@ export const AboutMe = styled.p`
 `;
 
 export const Desc = styled.p`
+    border: 3px solid #A196A1;
     height: 100px;
     border-radius: 20px;
     padding: 8px 12px;
     background-color: #D9d9d9;
 `;
 
-export const CardTopics = styled.div`
-    width: 21em;
-    margin: 12px 0;
-    background-color: #c5c8cb;
-    position: relative;
-    display: flex;
-  flex-direction: column;
-`;
-
-export const TopicsImage = styled.img`
-    width: 100%;
-    max-height: 175px;
-`;
-
 export const Topics = styled.div`
-    background-color: #d9d9d9;
-    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: auto 0;
+
+    & h2{
+        background-color: rgba(167,159,159,0.4);
+        padding: 8px;
+        border-radius: 1em;
+        font-size: 1.3em;
+        font-weight: 500;
+    }
 `;
 
 export const Cards = styled.div`
     display: flex;
-    justify-content: space-evenly;
+    gap: 2em;
 
     & a {
         text-decoration: none;
@@ -99,37 +99,10 @@ export const Cards = styled.div`
     }
 `;
 
-export const CardTitle = styled.div`
-    padding: 5px 0;
-    border-bottom: 1px solid black;
-`;
 
-export const TopicDescription = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    flex: 1; /* Add this line to make it fill the available space */
-`;
 
-export const DescriptionParagraph = styled.p`
-    text-align: start;
-`;
 
-export const EditProfileStyle = styled.div`
-    position: absolute;
-    right: 3em;
-`
-export const EditGoalStyle = styled.div`
 
-    display: flex;
-    gap: 1em;
-    justify-content: center;
-    margin-top: auto;
 
-    & .owner-buttons {
-        display: flex;        
-        gap: 2em;
-    }
-`
 
 
