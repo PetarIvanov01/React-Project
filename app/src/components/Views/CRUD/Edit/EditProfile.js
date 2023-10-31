@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useProfileState from "../../../../hooks/profileReducer";
 
-import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
-import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect } from "../../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
+import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect, FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
 import { avatars } from "../../../../util/_mockAvatars";
 
 import { editProfile, getProfileDetails } from "../../../../api/services/profileApi";
+import { ButtonStyle, InputField, TextArea } from "../../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 
 export default function EditProfile() {
 
@@ -67,10 +67,11 @@ export default function EditProfile() {
             <AvatarSelectorContainer>
                 <h2>Edit your profile</h2>
                 <form onSubmit={onSubmitHandler} action="#" method="post">
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" required="" onChange={setUsername} value={state.username} />
-                    <label htmlFor="avatar">Choose your avatar image:</label>
+                    <InputField>
+                        <input type="text" id="username" name="username" placeholder="Username..." required="" onChange={setUsername} value={state.username} />
+                    </InputField>
                     <CustomSelect
+                        placeholder="Select avatar image"
                         isClearable={true}
                         value={state.avatar}
                         onChange={chooseAvatar}
@@ -84,7 +85,7 @@ export default function EditProfile() {
                         }}
                     />
 
-                    <label htmlFor="category">Category:</label>
+                    <label htmlFor="category" className="category">Category:</label>
                     <CustomCategorySelect >
                         <label htmlFor="sport">Sport
                             <input type="checkbox" id="sport" name="sport" checked={state.categories.includes('sport')} onChange={toggleCategory} value="sport" />
@@ -99,13 +100,12 @@ export default function EditProfile() {
                         </label>
                     </CustomCategorySelect>
 
-                    <div>
-                        <label htmlFor="aboutMe">About Me:
-                            <textarea name="aboutMe" id="aboutMe" cols="30" rows="5" onChange={setAboutMe} value={state.aboutMe}></textarea>
-                        </label>
-                    </div>
-
-                    <button type="submit">Finished!</button>
+                    <TextArea>
+                        <textarea name="aboutMe" id="aboutMe" placeholder="About Me..." cols="30" rows="5" onChange={setAboutMe} value={state.aboutMe}></textarea>
+                    </TextArea>
+                    <ButtonStyle>
+                        <button type="submit">Finished!</button>
+                    </ButtonStyle>
                 </form>
             </AvatarSelectorContainer>
 

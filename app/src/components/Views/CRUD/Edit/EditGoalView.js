@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style"
 import { useEffect, useState } from "react";
 
 import { editGoal, getDetails } from "../../../../api/services/goalsApi";
+import { EditFormStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
+import { ButtonStyle, InputField, TextArea } from "../../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 
 export default function EditGoalView() {
 
@@ -46,24 +47,27 @@ export default function EditGoalView() {
 
     return (
 
-        <FormContainerStyle>
-            <h2>Edit goal</h2>
+        <EditFormStyle>
+            <h2>Refine Your Journey: Edit Your Goal</h2>
 
             <form onSubmit={onSubmitHandler} action="#" method="post">
+                <InputField >
+                    <input type="text" id="title" name="title" placeholder="Your title" required="" onChange={onChangeHandler} value={post.title} />
+                </InputField>
+                <InputField >
+                    <input type="text" id="image" name="image" placeholder="ImageUrl" required="" onChange={onChangeHandler} value={post.image} />
+                </InputField>
+                <TextArea>
+                    <textarea type="text" id="goal" name="description" placeholder="Goal Description" required="" onChange={onChangeHandler} value={post.description} />
+                </TextArea>
+                
+                <ButtonStyle>
+                    <button type="submit">Edit</button>
+                </ButtonStyle>
 
-                <label htmlFor="title">Title:</label>
-                <input type="text" id="title" name="title" required="" onChange={onChangeHandler} value={post.title} />
-
-                <label htmlFor="image">ImageUrl:</label>
-                <input type="text" id="image" name="image" required="" onChange={onChangeHandler} value={post.image} />
-
-                <label htmlFor="goal">Goal Description:</label>
-                <textarea type="text" id="goal" name="description" required="" onChange={onChangeHandler} value={post.description} />
-
-                <button type="submit">Edit</button>
             </form>
 
-        </FormContainerStyle>
+        </EditFormStyle>
 
     )
 

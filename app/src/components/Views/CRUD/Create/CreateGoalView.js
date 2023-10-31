@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
 import { createGoal } from "../../../../api/services/goalsApi";
+import { CreateFormStyle } from "../../../../styles/ViewsStyles/CRUDStyle/CreateForm.style";
+import { ButtonStyle, InputField, TextArea } from "../../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 
 export default function CreateGoalView() {
 
@@ -22,7 +23,7 @@ export default function CreateGoalView() {
         e.preventDefault();
 
         try {
-            
+
             const { item } = await createGoal(goal);
             navigate(`/profile/${item.owner}`)
 
@@ -34,24 +35,26 @@ export default function CreateGoalView() {
 
     return (
 
-        <FormContainerStyle>
-            <h2>Create goal</h2>
+        <CreateFormStyle>
+            <h2>Empower Your Ambitions: Create Your Next Goal</h2>
 
             <form onSubmit={onSubmitHandler} action="#" method="post">
 
-                <label htmlFor="title">Title:</label>
-                <input type="text" id="title" name="title" onChange={onChangeHandler} required="" value={goal.title} />
-
-                <label htmlFor="image">ImageUrl:</label>
-                <input type="text" id="image" name="image" onChange={onChangeHandler} required="" value={goal.image} />
-
-                <label htmlFor="goal">Goal Description:</label>
-                <textarea type="text" id="goal" name="description" onChange={onChangeHandler} required="" value={goal.goal} />
-
-                <button type="submit">Create</button>
+                <InputField>
+                    <input type="text" id="title" name="title" onChange={onChangeHandler} placeholder="Your title" required="" value={goal.title} />
+                </InputField>
+                <InputField>
+                    <input type="url" id="image" name="image" onChange={onChangeHandler}  placeholder="ImageUrl" required="" value={goal.image} />
+                </InputField>
+                <TextArea>
+                    <textarea type="text" id="goal" name="description" onChange={onChangeHandler}  placeholder="Goal Description" required="" value={goal.description} /> 
+                </TextArea>
+                <ButtonStyle>
+                    <button type="submit">Create</button>
+                </ButtonStyle>
             </form>
 
-        </FormContainerStyle>
+        </CreateFormStyle>
 
     )
 

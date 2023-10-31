@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { FormContainerStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
 import { useEffect, useState } from "react";
 
 import { deleteGoal, getDetails } from "../../../../api/services/goalsApi";
+import { DeleteFormStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
+import { ButtonStyle, InputField, TextArea } from "../../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 
 export default function DeleteGoalView() {
 
@@ -28,23 +29,29 @@ export default function DeleteGoalView() {
     }
 
     return (
-        <FormContainerStyle>
-            <h2>Delete goal</h2>
+        <DeleteFormStyle>
+            <h2>Are you sure about this desision?</h2>
 
             <form onSubmit={onSubmitHandler} action="#" method="post">
 
-                <label htmlFor="title">Title:</label>
-                <input type="text" id="title" name="title" disabled defaultValue={post.title} />
+                <InputField >
 
-                <label htmlFor="image">ImageUrl:</label>
-                <input type="text" id="image" name="image" disabled defaultValue={post.image} />
+                    <input type="text" id="title" name="title" disabled defaultValue={post.title} />
+                </InputField>
+                <InputField>
 
-                <label htmlFor="goal">Goal Description:</label>
-                <textarea type="text" id="goal" name="description" disabled defaultValue={post.description} />
+                    <input type="text" id="image" name="image" disabled defaultValue={post.image} />
+                </InputField>
 
-                <button type="submit">Delete</button>
+                <TextArea >
+                    <textarea type="text" id="goal" name="description" disabled defaultValue={post.description} />
+                </TextArea>
+
+                <ButtonStyle className="button-container">
+                    <button type="submit">Delete</button>
+                </ButtonStyle>
             </form>
 
-        </FormContainerStyle>
+        </DeleteFormStyle>
     )
 }
