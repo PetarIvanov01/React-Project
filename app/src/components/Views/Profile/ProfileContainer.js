@@ -4,7 +4,7 @@ import { useAuth } from "../../../contexts/auth";
 import { Link } from "react-router-dom";
 import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, FollowContainer } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 
-import { getProfileDetails } from "../../../api/services/profileApi";
+import { followProfile, getProfileDetails, unFollowProfile } from "../../../api/services/profileApi";
 
 import TopicsContainer from "./Topics/Topics";
 import NoTopics from "./Topics/NoTopics";
@@ -39,9 +39,18 @@ export default function ProfileContainer({ userId }) {
         };
     }, [userId]);
 
+    const isFollowed = profile.followers.some(e => e === user?.id)
+    const isOwner = user?.id === profile.userId;
 
-    const isOwner = user.id === profile.userId;
-
+    async function onFollowClick(e, func) {
+        e.preventDefault();
+        const data = {
+            currentUserId: user?.id,
+            profileId: profile.userId
+        }
+        const result = await func(data);
+        setProfileData(state => ({ ...state, followers: result.followers }))
+    }
     return (
         <CardContainer >
             <Profile >
@@ -50,7 +59,7 @@ export default function ProfileContainer({ userId }) {
 
                 <ProfileData >
                     <StyledParagraph>Username: {profile.username}</StyledParagraph>
-                    {isOwner && <StyledParagraph>Email: {user.email}</StyledParagraph>}
+                    {isOwner && <StyledParagraph>Email: {user?.email}</StyledParagraph>}
                 </ProfileData>
 
                 <Followers >
@@ -67,9 +76,18 @@ export default function ProfileContainer({ userId }) {
 
             <Description >
                 <AboutMe >About Me</AboutMe>
-                <FollowContainer>
-                    <Link ><img src="/imgs/Icons/unfollow.png" alt="Edit Icon" /></Link>
-                </FollowContainer>
+                {user && (
+                    <FollowContainer>
+                        {isOwner ||
+                            (isFollowed ?
+                                <Link onClick={(e) => onFollowClick(e, unFollowProfile)} ><img src="/imgs/Icons/unfollow.png" alt="unfollow Icon" /></Link>
+                                :
+                                <Link onClick={(e) => onFollowClick(e, followProfile)} ><img src="/imgs/Icons/follow.png" alt="follow Icon" /></Link>
+                            )
+                        }
+                    </FollowContainer>
+                )
+                }
                 <Desc >{profile.aboutMe}</Desc>
             </Description>
 
