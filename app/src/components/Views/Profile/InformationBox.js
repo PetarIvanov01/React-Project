@@ -13,8 +13,7 @@ export default function InformationBox({ isVisible, topic, onClose }) {
         <InformationBoxContainer>
           <img src={image} alt="" />
           <h2>Title: {title}</h2>
-          <p>Description: {description}</p>
-          {/* Max-230 char */}
+          <p><span className='desc'>Description:</span> {description}</p>
           <button onClick={onClose}>Close</button>
         </InformationBoxContainer>
       )}

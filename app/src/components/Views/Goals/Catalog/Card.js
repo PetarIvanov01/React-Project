@@ -35,9 +35,9 @@ export default function Card({
             <div className="posts">
 
                 {goals?.length ?
-                    goals.map(e => <p key={e._id}><strong>{e.title}</strong>: {cardDescCutter(e.description)}</p>)
+                    goals.map(e => <p key={e._id}>{e.title}: {cardDescCutter(e.description)}</p>)
                     :
-                    <h3>Ops, no content available!</h3>}
+                    <h4>Ops, no content available!</h4>}
             </div>
             <Link to={`/profile/${userId || "userID"}`}>
                 Show Details
