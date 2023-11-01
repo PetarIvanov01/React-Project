@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../../contexts/auth";
 
 import { Link } from "react-router-dom";
-import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
+import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, FollowContainer } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 
 import { getProfileDetails } from "../../../api/services/profileApi";
 
@@ -13,48 +13,67 @@ import { EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/CardS
 export default function ProfileContainer({ userId }) {
 
     const { user } = useAuth();
-    const [profile, setProfileData] = useState({});
+    const [profile, setProfileData] = useState({
+        username: '',
+        avatarImg: '',
+        category: '',
+        aboutMe: '',
+        goals: [],
+        followers: []
+    });
 
     useEffect(() => {
 
-        getProfileDetails(userId).then(profile => {
-            setProfileData({ ...profile, userId: userId })
-        })
-            .catch(err => console.log(err))
+        let isMounted = true;
+
+        getProfileDetails(userId)
+            .then(profile => {
+                if (isMounted) {
+                    setProfileData({ ...profile, userId: userId });
+                }
+            })
+            .catch(err => console.log(err));
+
+        return () => {
+            isMounted = false;
+        };
+    }, [userId]);
 
 
-    }, [userId])
-
-
-    const isOwner = user?.id === profile?.userId
-
+    const isOwner = user.id === profile.userId;
 
     return (
         <CardContainer >
             <Profile >
-                <Avatar src={profile?.avatarImg} alt="" />
+
+                <Avatar src={profile.avatarImg} alt="" />
+
                 <ProfileData >
-                    <StyledParagraph>Username: {profile?.username}</StyledParagraph>
-                    {isOwner && <StyledParagraph>Email: {user?.email}</StyledParagraph>}
+                    <StyledParagraph>Username: {profile.username}</StyledParagraph>
+                    {isOwner && <StyledParagraph>Email: {user.email}</StyledParagraph>}
                 </ProfileData>
+
                 <Followers >
-                    {/* Todo make followers req */}
-                    <StyledParagraph>Followers: 21</StyledParagraph>
+                    <StyledParagraph>Followers: {profile.followers.length}</StyledParagraph>
                 </Followers>
 
                 {isOwner &&
                     <EditProfileStyle>
-                        <Link to={`/edit/profile/${profile?.userId}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
+                        <Link to={`/edit/profile/${profile.userId}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
                     </EditProfileStyle>
                 }
+
             </Profile>
 
             <Description >
                 <AboutMe >About Me</AboutMe>
-                <Desc >{profile?.aboutMe}</Desc>
+                <FollowContainer>
+                    <Link ><img src="/imgs/Icons/unfollow.png" alt="Edit Icon" /></Link>
+                </FollowContainer>
+                <Desc >{profile.aboutMe}</Desc>
             </Description>
 
-            {profile.goals?.length ? <TopicsContainer goals={profile?.goals} /> : <NoTopics owner={profile?.userId === user?.id} />}
+            {profile.goals.length ? <TopicsContainer goals={profile.goals} /> : <NoTopics owner={isOwner} />}
 
         </CardContainer>
     )
