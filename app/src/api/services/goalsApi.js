@@ -1,5 +1,4 @@
 import * as api from "../requester"
-export * as api from "../requester"
 
 export const login = api.onLogin;
 export const register = api.onRegister;
@@ -17,7 +16,6 @@ const endpoints = {
 };
 
 export async function getCatalog(data, query) {
-
 
     if (query) {
         return api.get(endpoints.query(query, data));
