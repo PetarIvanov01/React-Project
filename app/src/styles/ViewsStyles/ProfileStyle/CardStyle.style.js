@@ -19,6 +19,7 @@ export const TopicsImage = styled.img`
 export const CardTitle = styled.div`
     padding: 5px 0;
     border-bottom: 2px solid #A196A1;
+    font: var(--font-indie);
 `;
 
 export const TopicDescription = styled.div`
@@ -27,9 +28,10 @@ export const TopicDescription = styled.div`
     padding: 10px;
     flex: 1; 
 `;
-
 export const DescriptionParagraph = styled.p`
+    word-wrap: break-word;
     text-align: start;
+    font: var(--font-indie);
 `;
 
 export const EditProfileStyle = styled.div`

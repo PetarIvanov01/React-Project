@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { CardStyle } from "../HomeStyle/CardStyle";
+import { CardStyle } from "../HomeStyle/CardHomeStyle.style";
 
 
 

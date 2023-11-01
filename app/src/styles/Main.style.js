@@ -27,6 +27,7 @@ export const SectionStyle = styled.div`
     flex-grow: 1;
 
     & .title {
+        font: var(--font-indie);
         height: 82px;
         margin-top: 5.5em;
         background-color: rgba(195, 192, 192, 0.1);

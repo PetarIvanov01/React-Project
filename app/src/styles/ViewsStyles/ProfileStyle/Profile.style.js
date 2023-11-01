@@ -31,10 +31,12 @@ export const Profile = styled.section`
 `;
 
 export const Followers = styled.div`
+font: var(--font-indie);
     margin: 0 auto;
 `;
 
 export const ProfileData = styled.div`
+font: var(--font-indie);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -48,10 +50,12 @@ export const StyledParagraph = styled.p`
 `;
 
 export const Description = styled.section`
+    position: relative;
     margin: 2.5em 0;
 `;
 
 export const AboutMe = styled.p`
+    font: var(--font-indie);
     border-radius: 20px;
     padding: 8px 12px;
     background-color: #D9d9d9;
@@ -60,6 +64,7 @@ export const AboutMe = styled.p`
 `;
 
 export const Desc = styled.p`
+    font: var(--font-indie);
     border: 3px solid #A196A1;
     height: 100px;
     border-radius: 20px;
@@ -90,7 +95,7 @@ export const Cards = styled.div`
 
     & a {
         text-decoration: none;
-        color: rgb(128, 125, 125);
+        color: rgba(107, 31, 34, 0.9);
         padding-top: 8px;
     }
 
@@ -99,7 +104,13 @@ export const Cards = styled.div`
     }
 `;
 
+export const FollowContainer = styled.div`
 
+    position: absolute;
+    top: 0;
+    right: 10px;
+
+`
 
 
 

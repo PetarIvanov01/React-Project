@@ -30,9 +30,11 @@ export const HeaderStyle = styled.header`
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        font:var(--font-indie)
     }
 
     & a {
+        font:var(--font-indie);
         display: block;
         text-decoration: none;
         color: black;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const BlurredBackground = styled.div`
   position: fixed;
   top: 0;
@@ -15,7 +16,7 @@ export const InformationBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1em ;
+  gap: 1em;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -23,14 +24,18 @@ export const InformationBoxContainer = styled.div`
   background-color: #d0d2d4;
   border: 1px solid #ccc;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 876.5px;
-  max-height: 690px;
+  box-shadow: 3px 3px 4px 4px rgba(0, 0, 0, 0.7);
+  max-width: 700px;
+  min-width: 600px;
+  min-height: 300px;
+  max-height: 800px;
   text-align: center;
+
 
   h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    font: var(--font-indie);
   }
 
   p {
@@ -39,7 +44,14 @@ export const InformationBoxContainer = styled.div`
     font-size: 16px;
     margin-bottom: 20px;
     overflow: auto;
+    font: var(--font-indie);
+    padding: 0 10px;
 
+
+    .desc {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
   }
 
   button {
@@ -55,5 +67,9 @@ export const InformationBoxContainer = styled.div`
   img {
     width: 20em;
     height: 12em;
+    margin-bottom: 2em;
+    border: 5px solid rgba(0, 0, 0, 0.7);
+    padding: 1em;
   }
+
 `;
