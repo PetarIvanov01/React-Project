@@ -70,7 +70,7 @@ export const privateRoutes = [
 
     },
     {
-        path: '/create/edit/profile/:userId',
+        path: '/edit/profile/:userId',
         element: () =>
             <EditProfile />
 
