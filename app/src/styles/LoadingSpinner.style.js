@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const spin = keyframes`
@@ -6,7 +5,7 @@ const spin = keyframes`
   100% { transform: rotate(360deg); }
 `;
 
-const SpinnerOverlay = styled.div`
+export const SpinnerOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +18,7 @@ const SpinnerOverlay = styled.div`
   z-index: 9999;
 `;
 
-const Spinner = styled.div`
+export const Spinner = styled.div`
   border: 4px solid rgba(255, 255, 255, 0.3);
   border-top: 4px solid #007bff;
   border-radius: 50%;
@@ -28,24 +27,4 @@ const Spinner = styled.div`
   animation: ${spin} 1s linear infinite;
 `;
 
-const LoadingSpinner = () => {
-  const [showSpinner, setShowSpinner] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-
-      setShowSpinner(false);
-
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  return showSpinner ? (
-    <SpinnerOverlay>
-      <Spinner />
-    </SpinnerOverlay>
-  ) : null;
-};
-
-export default LoadingSpinner;

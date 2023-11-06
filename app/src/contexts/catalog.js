@@ -6,8 +6,8 @@ const HomeContext = createContext();
 
 export default function GoalsProvider({ children, view }) {
 
-    const [pages, setPages] = useState({});
     const [goals, setGoalsData] = useState([]);
+    const [pages, setPages] = useState({});
     const { query, data } = useQuery();
 
     function setParams(items) {

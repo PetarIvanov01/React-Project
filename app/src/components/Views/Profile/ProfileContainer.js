@@ -38,7 +38,7 @@ export default function ProfileContainer({ userId }) {
             isMounted = false;
         };
     }, [userId]);
-
+    
     const isFollowed = profile.followers.some(e => e === user?.id)
     const isOwner = user?.id === profile.userId;
 

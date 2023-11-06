@@ -1,7 +1,7 @@
 import { CardContainerStyle } from "../../../styles/ViewsStyles/HomeStyle/CardsContainer.style";
 import Card from "./Card";
 import { useCatalogGoals } from "../../../contexts/catalog";
-import LoadingSpinner from "../../../styles/LoadingSpinner.style";
+// import LoadingSpinner from "../../../styles/LoadingSpinner.style";
 
 export default function CardContainer() {
 
@@ -14,7 +14,6 @@ export default function CardContainer() {
 
                 :
                 <>
-                    <LoadingSpinner />
                     <Card />
                 </>}
 

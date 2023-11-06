@@ -2,7 +2,6 @@ import { SectionStyle } from "../../../styles/Main.style"
 import SectionCards from "./SectionCards"
 export default function HomeView() {
 
-
     return (
         <>
             <SectionStyle>

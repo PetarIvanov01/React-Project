@@ -22,9 +22,12 @@ export const SectionStyle = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     min-width: 100%;
+    
     display: flex;
     justify-content: center;
     flex-grow: 1;
+
+    
 
     & .title {
         font: var(--font-indie);
