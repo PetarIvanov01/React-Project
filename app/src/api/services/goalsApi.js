@@ -11,7 +11,7 @@ const endpoints = {
     edit: (id) => `goals/${id}`,
     details: (id) => `goals/${id}`,
     delete: (id) => `goals/${id}`,
-    home: "goals?limit=2",
+    home: "goals/home?limit=2",
 
 };
 

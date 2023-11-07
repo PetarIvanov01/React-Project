@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/auth";
 
 import { login, register } from "../api/services/goalsApi";
+import { validateAuth } from "../validations/validateAuth";
 
 export default function useAuthForm(fields, setFields) {
 
@@ -11,13 +12,8 @@ export default function useAuthForm(fields, setFields) {
     async function onSubmitHandler(e, isRegistering) {
         e.preventDefault();
         try {
-            if (Object.entries(fields).some(([k, v]) => v === "" && k !== "err")) {
-                throw new Error("All fields are required!");
-            }
 
-            if (isRegistering && fields.password !== fields.confirmPassword) {
-                throw new Error("Passwords do not match!");
-            }
+            validateAuth(fields, isRegistering);
 
             const user = isRegistering
                 ? await register(fields.email, fields.password)

@@ -88,7 +88,6 @@ export const Topics = styled.div`
         font-weight: 500;
     }
 `;
-
 export const Cards = styled.div`
     display: flex;
     gap: 2em;

@@ -11,5 +11,5 @@ root.render(
             <GlobalStyle />
             <App />
         </BrowserRouter>
-    </StrictMode>
+    </StrictMode> 
 );

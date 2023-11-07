@@ -21,7 +21,7 @@ export default function ProfileContainer({ userId }) {
         goals: [],
         followers: []
     });
-
+    
     useEffect(() => {
 
         let isMounted = true;
@@ -38,7 +38,7 @@ export default function ProfileContainer({ userId }) {
             isMounted = false;
         };
     }, [userId]);
-    
+
     const isFollowed = profile.followers.some(e => e === user?.id)
     const isOwner = user?.id === profile.userId;
 
@@ -76,6 +76,7 @@ export default function ProfileContainer({ userId }) {
 
             <Description >
                 <AboutMe >About Me</AboutMe>
+                <Desc >{profile.aboutMe}</Desc>
                 {user && (
                     <FollowContainer>
                         {isOwner ||
@@ -88,7 +89,6 @@ export default function ProfileContainer({ userId }) {
                     </FollowContainer>
                 )
                 }
-                <Desc >{profile.aboutMe}</Desc>
             </Description>
 
             {profile.goals.length ? <TopicsContainer goals={profile.goals} /> : <NoTopics owner={isOwner} />}
