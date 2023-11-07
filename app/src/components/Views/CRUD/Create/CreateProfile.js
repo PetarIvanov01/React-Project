@@ -7,8 +7,9 @@ import { avatars } from "../../../../util/_mockAvatars";
 import { BlurredBackground } from "../../../../styles/ViewsStyles/ProfileStyle/InformationalBox.style";
 
 import { createProfile } from "../../../../api/services/profileApi";
-import validateData from "../../../../util/validateDataForProfile";
+import validateData from "../../../../validations/validateDataForProfile";
 import { ButtonStyle, InputField, TextArea } from "../../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
+import { CreateProfileBox } from "../../../../styles/ViewsStyles/ErrorBoxs.style";
 
 export default function CreateProfile() {
 
@@ -32,7 +33,7 @@ export default function CreateProfile() {
                 category: state.categories[0],
                 aboutMe: state.aboutMe
             }
-            validateData(data, setError);
+            validateData(data);
 
             const { userId } = await createProfile(data);
             navigate(`/profile/${userId}`);
@@ -44,11 +45,12 @@ export default function CreateProfile() {
 
     return (
         <BlurredBackground $show={'true'}>
+            {error && <CreateProfileBox><p>{error}</p></CreateProfileBox>}
+
             <FormContainerStyle>
 
                 <AvatarSelectorContainer>
                     <h2 >Customize your profile</h2>
-                    {error && <h2 className="error" >{error}</h2>}
                     <form onSubmit={onSubmitHandler} action="#" method="post">
                         <InputField>
                             <input type="text" id="username" name="username" placeholder="Username..." required="" onChange={setUsername} value={state.username} />
