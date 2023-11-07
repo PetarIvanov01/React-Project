@@ -1,7 +1,8 @@
 import { useState } from "react";
 import useAuthForm from "../../../hooks/authForm";
-import {  LoginFormStyle } from "./Login.style";
+import { LoginFormStyle } from "./Login.style";
 import { ButtonStyle, InputField } from "../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
+import { AuthErrorBox } from "../../../styles/ViewsStyles/ErrorBoxs.style";
 
 export default function LoginView() {
 
@@ -18,7 +19,7 @@ export default function LoginView() {
         <LoginFormStyle>
 
             <h2>Login</h2>
-            {fields.err ? <h3>{fields.err}</h3> : ''}
+            {fields.err ? <AuthErrorBox> <p>{fields.err}</p> </AuthErrorBox> : ''}
             <form onSubmit={(e) => onSubmitHandler(e, false)} action="#" method="post">
 
                 <InputField>
