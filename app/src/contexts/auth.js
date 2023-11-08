@@ -1,12 +1,12 @@
-import { createContext, useContext, useState } from 'react'
-import { getUserData } from '../api/user';
+import { createContext, useContext } from 'react'
+import useAuthStore from '../hooks/useAuthStore';
 
 const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
 
-    const hasUser = getUserData();
-    const [user, setUser] = useState(hasUser);
+    const [serializedUser, setUser] = useAuthStore();
+    const user = JSON.parse(serializedUser);
 
     return (
         <AuthContext.Provider value={{ user, setUser }}>
