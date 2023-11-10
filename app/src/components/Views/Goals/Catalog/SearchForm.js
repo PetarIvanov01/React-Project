@@ -7,7 +7,7 @@ export default function SearchForm() {
     const navigate = useNavigate();
 
     const [query, setSearchQuery] = useState({
-        username: ''
+        search: ''
     });
     
     const onChangeHandler = (e) => {
@@ -17,8 +17,8 @@ export default function SearchForm() {
     function onSubmitHandler(e) {
         e.preventDefault();
 
-        if (query.username) {
-            navigate(`/goals?username=${query.username}`);
+        if (query.search) {
+            navigate(`/goals?search=${query.search}`);
         }
         else {
             navigate(`/goals`);
@@ -29,7 +29,7 @@ export default function SearchForm() {
     return (
         <SearchContainer>
             <form onSubmit={onSubmitHandler}>
-                <SearchInput type="text" name="username" onChange={onChangeHandler} value={query.username} placeholder="Search by name ..." />
+                <SearchInput type="text" name="search" onChange={onChangeHandler} value={query.search} placeholder="Search by name ..." />
             </form>
         </SearchContainer>
     )

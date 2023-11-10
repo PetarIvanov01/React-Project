@@ -5,7 +5,7 @@ export const register = api.onRegister;
 export const logout = api.onLogout;
 
 const endpoints = {
-    query: (query, data) => `goals?${query}=${data}`,
+    query: (url) => `goals${url}`,
     catalog: "goals",
     create: "goals",
     edit: (id) => `goals/${id}`,
@@ -15,10 +15,9 @@ const endpoints = {
 
 };
 
-export async function getCatalog(data, query) {
-
-    if (query) {
-        return api.get(endpoints.query(query, data));
+export async function getCatalog(url) {
+    if (url) {
+        return api.get(endpoints.query(url));
     }
 
     return api.get(endpoints.catalog);

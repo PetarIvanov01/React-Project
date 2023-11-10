@@ -8,10 +8,10 @@ export default function GoalsProvider({ children, view }) {
 
     const [goals, setGoalsData] = useState([]);
     const [pages, setPages] = useState({});
-    const { query, data } = useQuery();
-
+    const { endpoint } = useQuery();
+    
     function setParams(items) {
-        setPages(items)
+        setPages(items);
         setGoalsData(items.results);
     }
 
@@ -22,13 +22,13 @@ export default function GoalsProvider({ children, view }) {
             }).catch((err) => console.log(err))
         }
         else {
-            getCatalog(data, query).then(({ items }) => {
+            getCatalog(endpoint).then(({ items }) => {
                 setParams(items);
             }).catch((err) => console.log(err))
 
         }
 
-    }, [view, query, data])
+    }, [view, endpoint])
 
 
     return (

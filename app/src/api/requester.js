@@ -1,4 +1,4 @@
-import { clearUserData, getUserData, setUserData } from "./user.js";
+import { clearUserData, getUserData } from "./user.js";
 
 let host = 'http://localhost:5000/api/';
 
@@ -23,7 +23,6 @@ async function request(url, option) {
 
     }
     catch (error) {
-        // alert(error.message)
         throw error
     }
 
@@ -66,9 +65,6 @@ export async function del(url) {
     return await request(url, createOptions('DELETE'));
 }
 
-
-// Login,Register,Logout functionality;
-
 const endPoints = {
     login: 'user/login',
     register: 'user/register',
@@ -104,7 +100,7 @@ function setDataToLocaleSt(user) {
         id: user._id
     }
 
-    setUserData(userData);
+    // setUserData(userData);
 
     return userData;
 }
