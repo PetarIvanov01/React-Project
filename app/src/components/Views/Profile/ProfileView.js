@@ -6,6 +6,6 @@ export default function ProfileView() {
     const { userId } = useParams();
 
     return (
-            <ProfileContainer userId={userId } />
+        <ProfileContainer userId={userId} />
     );
 }

@@ -15,13 +15,13 @@ export default function ProfileContainer({ userId }) {
     const { user } = useAuth();
     const [profile, setProfileData] = useState({
         username: '',
-        avatarImg: '',
+        avatarImg: {},
         category: '',
         aboutMe: '',
         goals: [],
         followers: []
     });
-    
+
     useEffect(() => {
 
         let isMounted = true;
@@ -51,11 +51,12 @@ export default function ProfileContainer({ userId }) {
         const result = await func(data);
         setProfileData(state => ({ ...state, followers: result.followers }))
     }
+
     return (
         <CardContainer >
             <Profile >
 
-                <Avatar src={profile.avatarImg} alt="" />
+                <Avatar src={profile.avatarImg.value} alt={profile.avatarImg.label} />
 
                 <ProfileData >
                     <StyledParagraph>Username: {profile.username}</StyledParagraph>
