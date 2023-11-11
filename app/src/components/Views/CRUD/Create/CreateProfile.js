@@ -29,7 +29,7 @@ export default function CreateProfile() {
         try {
             const data = {
                 username: state.username,
-                avatarImg: state.avatar.value,
+                avatarImg: state.avatar,
                 category: state.categories[0],
                 aboutMe: state.aboutMe
             }
