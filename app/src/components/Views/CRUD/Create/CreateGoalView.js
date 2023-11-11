@@ -6,10 +6,11 @@ import { CreateFormStyle } from "../../../../styles/ViewsStyles/CRUDStyle/Create
 import { ButtonStyle, InputField, TextArea } from "../../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 import validateDataCreate from "../../../../validations/validateDataForCreate";
 import { CreateGoalErrorBox } from "../../../../styles/ViewsStyles/ErrorBoxs.style";
+import useError from "../../../../hooks/useError";
 
 export default function CreateGoalView() {
 
-    const [errors, setErrors] = useState(null);
+    const { errors, setErrorData } = useError();
 
     const [goal, setGoalData] = useState({
         title: '',
@@ -35,8 +36,7 @@ export default function CreateGoalView() {
             navigate(`/profile/${item.owner}`)
 
         } catch (errors) {
-            setErrors(errors);
-            return
+            setErrorData(errors);
         }
     }
 
