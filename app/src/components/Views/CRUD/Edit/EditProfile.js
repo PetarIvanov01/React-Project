@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useProfileState from "../../../../hooks/profileReducer";
 
@@ -10,13 +10,14 @@ import { ButtonStyle, InputField, TextArea } from "../../../../styles/ViewsStyle
 import validateData from "../../../../validations/validateDataForProfile";
 import { CreateProfileBox } from "../../../../styles/ViewsStyles/ErrorBoxs.style";
 import { BlurredBackground } from "../../../../styles/ViewsStyles/ProfileStyle/InformationalBox.style";
+import useError from "../../../../hooks/useError";
 
 export default function EditProfile() {
 
     const navigate = useNavigate();
     const { userId } = useParams();
 
-    const [error, setError] = useState('');
+    const { errors, setErrorData } = useError();
 
     const { handleEditForm,
         chooseAvatar,
@@ -24,7 +25,6 @@ export default function EditProfile() {
         setUsername,
         toggleCategory,
         state } = useProfileState();
-
 
     useEffect(() => {
 
@@ -40,9 +40,9 @@ export default function EditProfile() {
                     }
                 })
             })
-            .catch(err => console.log(err.message))
+            .catch(setErrorData)
 
-    }, [userId, handleEditForm])
+    }, [userId, handleEditForm, setErrorData])
 
 
     async function onSubmitHandler(e) {
@@ -51,19 +51,18 @@ export default function EditProfile() {
         try {
             const data = {
                 username: state.username,
-                avatarImg: state.avatar.value,
+                avatarImg: state?.avatar,
                 category: state.categories[0],
-                aboutMe: state.aboutMe
+                aboutMe: state?.aboutMe
             }
-
+            
             validateData(data);
-
             await editProfile(userId, data)
-
             navigate(`/profile/${userId}`);
+
         }
         catch (error) {
-            setError(error.message);
+            setErrorData(error);
         }
     }
 
@@ -71,8 +70,12 @@ export default function EditProfile() {
 
         <BlurredBackground $show={'true'}>
 
-            {error && <CreateProfileBox><p>{error}</p></CreateProfileBox>}
-            
+            {errors &&
+                <CreateProfileBox>
+                    {errors.map((e, i) => <p key={i}>{e.message}</p>)}
+                </CreateProfileBox>
+            }
+
             <FormContainerStyle>
 
                 <AvatarSelectorContainer>
