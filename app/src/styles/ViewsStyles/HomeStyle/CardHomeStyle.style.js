@@ -40,7 +40,6 @@ export const CardStyle = styled.div`
         }
 
         & .categories {
-            width: 100%;
             height: 110px;
             align-self: flex-start;
             margin-left: 18px;
@@ -64,15 +63,15 @@ export const CardStyle = styled.div`
             }
 
         }
-
         & .posts {
             font: var(--font-indie);
 
             width: 311px;
             background-color: #d9d9d9;
             min-height: 110px;
-            margin: 20px;
+            margin: 20px 10px;
             padding: 8px;
+            border: 2px solid #b8adab;
         }
 
         & a {
@@ -95,4 +94,11 @@ export const CardStyle = styled.div`
             font-weight: 500;
         }
 
+
+        @media (max-width: 360px ) {
+
+            .posts {
+                min-height: 110px;
+            }
+        }
 `

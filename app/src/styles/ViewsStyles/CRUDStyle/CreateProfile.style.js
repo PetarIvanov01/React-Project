@@ -15,7 +15,8 @@ export const FormContainerStyle = styled.div`
     box-shadow: 6px 6px 4px 0px rgba(0, 0, 0, 0.3),inset 0px 3px 3px 0px rgba(0, 0, 0, 0.3);
     min-height: 250px;
     min-width: 400px;
-
+    transition: all 0.3s ease-in-out; 
+    
     & h2 {
         text-align: center;
         margin-bottom: 20px;
@@ -41,6 +42,11 @@ export const FormContainerStyle = styled.div`
         resize: none;
         background-color: #D1C8C8;
         opacity: 55%;
+    }
+
+    @media (max-width:500px) {
+        min-width: 300px;
+        transition: all 0.3s ease-in-out; 
     }
 `
 

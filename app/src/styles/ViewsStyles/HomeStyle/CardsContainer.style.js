@@ -16,4 +16,14 @@ export const CardContainerStyle = styled.section`
         }
         
     }
+
+    @media (max-width: 830px) { 
+        flex-direction: column;
+        gap: 0;
+
+        & > *{
+            margin: 1.5em 0;
+        }
+    }
+
 `

@@ -22,6 +22,7 @@ export const SectionStyle = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     min-width: 100%;
+    min-height: 300px;
     
     display: flex;
     justify-content: center;
@@ -40,5 +41,16 @@ export const SectionStyle = styled.div`
     
     &  .title > h2 {
         padding: 5px 20px;
+    }
+
+    @media (max-width: 830px) { 
+        flex-direction: column;
+        gap: 0;
+        min-height: 300px;
+
+        .title{
+            margin: 0 auto;
+            text-align: center;
+        }
     }
 `

@@ -37,7 +37,7 @@ export const CreateProfileBox = styled.div`
     border-radius: 10px;
     box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.4);
     text-align: center;
-   
+    transition:  0.2s ease-out;
 
     p {
         font-size: 1.4em;
@@ -45,5 +45,13 @@ export const CreateProfileBox = styled.div`
         font-family: sans-serif;
 
     }
+
+    @media (max-height:990px) {
+        top: 8%;
+        min-width: 250px;
+        padding: 5px 10px;
+        transition: 0.2s ease-in;
+    }
+    
 
 `

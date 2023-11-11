@@ -37,7 +37,6 @@ export const ButtonStyle = styled.div`
 `
 
 export const TextArea = styled.div`
-
         ::placeholder{
             font-size: 1.2em;
             text-align: center;
@@ -48,9 +47,10 @@ export const TextArea = styled.div`
         & textarea {
             padding: 10px 10px;
             resize: none;
-            min-width: 400px;
+            width: 100%;
             min-height: 140px;
             background-color: #D1C8C8;
             opacity: 55%;
+
         }
 `
