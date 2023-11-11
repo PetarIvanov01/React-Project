@@ -15,8 +15,8 @@ export default function Card({
             <div className="profile">
                 <img
                     className="avatar"
-                    src={avatarImg || "/imgs/Avatars/Avatar-2.png"}
-                    alt=""
+                    src={avatarImg.value || "/imgs/Avatars/Avatar-2.png"}
+                    alt={avatarImg.label}
                 />
                 <p>{username || "Full Name"}</p>
             </div>
