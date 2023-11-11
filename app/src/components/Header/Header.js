@@ -1,10 +1,12 @@
 import { useAuth } from "../../contexts/auth";
-import { HeaderStyle, SignInStyle } from "../../styles/Header.style";
+import { HeaderStyle, SignInStyle,AnchorNavs } from "../../styles/Header.style";
 import { Link } from "react-router-dom";
 
 export default function Header() {
 
     const { user } = useAuth();
+
+    const status = (isActive) => isActive ? "active" : "";
 
     return (
         <HeaderStyle>
@@ -15,20 +17,20 @@ export default function Header() {
                     </Link>
                 </div>
                 <div className="goals">
-                    <Link to="/goals">Browse</Link>
+                    <AnchorNavs className={status()} to="/goals">Browse</AnchorNavs>
                 </div>
 
                 {user ?
 
                     <SignInStyle >
-                        <Link to={`/profile/${user.id}`} >Profile</Link>
-                        <Link to="/create" >Create</Link>
-                        <Link to="/logout" >Logout</Link>
+                        <AnchorNavs className={status()} to={`/profile/${user.id}`} >Profile</AnchorNavs>
+                        <AnchorNavs className={status()} to="/create" >Create</AnchorNavs>
+                        <AnchorNavs className={status()} to="/logout" >Logout</AnchorNavs>
                     </SignInStyle> :
 
                     <SignInStyle>
-                        <Link to="/login" >Sign In</Link>
-                        <Link to="/register" >Sign Up</Link>
+                        <AnchorNavs className={status()} to="/login" >Sign In</AnchorNavs>
+                        <AnchorNavs className={status()} to="/register" >Sign Up</AnchorNavs>
                     </SignInStyle>
                 }
 
