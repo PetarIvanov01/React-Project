@@ -1,36 +1,63 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const HeaderStyle = styled.header`
 
+    font:var(--font-indie);
     height: 70px;
     background-color: #887d7d;
 
-    & > nav {
+    @media(max-width:650px) {
+        height: 120px;
+    }
 
+    & > nav {
         height: 100%;
+        width: 100%;
         display: flex;
-        text-align: center;
         justify-content: space-between;
         align-items: center;
 
+        @media(max-width: 650px) {
+            flex-direction: column;
+            transition: all 0.3s ease;
+
+            .logo {
+                margin: 0.5em 0.5em;
+                position: absolute;
+                left: 0;
+            }
+            .goals {
+                margin: 1em 0;
+                position: static;
+                transform: none;
+            }
+
+        }
     }
 
     & .logo {
         margin-left: 8px;
-        background-color: #d9d9d9;
-        padding: 7px 15px;
-        border-radius: 50px;
+
+        & a {
+            border-radius: 45px;
+            background-color: #d9d9d9;
+            padding: 7px 15px;
+        }
     }
 
 
     & .goals {
-        padding: 7px 30px;
-        background-color: #d9d9d9;
-        border-radius: 5px;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        font:var(--font-indie)
+
+        & a {
+            padding: 7px 30px;
+            background-color: #d9d9d9;
+            border-radius: 5px;
+        }
+
     }
 
     & a {
@@ -40,22 +67,45 @@ export const HeaderStyle = styled.header`
         color: black;
     }
 
+    .active {
+        background-color: rgba(219, 217, 131, 0.89) !important;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
     & img {
         height: 40px;
         width: 45px;
     }
-`
 
+    
+
+`
 export const SignInStyle = styled.div`
 
     margin-right: 8px;
     display: flex;
     gap: 1em;
-
+    
     & a {
         background-color: #d9d9d9;
         padding: 7px 12px;
         border-radius: 50px;
     }
 
+    @media (max-width: 650px) {
+        margin-bottom: 1em;
+    }
+
 `
+export const AnchorNavs = styled(NavLink)`
+   
+    &:hover {
+        background-color: rgba(219, 217, 131, 0.89);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+`
+
+
