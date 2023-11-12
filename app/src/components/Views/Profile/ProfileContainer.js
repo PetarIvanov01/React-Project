@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../contexts/auth";
 
 import { Link } from "react-router-dom";
@@ -13,13 +13,15 @@ import { EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/CardS
 export default function ProfileContainer({ userId }) {
 
     const { user } = useAuth();
+    const isLoaded = useRef(false);
     const [profile, setProfileData] = useState({
         username: '',
         avatarImg: {},
         category: '',
         aboutMe: '',
         goals: [],
-        followers: []
+        followers: [],
+        userId: null
     });
 
     useEffect(() => {
@@ -30,6 +32,7 @@ export default function ProfileContainer({ userId }) {
             .then(profile => {
                 if (isMounted) {
                     setProfileData({ ...profile, userId: userId });
+                    isLoaded.current = true;
                 }
             })
             .catch(err => console.log(err));
@@ -51,7 +54,7 @@ export default function ProfileContainer({ userId }) {
         const result = await func(data);
         setProfileData(state => ({ ...state, followers: result.followers }))
     }
-
+    
     return (
         <CardContainer >
             <Profile >
@@ -79,15 +82,17 @@ export default function ProfileContainer({ userId }) {
                 <AboutMe >About Me</AboutMe>
                 <Desc >{profile.aboutMe}</Desc>
                 {user && (
-                    <FollowContainer>
-                        {isOwner ||
-                            (isFollowed ?
-                                <Link onClick={(e) => onFollowClick(e, unFollowProfile)} ><img src="/imgs/Icons/unfollow.png" alt="unfollow Icon" /></Link>
-                                :
-                                <Link onClick={(e) => onFollowClick(e, followProfile)} ><img src="/imgs/Icons/follow.png" alt="follow Icon" /></Link>
-                            )
-                        }
-                    </FollowContainer>
+                    (isLoaded.current &&
+                        <FollowContainer>
+                            {isOwner ||
+                                (isFollowed ?
+                                    <Link onClick={(e) => onFollowClick(e, unFollowProfile)} ><img src="/imgs/Icons/unfollow.png" alt="unfollow Icon" /></Link>
+                                    :
+                                    <Link onClick={(e) => onFollowClick(e, followProfile)} ><img src="/imgs/Icons/follow.png" alt="follow Icon" /></Link>
+                                )
+                            }
+                        </FollowContainer>
+                    )
                 )
                 }
             </Description>
