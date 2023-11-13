@@ -5,9 +5,8 @@ export default function validateData({
     aboutMe,
 }) {
 
-
     try {
-        if (username === '' || avatarImg.label === undefined || aboutMe === '') {
+        if (username === '' || avatarImg === null  || aboutMe === '') {
             throw new Error('All fields are required!');
         }
 
@@ -31,6 +30,4 @@ export default function validateData({
 
         throw error;
     }
-
-
 }

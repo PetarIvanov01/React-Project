@@ -2,7 +2,6 @@ import { lazy } from "react";
 
 import LoginView from "./components/Views/Login/LoginView";
 import RegisterView from "./components/Views/Register/RegisterView";
-import ProfileView from "./components/Views/Profile/ProfileView";
 import CreateGoalView from "./components/Views/CRUD/Create/CreateGoalView";
 import CreateProfile from "./components/Views/CRUD/Create/CreateProfile";
 import EditProfile from "./components/Views/CRUD/Edit/EditProfile";
@@ -12,8 +11,9 @@ import DeleteGoalView from "./components/Views/CRUD/Delete/DeleteGoalView";
 
 const HomeView = lazy(() => import("./components/Views/Home/HomeView"));
 const CatalogView = lazy(() => import("./components/Views/Goals/Catalog/Catalog"));
+const ProfileView = lazy(() => import("./components/Views/Profile/ProfileView"));
 
-
+ 
 export const publicRoutes = [
     {
         path: '/',

@@ -30,7 +30,7 @@ export default function DeleteGoalView() {
 
     return (
         <DeleteFormStyle>
-            <h2>Are you sure about this desision?</h2>
+            <h2>Are you sure about this decision?</h2>
 
             <form onSubmit={onSubmitHandler} action="#" method="post">
 

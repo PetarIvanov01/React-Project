@@ -10,6 +10,7 @@ export const BlurredBackground = styled.div`
   background-color: rgba(0, 0, 0, 0.5); 
   backdrop-filter: blur(10px); 
   display: ${props => (props.$show ? 'block' : 'none')};
+
 `;
 
 export const InformationBoxContainer = styled.div`
@@ -32,13 +33,17 @@ export const InformationBoxContainer = styled.div`
   text-align: center;
 
 
-  h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    font: var(--font-indie);
+  &  .title {
+        background-color: rgba(167,159,159,0.4);
+        padding: 0.3em;
+        margin-bottom: 1em;
+        border-radius: 1em;
+        font-size: 1.3em;
+        font-weight: 500;
   }
 
-  p {
+  &  p {
+    border: 3px solid rgba(167,159,159,0.8);
     line-height: 1.3;
     text-align: start;
     font-size: 16px;
