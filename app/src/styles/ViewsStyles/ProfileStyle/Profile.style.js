@@ -5,21 +5,34 @@ export const Avatar = styled.img`
     width: 95px;
     height: 87px;
     border-radius: 50%;
+
 `;
 
 export const CardContainer = styled.div`
 
+    margin: 1em 0;
     display: flex;
     flex-direction: column;
     min-height: 900px;
-    width: 50em;
+    max-width: 50em;
     padding: 1.5em;
     background: #c5c8cb;
     border: 7px solid #BDBDBD;
     border-radius: 0 50px;
+    font: var(--font-indie);
+
+    @media (max-width:820px) {
+        margin: 1em;
+        padding: 0.5em;
+        width: auto;
+        &  * {
+            width: auto;
+        }
+    }
 `;
 
 export const Profile = styled.section`
+
     border: 3px solid #A196A1 ;
     margin: 2em 0;
     position: relative;
@@ -28,6 +41,14 @@ export const Profile = styled.section`
     display: flex;
     gap: 1em;
     align-items: center;
+
+    @media (max-width:620px) {
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 1em; 
+    }
 `;
 
 export const Followers = styled.div`
@@ -35,18 +56,18 @@ font: var(--font-indie);
     margin: 0 auto;
 `;
 
-export const ProfileData = styled.div`
-font: var(--font-indie);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-`;
-
 export const StyledParagraph = styled.p`
     border-radius: 20px;
     padding: 5px 7px;
     background-color: #c5c8cb;
+`;
+
+export const ProfileData = styled.div`
+    font: var(--font-indie);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
 `;
 
 export const Description = styled.section`
@@ -70,6 +91,9 @@ export const Desc = styled.p`
     border-radius: 20px;
     padding: 8px 12px;
     background-color: #D9d9d9;
+    @media (max-width:820px) {
+        height: auto;
+    }
 `;
 
 export const Topics = styled.div`
@@ -80,7 +104,7 @@ export const Topics = styled.div`
     align-items: center;
     margin: auto 0;
 
-    & h2{
+    & .title-goals{
         background-color: rgba(167,159,159,0.4);
         padding: 8px;
         border-radius: 1em;
@@ -100,6 +124,14 @@ export const Cards = styled.div`
 
     & a:hover {
         color: black;
+    }
+
+    @media (max-width:820px) {
+        flex-direction: column;
+
+        & * {
+            max-width: 310px;
+        }
     }
 `;
 
