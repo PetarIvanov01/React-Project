@@ -26,10 +26,9 @@ export const InformationBoxContainer = styled.div`
   border: 1px solid #ccc;
   padding: 20px;
   box-shadow: 3px 3px 4px 4px rgba(0, 0, 0, 0.7);
-  max-width: 700px;
-  min-width: 600px;
-  min-height: 300px;
-  max-height: 800px;
+  max-width: 600px;
+  min-width: 800px;
+  max-height: 600px;
   text-align: center;
 
 
@@ -50,8 +49,7 @@ export const InformationBoxContainer = styled.div`
     margin-bottom: 20px;
     overflow: auto;
     font: var(--font-indie);
-    padding: 0 10px;
-
+    padding: 5px 10px;
 
     .desc {
       font-weight: bold;
@@ -60,13 +58,12 @@ export const InformationBoxContainer = styled.div`
   }
 
   button {
-    background-color: #007bff;
+    background-color: #C5A78F;
     color: white;
     border: none;
     padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
   }
 
   img {
@@ -75,6 +72,16 @@ export const InformationBoxContainer = styled.div`
     margin-bottom: 2em;
     border: 5px solid rgba(0, 0, 0, 0.7);
     padding: 1em;
+  }
+
+  @media (max-width:820px) {
+    min-width: 620px;
+    & img{
+      width: 280px;
+    }
+  }
+  @media (max-width:650px) {
+    min-width: auto;
   }
 
 `;

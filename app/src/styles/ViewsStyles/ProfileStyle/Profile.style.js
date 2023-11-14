@@ -25,7 +25,7 @@ export const CardContainer = styled.div`
         margin: 1em;
         padding: 0.5em;
         width: auto;
-        &  * {
+        & > * {
             width: auto;
         }
     }
