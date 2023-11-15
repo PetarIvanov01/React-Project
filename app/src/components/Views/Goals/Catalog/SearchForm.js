@@ -4,14 +4,13 @@ import { useNavigate } from "react-router-dom";
 import useDebounce from "../../../../hooks/useDebounce";
 
 export default function SearchForm() {
-
     const navigate = useNavigate();
     const [query, setSearchQuery] = useState({
         filter: '',
         search: ''
     });
 
-    const debouncedQuery = useDebounce(query);
+    const debouncedValue = useDebounce(query);
 
     const onChangeHandler = (e) => {
         setSearchQuery((state) => {
@@ -20,14 +19,13 @@ export default function SearchForm() {
     }
 
     useEffect(() => {
-        if (debouncedQuery.search || debouncedQuery.filter) {
-            navigate(`/goals?category=${debouncedQuery.filter}&search=${debouncedQuery.search}`);
+        if (debouncedValue.search || debouncedValue.filter) {
+            navigate(`/goals?category=${debouncedValue.filter}&search=${debouncedValue.search}`);
         }
         else {
             navigate(`/goals`);
         }
-    }, [debouncedQuery]);
-
+    }, [debouncedValue, navigate]);
 
     return (
         <Container>
@@ -36,7 +34,7 @@ export default function SearchForm() {
                     type="text"
                     name="search"
                     onChange={onChangeHandler}
-                    value={query.value}
+                    value={query.search}
                     placeholder="Search by name and..." />
             </Search>
 

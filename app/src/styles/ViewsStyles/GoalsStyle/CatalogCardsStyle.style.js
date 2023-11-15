@@ -8,8 +8,13 @@ export const CatalogCardsStyle = styled.div`
     justify-content: center;
     align-items: center;
     gap: 6em;
+
+   & .no-matches {
+    text-align: center;
+    }
+
+    & ${CardStyle} {
+        margin: 0;
+    }
 `
 
-export const CardsStyle = styled(CardStyle)`
-    margin: 0;
-`;

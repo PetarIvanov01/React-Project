@@ -22,7 +22,7 @@ export const SectionStyle = styled.div`
     background-position: center;
     background-repeat: no-repeat;
     min-width: 100%;
-    min-height: 300px;
+    min-height: 485px;
     
     display: flex;
     justify-content: center;

@@ -51,9 +51,15 @@ export default function CreateProfile() {
 
                 <AvatarSelectorContainer>
                     <h2 >Customize your profile</h2>
-                    <form onSubmit={onSubmitHandler} action="#" method="post">
+                    <form onSubmit={onSubmitHandler}>
                         <InputField>
-                            <input type="text" id="username" name="username" placeholder="Username..." required="" onChange={setUsername} value={state.username} />
+                            <input type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Username..."
+                                required=""
+                                onChange={setUsername}
+                                value={state.username} />
                         </InputField>
 
                         <CustomSelect

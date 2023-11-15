@@ -50,16 +50,37 @@ export default function CreateGoalView() {
             }
             <h2>Empower Your Ambitions: Create Your Next Goal</h2>
 
-            <form onSubmit={onSubmitHandler} action="#" method="post">
+            <form onSubmit={onSubmitHandler}>
 
                 <InputField>
-                    <input type="text" id="title" name="title" onChange={onChangeHandler} placeholder="Your title" required="" value={goal.title} />
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        onChange={onChangeHandler}
+                        placeholder="Your title"
+                        required=""
+                        value={goal.title} />
                 </InputField>
                 <InputField>
-                    <input type="url" id="image" name="image" onChange={onChangeHandler} placeholder="ImageUrl" required="" value={goal.image} />
+                    <input
+                        type="url"
+                        id="image"
+                        name="image"
+                        onChange={onChangeHandler}
+                        placeholder="ImageUrl"
+                        required=""
+                        value={goal.image} />
                 </InputField>
                 <TextArea>
-                    <textarea type="text" id="goal" name="description" onChange={onChangeHandler} placeholder="Goal Description" required="" value={goal.description} />
+                    <textarea
+                        type="text"
+                        id="goal"
+                        name="description"
+                        onChange={onChangeHandler}
+                        placeholder="Goal Description"
+                        required=""
+                        value={goal.description} />
                 </TextArea>
                 <ButtonStyle>
                     <button type="submit">Create</button>
