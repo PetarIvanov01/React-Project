@@ -1,15 +1,16 @@
-import { Link } from "react-router-dom";
-import { CardStyle } from "../../../styles/ViewsStyles/HomeStyle/CardHomeStyle.style";
+import { Link } from "react-router-dom"
 import { cardDescCutter } from "../../../util/cutter";
+import { CardStyle } from "../../../styles/ViewsStyles/HomeStyle/CardHomeStyle.style";
 
 export default function Card({
     avatarImg,
     category,
     username,
     userId,
+    followers,
     goals
 }) {
-
+    
     return (
         <CardStyle >
             <div className="profile">
@@ -19,6 +20,7 @@ export default function Card({
                     alt={avatarImg.label}
                 />
                 <p>{username || "Full Name"}</p>
+                <div className="followers">Followers:{followers.length}</div>
             </div>
             <div className="categories">
                 <p>Categories</p>
@@ -28,10 +30,10 @@ export default function Card({
                             <p>{category || "sport"}</p>
                         </div>
                     </li>
-
                 </ul>
             </div>
             <div className="posts">
+
                 {goals?.length ?
                     goals.map(e => <p key={e._id}>{e.title}: {cardDescCutter(e.description)}</p>)
                     :
