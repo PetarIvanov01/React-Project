@@ -15,6 +15,7 @@ export const CardContainer = styled.div`
     flex-direction: column;
     min-height: 900px;
     max-width: 50em;
+    min-width: 800px;
     padding: 1.5em;
     background: #c5c8cb;
     border: 7px solid #BDBDBD;
@@ -25,6 +26,7 @@ export const CardContainer = styled.div`
         margin: 1em;
         padding: 0.5em;
         width: auto;
+        min-width: auto;
         & > * {
             width: auto;
         }
@@ -52,8 +54,10 @@ export const Profile = styled.section`
 `;
 
 export const Followers = styled.div`
-font: var(--font-indie);
+    font: var(--font-indie);
     margin: 0 auto;
+
+
 `;
 
 export const StyledParagraph = styled.p`
@@ -91,6 +95,7 @@ export const Desc = styled.p`
     border-radius: 20px;
     padding: 8px 12px;
     background-color: #D9d9d9;
+    min-width: 100%;
     @media (max-width:820px) {
         height: auto;
     }

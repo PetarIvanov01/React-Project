@@ -37,6 +37,11 @@ export const DescriptionParagraph = styled.p`
 export const EditProfileStyle = styled.div`
     position: absolute;
     right: 3em;
+
+    @media (max-width: 820px) {
+        top: 4em;
+        right: 4em;
+    }
 `
 export const EditGoalStyle = styled.div`
 
