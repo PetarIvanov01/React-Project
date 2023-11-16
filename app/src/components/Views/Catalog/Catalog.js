@@ -1,9 +1,9 @@
-import GoalsProvider from "../../../../contexts/catalog"
-import { Container } from "../../../../styles/ViewsStyles/GoalsStyle/Container.style"
+import GoalsProvider from "../../../contexts/catalog"
+import { Container } from "../../../styles/ViewsStyles/CatalogStyle/Container.style"
 
-import Pagination from "../Pagination/Pagination"
 import CatalogCardsContainer from "./CatalogCards"
-import SearchForm from "./SearchForm"
+import SearchForm from "../../Features/Search/SearchForm"
+import Pagination from "../../Features/Pagination/Pagination"
 
 export default function CatalogView() {
 

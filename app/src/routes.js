@@ -10,7 +10,7 @@ import Logout from "./components/Views/Logout/LogoutFunc";
 import DeleteGoalView from "./components/Views/CRUD/Delete/DeleteGoalView";
 
 const HomeView = lazy(() => import("./components/Views/Home/HomeView"));
-const CatalogView = lazy(() => import("./components/Views/Goals/Catalog/Catalog"));
+const CatalogView = lazy(() => import("./components/Views/Catalog/Catalog"));
 const ProfileView = lazy(() => import("./components/Views/Profile/ProfileView"));
 
  

@@ -1,6 +1,6 @@
-import { useCatalogGoals } from "../../../../contexts/catalog";
-import { CatalogCardsStyle } from "../../../../styles/ViewsStyles/GoalsStyle/CatalogCardsStyle.style"
-import Card from "../../Home/Card";
+import { useCatalogGoals } from "../../../contexts/catalog";
+import { CatalogCardsStyle } from "../../../styles/ViewsStyles/CatalogStyle/CatalogCardsStyle.style"
+import Card from "../Home/Card";
 
 export default function CatalogCardsContainer() {
 
