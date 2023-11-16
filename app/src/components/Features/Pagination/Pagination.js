@@ -1,10 +1,11 @@
-import { PaginationStyle } from "../../../../styles/ViewsStyles/GoalsStyle/Pagination.style";
-import { useCatalogGoals } from "../../../../contexts/catalog";
+import { PaginationStyle } from "../../../styles/ViewsStyles/FeaturesStyle/Pagination.style";
+import { useCatalogGoals } from "../../../contexts/catalog";
+
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"
 
-import useQuery from "../../../../hooks/useQuery";
-import func from "../../../../util/paginationEndpoints";
+import useQuery from "../../../hooks/useQuery";
+import func from "../../../util/paginationEndpoints";
 
 export default function Pagination() {
 
