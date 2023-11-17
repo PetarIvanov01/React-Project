@@ -30,3 +30,6 @@ export function unFollowProfile(data) {
     return api.put(endpoints.unfollow, data);
 }
 
+export function getFollowers(ids) {
+    return Promise.all(ids.map(id => api.get(endpoints.details(id))));
+}
