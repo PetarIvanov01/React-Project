@@ -12,7 +12,7 @@ export default function CreateGoalView() {
 
     const { errors, setErrorData } = useError();
 
-    const [goal, setGoalData] = useState({
+    const [post, setGoalData] = useState({
         title: '',
         image: '',
         description: ''
@@ -28,11 +28,11 @@ export default function CreateGoalView() {
         e.preventDefault();
 
         try {
-            const errors = validateDataCreate(goal);
+            const errors = validateDataCreate(post);
 
             if (errors.length) throw errors
 
-            const { item } = await createGoal(goal);
+            const { item } = await createGoal(post);
             navigate(`/profile/${item.owner}`)
 
         } catch (errors) {
@@ -60,7 +60,7 @@ export default function CreateGoalView() {
                         onChange={onChangeHandler}
                         placeholder="Your title"
                         required=""
-                        value={goal.title} />
+                        value={post.title} />
                 </InputField>
                 <InputField>
                     <input
@@ -70,7 +70,7 @@ export default function CreateGoalView() {
                         onChange={onChangeHandler}
                         placeholder="ImageUrl"
                         required=""
-                        value={goal.image} />
+                        value={post.image} />
                 </InputField>
                 <TextArea>
                     <textarea
@@ -80,7 +80,7 @@ export default function CreateGoalView() {
                         onChange={onChangeHandler}
                         placeholder="Goal Description"
                         required=""
-                        value={goal.description} />
+                        value={post.description} />
                 </TextArea>
                 <ButtonStyle>
                     <button type="submit">Create</button>

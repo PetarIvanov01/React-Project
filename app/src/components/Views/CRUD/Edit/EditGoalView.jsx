@@ -1,11 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import useError from "../../../../hooks/useError";
 
 import { editGoal, getDetails } from "../../../../api/services/goalsApi";
 import { EditFormStyle } from "../../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
 import { ButtonStyle, InputField, TextArea } from "../../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
+import { CreateGoalErrorBox } from "../../../../styles/ViewsStyles/ErrorBoxs.style";
+import validateDataCreate from "../../../../validations/validateDataForCreate";
 
 export default function EditGoalView() {
+
+    const { errors, setErrorData } = useError();
 
     const { goalId } = useParams();
     const [post, setPost] = useState({
@@ -36,21 +41,35 @@ export default function EditGoalView() {
         setPost((state) => ({ ...state, [e.target.name]: e.target.value }))
     }
 
-    const onSubmitHandler = (e) => {
+    async function onSubmitHandler(e) {
         e.preventDefault();
+        try {
 
-        editGoal(goalId, post)
-            .then(({ item }) => navigate(`/profile/${item.owner}`))
-            .catch(err => console.log(err.message));
+            const errors = validateDataCreate(post);
+
+            if (errors.length) throw errors
+
+            const { item } = await editGoal(goalId, post);
+
+            navigate(`/profile/${item.owner}`)
+
+        } catch (errors) {
+            setErrorData(errors);
+        }
 
     }
 
     return (
 
         <EditFormStyle>
+            {errors &&
+                <CreateGoalErrorBox>
+                    {errors.map((e, i) => <p key={i}>{e.message}</p>)}
+                </CreateGoalErrorBox>
+            }
             <h2>Refine Your Journey: Edit Your Goal</h2>
 
-            <form onSubmit={onSubmitHandler} action="#" method="post">
+            <form onSubmit={onSubmitHandler}>
                 <InputField >
                     <input type="text" id="title" name="title" placeholder="Your title" required="" onChange={onChangeHandler} value={post.title} />
                 </InputField>
@@ -60,7 +79,7 @@ export default function EditGoalView() {
                 <TextArea>
                     <textarea type="text" id="goal" name="description" placeholder="Goal Description" required="" onChange={onChangeHandler} value={post.description} />
                 </TextArea>
-                
+
                 <ButtonStyle>
                     <button type="submit">Edit</button>
                 </ButtonStyle>
