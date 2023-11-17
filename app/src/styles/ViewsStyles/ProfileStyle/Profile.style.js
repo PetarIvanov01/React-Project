@@ -53,14 +53,7 @@ export const Profile = styled.section`
     }
 `;
 
-export const Followers = styled.div`
-    font: var(--font-indie);
-    margin: 0 auto;
-
-
-`;
-
-export const StyledParagraph = styled.p`
+export const StyledParagraph = styled.div`
     border-radius: 20px;
     padding: 5px 7px;
     background-color: #c5c8cb;
@@ -117,7 +110,9 @@ export const Topics = styled.div`
         font-weight: 500;
     }
 `;
+
 export const Cards = styled.div`
+
     display: flex;
     gap: 2em;
 
@@ -146,10 +141,46 @@ export const FollowContainer = styled.div`
     top: 0;
     right: 10px;
 
+`;
+
+export const Followers = styled.div`
+    font: var(--font-indie);
+    cursor: pointer;
+    margin: 0 auto;
+
+`;
+
+export const ShowFollowers = styled.div`
+
+    display: ${({ $show }) => $show == 'true' ? 'flex' : 'none'};
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    margin-top: 10px;
+    z-index: 1;
+    background-color: rgba(94, 106, 67, 0.9);
+    padding: 1em;
+    border-radius: 10px;
+    
+    & img {
+        width: 40px;
+    }
+
+    & .user {
+        display: flex;
+        align-items: center;
+        justify-content: space-;
+        gap:10px;
+        background-color: rgba(172, 134, 94, 1);
+        border-radius: 30px;
+
+        p {
+            font-family: var(--font-agbalumo);
+            font-weight: bold;
+            font-size: 13px;
+            padding-right: 5px;
+        }
+    }
 `
-
-
-
-
 
 
