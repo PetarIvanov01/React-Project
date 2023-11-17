@@ -2,18 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../../contexts/auth";
 
 import { Link } from "react-router-dom";
-import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, FollowContainer } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
+import { AboutMe, Avatar, CardContainer, Description, Followers, Profile, StyledParagraph, Desc, ProfileData, FollowContainer, ShowFollowers } from "../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 
 import { followProfile, getProfileDetails, unFollowProfile } from "../../../api/services/profileApi";
 
 import TopicsContainer from "./Topics/Topics";
 import NoTopics from "./Topics/NoTopics";
 import { EditProfileStyle } from "../../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
+import FollowersToggle from "./Followers/FollowersToggle";
 
 export default function ProfileContainer({ userId }) {
 
     const { user } = useAuth();
     const isLoaded = useRef(false);
+
     const [profile, setProfileData] = useState({
         username: '',
         avatarImg: {},
@@ -54,7 +56,9 @@ export default function ProfileContainer({ userId }) {
         const result = await func(data);
         setProfileData(state => ({ ...state, followers: result.followers }))
     }
-    
+
+
+
     return (
         <CardContainer >
             <Profile >
@@ -66,9 +70,7 @@ export default function ProfileContainer({ userId }) {
                     {isOwner && <StyledParagraph>Email: {user?.email}</StyledParagraph>}
                 </ProfileData>
 
-                <Followers >
-                    <StyledParagraph>Followers: {profile.followers.length}</StyledParagraph>
-                </Followers>
+                <FollowersToggle followers={profile.followers} />
 
                 {isOwner &&
                     <EditProfileStyle>
