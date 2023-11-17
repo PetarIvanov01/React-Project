@@ -24,7 +24,6 @@ export const publicRoutes = [
         element: () => <CatalogView />
     }
 ]
-
 export const authRouts = [
     {
         path: '/login',
