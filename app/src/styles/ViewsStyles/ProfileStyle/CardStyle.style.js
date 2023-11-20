@@ -30,7 +30,7 @@ export const TopicDescription = styled.div`
 `;
 export const DescriptionParagraph = styled.p`
     word-wrap: break-word;
-    text-align: start;
+    text-align: center;
     font: var(--font-indie);
 `;
 
@@ -46,12 +46,23 @@ export const EditProfileStyle = styled.div`
 export const EditGoalStyle = styled.div`
 
     display: flex;
-    gap: 1em;
-    justify-content: center;
-    margin-top: auto;
+    gap: 1.5em;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+
+    a {
+        padding: 0;
+    }
 
     & .owner-buttons {
         display: flex;        
         gap: 2em;
+    }
+
+    .controllers {
+        display: flex;
+        gap: 1em;
+        align-items: center;
     }
 `

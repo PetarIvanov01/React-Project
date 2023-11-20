@@ -74,6 +74,15 @@ export const CardStyle = styled.div`
             border: 2px solid #b8adab;
         }
 
+        & .followers {
+            font: var(--font-indie);
+            margin-left: auto;
+            margin-right: 0.7em;
+            background-color: #d9d9d9;
+            padding: 5px 16px;
+            border-radius: 20px;
+        }
+
         & a {
                 background-color: #d9d9d9;
                 padding: 5px 10px;
