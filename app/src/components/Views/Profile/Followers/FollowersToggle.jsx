@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Followers, ShowFollowers, StyledParagraph } from "../../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 import { getFollowers } from "../../../../api/services/profileApi";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function FollowersToggle({ followers }) {
 
