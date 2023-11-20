@@ -20,7 +20,6 @@ export default function Card({
                     alt={avatarImg.label}
                 />
                 <p>{username || "Full Name"}</p>
-                <div className="followers">Followers:{followers.length}</div>
             </div>
             <div className="categories">
                 <p>Categories</p>
@@ -31,6 +30,9 @@ export default function Card({
                         </div>
                     </li>
                 </ul>
+            </div>
+            <div className="followers">
+                <p>Followers:{followers.length}</p>
             </div>
             <div className="posts">
 
