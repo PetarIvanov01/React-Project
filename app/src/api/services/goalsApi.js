@@ -1,9 +1,5 @@
 import * as api from "../requester"
 
-export const login = api.onLogin;
-export const register = api.onRegister;
-export const logout = api.onLogout;
-
 const endpoints = {
     query: (url) => `goals${url}`,
     catalog: "goals",
@@ -12,6 +8,8 @@ const endpoints = {
     details: (id) => `goals/${id}`,
     delete: (id) => `goals/${id}`,
     home: "goals/home?limit=2",
+    like: 'goals/like',
+    unlike: 'goals/un-like'
 
 };
 
@@ -42,4 +40,12 @@ export async function deleteGoal(id) {
 export async function editGoal(id, data) {
 
     return api.put(endpoints.edit(id), data)
+}
+export async function likeGoal(data) {
+
+    return api.post(endpoints.like, data)
+}
+export async function unLikeGoal(data) {
+
+    return api.post(endpoints.unlike, data)
 }
