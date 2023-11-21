@@ -1,5 +1,5 @@
 import { useAuth } from "../../contexts/auth";
-import { HeaderStyle, SignInStyle,AnchorNavs } from "../../styles/Header.style";
+import { HeaderStyle, SignInStyle,AnchorNavs } from "../../styles/layout/Header.style";
 import { Link } from "react-router-dom";
 
 export default function Header() {

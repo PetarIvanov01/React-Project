@@ -1,4 +1,4 @@
-import { FooterStlye } from "../../styles/Footer.style";
+import { FooterStlye } from "../../styles/layout/Footer.style";
 
 export default function Footer() {
 

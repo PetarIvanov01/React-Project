@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 
-import { MainStyle } from "../../styles/Main.style";
+import { MainStyle } from "../../styles/layout/Main.style";
 
 import { Suspense } from "react";
 import { SpinnerStyle } from "../../util/SuspenseSpinner";

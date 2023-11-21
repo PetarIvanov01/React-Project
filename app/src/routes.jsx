@@ -1,19 +1,19 @@
 import { lazy } from "react";
 
-import LoginView from "./components/Views/Login/LoginView";
-import RegisterView from "./components/Views/Register/RegisterView";
-import CreateGoalView from "./components/Views/CRUD/Create/CreateGoalView";
-import CreateProfile from "./components/Views/CRUD/Create/CreateProfile";
-import EditProfile from "./components/Views/CRUD/Edit/EditProfile";
-import EditGoalView from "./components/Views/CRUD/Edit/EditGoalView";
-import Logout from "./components/Views/Logout/LogoutFunc";
-import DeleteGoalView from "./components/Views/CRUD/Delete/DeleteGoalView";
+import LoginView from "./pages/Login/LoginView";
+import RegisterView from "./pages/Register/RegisterView";
+import CreateGoalView from "./pages/CRUD/Create/CreateGoalView";
+import CreateProfile from "./pages/CRUD/Create/CreateProfile";
+import EditProfile from "./pages/CRUD/Edit/EditProfile";
+import EditGoalView from "./pages/CRUD/Edit/EditGoalView";
+import Logout from "./pages/Logout/LogoutFunc";
+import DeleteGoalView from "./pages/CRUD/Delete/DeleteGoalView";
 
-const HomeView = lazy(() => import("./components/Views/Home/HomeView"));
-const CatalogView = lazy(() => import("./components/Views/Catalog/Catalog"));
-const ProfileView = lazy(() => import("./components/Views/Profile/ProfileView"));
+const HomeView = lazy(() => import("./pages/Home/HomeView"));
+const CatalogView = lazy(() => import("./pages/Catalog/Catalog"));
+const ProfileView = lazy(() => import("./pages/Profile/ProfileView"));
 
- 
+
 export const publicRoutes = [
     {
         path: '/',

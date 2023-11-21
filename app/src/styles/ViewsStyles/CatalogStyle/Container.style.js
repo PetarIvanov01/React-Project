@@ -1,6 +1,4 @@
 import { styled } from "styled-components";
-import { MainStyle } from "../../Main.style";
+import { MainStyle } from "../../layout/Main.style";
 
-export const Container = styled(MainStyle).attrs({ as: 'div' })`
-    
-`
+export const Container = styled(MainStyle).attrs({ as: 'div' })``
