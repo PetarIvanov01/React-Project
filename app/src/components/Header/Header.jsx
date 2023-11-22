@@ -20,7 +20,7 @@ export default function Header() {
                     <AnchorNavs className={status()} to="/goals">Browse</AnchorNavs>
                 </div>
 
-                {user ?
+                {user.id ?
 
                     <SignInStyle >
                         <AnchorNavs className={status()} to={`/profile/${user.id}`} >Profile</AnchorNavs>
