@@ -19,6 +19,9 @@ function checkErrors(errors) {
     if (errors.name === 'Error') {
         return [{ message: errors.message }]
     }
+    if (errors.type === 'ValidationError') {
+        return [{ message: errors.message }]
+    }
     if (Array.isArray(errors)) {
         return errors
     }
