@@ -2,13 +2,15 @@ import useQuery from '../hooks/useQuery';
 
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getCatalog, getDataForHome } from '../api/services/goalsApi';
-import { SpinnerStyle } from '../util/SuspenseSpinner';
+import { SpinnerStyle } from '../components/SuspenseSpinner';
 
-import tryCatchErr from '../util/errorChecker';
+import useErrorBoundryAsync from '../hooks/useErrorBoundryAsync';
 
 const HomeContext = createContext();
 
 export default function GoalsProvider({ children, view }) {
+
+    const throwToErrBoundry = useErrorBoundryAsync()
 
     const [isLoading, setIsLoading] = useState(true);
     const [goals, setGoalsData] = useState([]);
@@ -26,12 +28,12 @@ export default function GoalsProvider({ children, view }) {
         if (view === 'home') {
             getDataForHome().then(({ items }) => {
                 setParams(items);
-            }).catch(tryCatchErr)
+            }).catch(throwToErrBoundry)
         }
         else {
             getCatalog(endpoint).then(({ items }) => {
                 setParams(items);
-            }).catch(tryCatchErr)
+            }).catch(throwToErrBoundry)
 
         }
 
