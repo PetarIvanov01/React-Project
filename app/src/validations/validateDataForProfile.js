@@ -4,30 +4,28 @@ export default function validateData({
     category,
     aboutMe,
 }) {
+    const errors = []
 
-    try {
-        if (username === '' || avatarImg === null  || aboutMe === '') {
-            throw new Error('All fields are required!');
-        }
+    if (username === '' || avatarImg === null || aboutMe === '') {
+        errors.push({ message: 'All fields are required!' });
+    }
+    else {
 
         if (username.trim().length < 3) {
-            throw new Error('Username must be at least 3 characters long.');
+            errors.push({ message: 'Username must be at least 3 characters long.' });
         }
 
         if (!category || category.length === 0) {
-            throw new Error('Select at least one category.');
+            errors.push({ message: 'Select at least one category.' });
         }
 
         if (aboutMe.trim().length > 250) {
-            throw new Error('About Me must be less than 250 characters long.');
+            errors.push({ message: 'About Me must be less than 250 characters long.' });
         }
-        
+
         if (aboutMe.trim().length < 30) {
-            throw new Error('About Me must be at least 30 characters long.');
+            errors.push({ message: 'About Me must be at least 30 characters long.' });
         }
-
-    } catch (error) {
-
-        throw error;
     }
+    return errors
 }
