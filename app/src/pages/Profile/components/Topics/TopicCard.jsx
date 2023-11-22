@@ -4,7 +4,7 @@ import { descCutter } from "../../../../util/cutter";
 
 import { useAuth } from "../../../../contexts/auth";
 
-import { CardTitle, CardTopics, DescriptionParagraph, EditGoalStyle, TopicDescription, TopicsImage }  from "../../../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
+import { CardTitle, CardTopics, DescriptionParagraph, EditGoalStyle, TopicDescription, TopicsImage } from "../../../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
 
 import LikePost from "../Likes/Like";
 
@@ -19,7 +19,7 @@ export default function TopicCards({
     const { userId } = useParams();
     const { user } = useAuth();
 
-    const isOwner = user?.id === userId;
+    const isOwner = user.id === userId;
     const shortDesc = descCutter(description);
 
     const [likeInfo, setLikeInfo] = useState({
@@ -63,12 +63,13 @@ export default function TopicCards({
                                 <Link to={`/delete/goal/${_id}`}><img src="/imgs/svg/delete.svg" alt="Delete Icon" /></Link>
                             </div>
                             :
-                            <LikePost
+                            (user.id && <LikePost
                                 setLike={setLikes}
-                                userId={user?.id}
+                                userId={user.id}
                                 postId={_id}
                                 isLike={likeInfo.isLike}
-                            />
+                            />)
+
                         }
                     </div>
                 </EditGoalStyle>
