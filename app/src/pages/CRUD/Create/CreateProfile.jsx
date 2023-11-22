@@ -11,11 +11,15 @@ import validateData from "../../../validations/validateDataForProfile";
 import { ButtonStyle, InputField, TextArea } from "../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 import { CreateProfileBox } from "../../../styles/ViewsStyles/ErrorBoxs.style";
 
+import useErrorBoundryAsync from "../../../hooks/useErrorBoundryAsync";
+import useError from "../../../hooks/useError";
+
 export default function CreateProfile() {
 
+    const throwToErrBoundry = useErrorBoundryAsync();
     const navigate = useNavigate();
 
-    const [error, setError] = useState('');
+    const { errors, setErrorData } = useError();
 
     const { toggleCategory,
         setUsername,
@@ -33,19 +37,27 @@ export default function CreateProfile() {
                 category: state.categories[0],
                 aboutMe: state.aboutMe
             }
-            validateData(data);
+            const errors = validateData(data);
+            if (errors.length) throw errors
 
             const { userId } = await createProfile(data);
             navigate(`/profile/${userId}`);
         }
         catch (error) {
-            setError(error.message);
+            if (error.message === 'Not Authorized' || error.type === 'TokenExpiredError') {
+                throwToErrBoundry(error);
+            }
+            setErrorData(error);
         }
     }
 
     return (
         <BlurredBackground $show={'true'}>
-            {error && <CreateProfileBox><p>{error}</p></CreateProfileBox>}
+            {errors &&
+                <CreateProfileBox>
+                    {errors.map((e, i) => <p key={i}>{e.message}</p>)}
+                </CreateProfileBox>
+            }
 
             <FormContainerStyle>
 

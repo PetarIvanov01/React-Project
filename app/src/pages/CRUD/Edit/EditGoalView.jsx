@@ -1,6 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import useError from "../../../hooks/useError";
+import useErrorBoundryAsync from "../../../hooks/useErrorBoundryAsync";
 
 import { editGoal, getDetails } from "../../../api/services/goalsApi";
 import { EditFormStyle } from "../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
@@ -9,6 +11,8 @@ import { CreateGoalErrorBox } from "../../../styles/ViewsStyles/ErrorBoxs.style"
 import validateDataCreate from "../../../validations/validateDataForCreate";
 
 export default function EditGoalView() {
+
+    const throwToErrBoundry = useErrorBoundryAsync()
 
     const { errors, setErrorData } = useError();
 
@@ -29,7 +33,7 @@ export default function EditGoalView() {
                     setPost(items);
                 }
             })
-            .catch(err => console.log(err));
+            .catch(throwToErrBoundry);
 
         return () => {
             isMounted = false;
@@ -53,8 +57,11 @@ export default function EditGoalView() {
 
             navigate(`/profile/${item.owner}`)
 
-        } catch (errors) {
-            setErrorData(errors);
+        } catch (error) {
+            if (error.message === 'Not Authorized' || error.type === 'TokenExpiredError') {
+                throwToErrBoundry(error);
+            }
+            setErrorData(error);
         }
 
     }

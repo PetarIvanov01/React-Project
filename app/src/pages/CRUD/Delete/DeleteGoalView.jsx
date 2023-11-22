@@ -1,11 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import useErrorBoundryAsync from "../../../hooks/useErrorBoundryAsync";
+
 import { deleteGoal, getDetails } from "../../../api/services/goalsApi";
 import { DeleteFormStyle } from "../../../styles/ViewsStyles/CRUDStyle/FormCrud.style";
 import { ButtonStyle, InputField, TextArea } from "../../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 
 export default function DeleteGoalView() {
+
+    const throwToErrBoundry = useErrorBoundryAsync()
 
     const { goalId } = useParams()
     const [post, setPost] = useState({});
@@ -15,7 +19,7 @@ export default function DeleteGoalView() {
 
         getDetails(goalId)
             .then(({ items }) => setPost(items))
-            .catch(err => console.log(err))
+            .catch(throwToErrBoundry)
 
     }, [goalId])
 
@@ -24,7 +28,8 @@ export default function DeleteGoalView() {
         e.preventDefault();
 
         deleteGoal(goalId)
-            .then(e => navigate('/goals'));
+            .then(e => navigate('/goals'))
+            .catch(throwToErrBoundry);
 
     }
 

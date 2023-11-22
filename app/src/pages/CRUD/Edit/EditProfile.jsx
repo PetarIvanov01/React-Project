@@ -10,9 +10,13 @@ import { ButtonStyle, InputField, TextArea } from "../../../styles/ViewsStyles/C
 import validateData from "../../../validations/validateDataForProfile";
 import { CreateProfileBox } from "../../../styles/ViewsStyles/ErrorBoxs.style";
 import { BlurredBackground } from "../../../styles/ViewsStyles/ProfileStyle/InformationalBox.style";
+
 import useError from "../../../hooks/useError";
+import useErrorBoundryAsync from "../../../hooks/useErrorBoundryAsync";
 
 export default function EditProfile() {
+
+    const throwToErrBoundry = useErrorBoundryAsync();
 
     const navigate = useNavigate();
     const { userId } = useParams();
@@ -40,9 +44,9 @@ export default function EditProfile() {
                     }
                 })
             })
-            .catch(setErrorData)
+            .catch(throwToErrBoundry)
 
-    }, [userId, handleEditForm, setErrorData])
+    }, [userId, handleEditForm]);
 
 
     async function onSubmitHandler(e) {
@@ -55,16 +59,21 @@ export default function EditProfile() {
                 category: state.categories[0],
                 aboutMe: state?.aboutMe
             }
-            
-            validateData(data);
+
+            const errors = validateData(data);
+            if (errors.length) throw errors;
+
             await editProfile(userId, data)
             navigate(`/profile/${userId}`);
 
         }
         catch (error) {
+            if (error.message === 'Not Authorized' || error.type === 'TokenExpiredError') {
+                throwToErrBoundry(error);
+            }
             setErrorData(error);
         }
-    }
+    };
 
     return (
 

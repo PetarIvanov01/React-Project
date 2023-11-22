@@ -7,9 +7,11 @@ import { ButtonStyle, InputField, TextArea } from "../../../styles/ViewsStyles/C
 import validateDataCreate from "../../../validations/validateDataForCreate";
 import { CreateGoalErrorBox } from "../../../styles/ViewsStyles/ErrorBoxs.style";
 import useError from "../../../hooks/useError";
+import useErrorBoundryAsync from "../../../hooks/useErrorBoundryAsync";
 
 export default function CreateGoalView() {
-
+    
+    const throwToErrBoundry = useErrorBoundryAsync();
     const { errors, setErrorData } = useError();
 
     const [post, setGoalData] = useState({
@@ -35,8 +37,11 @@ export default function CreateGoalView() {
             const { item } = await createGoal(post);
             navigate(`/profile/${item.owner}`)
 
-        } catch (errors) {
-            setErrorData(errors);
+        } catch (error) {
+            if (error.message === 'Not Authorized' || error.type === 'TokenExpiredError') {
+                throwToErrBoundry(error);
+            }
+            setErrorData(error);
         }
     }
 
