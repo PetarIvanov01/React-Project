@@ -6,7 +6,7 @@ const AuthContext = createContext();
 export default function AuthProvider({ children }) {
 
     const [serializedUser, setUser] = useAuthStore();
-    const user = JSON.parse(serializedUser);
+    const user = JSON.parse(serializedUser) || { id: null }
 
     return (
         <AuthContext.Provider value={{ user, setUser }}>
