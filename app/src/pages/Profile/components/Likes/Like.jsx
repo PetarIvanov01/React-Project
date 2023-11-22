@@ -1,6 +1,7 @@
 import { LikeStyle } from "../../../../styles/ViewsStyles/FeaturesStyle/Likes.style";
 
 import { likeGoal, unLikeGoal } from "../../../../api/services/goalsApi";
+import useErrorBoundryAsync from "../../../../hooks/useErrorBoundryAsync";
 
 export default function LikePost({
     setLike,
@@ -9,18 +10,25 @@ export default function LikePost({
     isLike,
 }) {
 
+    const throwToErrBoundry = useErrorBoundryAsync()
+
     const data = {
         currentUserId: userId,
         postId
     }
 
     async function onLikeClick(e, like) {
-        setLike();
-        if (like) {
-            await likeGoal(data);
+        try {
+            setLike();
+            if (like) {
+                await likeGoal(data);
+            }
+            else {
+                await unLikeGoal(data);
+            }
         }
-        else {
-            await unLikeGoal(data);
+        catch (error) {
+            throwToErrBoundry(error);
         }
     }
 

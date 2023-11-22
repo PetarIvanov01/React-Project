@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 import { useAuth } from "../../contexts/auth";
+import useErrorBoundryAsync from "../../hooks/useErrorBoundryAsync";
 
 import {
     AboutMe,
@@ -24,6 +25,7 @@ import FollowersToggle from "./components/Followers/FollowersToggle";
 
 export default function ProfileContainer() {
 
+    const throwToErrBoundry = useErrorBoundryAsync()
     const { userId } = useParams();
     const { user } = useAuth();
     const isLoaded = useRef(false);
@@ -49,27 +51,32 @@ export default function ProfileContainer() {
                     isLoaded.current = true;
                 }
             })
-            .catch(err => console.log(err));
+            .catch(throwToErrBoundry)
 
         return () => {
             isMounted = false;
         };
     }, [userId]);
 
-    const isFollowed = profile.followers.some(e => e === user?.id)
-    const isOwner = user?.id === profile.userId;
+    const isFollowed = profile.followers.some(e => e === user.id);
+    const isOwner = user.id === profile.userId;
 
     async function onFollowClick(e, func) {
         e.preventDefault();
-        const data = {
-            currentUserId: user?.id,
-            profileId: profile.userId
+        try {
+
+            const data = {
+                currentUserId: user.id,
+                profileId: profile.userId
+            }
+            
+            const result = await func(data);
+            setProfileData(state => ({ ...state, followers: result.followers }));
+
+        } catch (error) {
+            throwToErrBoundry(error)
         }
-        const result = await func(data);
-        setProfileData(state => ({ ...state, followers: result.followers }))
     }
-
-
 
     return (
         <CardContainer >
@@ -79,7 +86,7 @@ export default function ProfileContainer() {
 
                 <ProfileData >
                     <StyledParagraph>Username: {profile.username}</StyledParagraph>
-                    {isOwner && <StyledParagraph>Email: {user?.email}</StyledParagraph>}
+                    {isOwner && <StyledParagraph>Email: {user.email}</StyledParagraph>}
                 </ProfileData>
 
                 <FollowersToggle followers={profile.followers} />
@@ -95,7 +102,7 @@ export default function ProfileContainer() {
             <Description >
                 <AboutMe >About Me</AboutMe>
                 <Desc >{profile.aboutMe}</Desc>
-                {user && (
+                {user.id && (
                     (isLoaded.current &&
                         <FollowContainer>
                             {isOwner ||
