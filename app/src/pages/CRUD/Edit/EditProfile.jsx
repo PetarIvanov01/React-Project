@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useProfileState from "../../../hooks/profileReducer";
 
-import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect, FormContainerStyle } from "../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
+import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect, FormContainerStyle, customStyles } from "../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
 import { avatars } from "../../../util/_mockAvatars";
 
 import { editProfile, getProfileDetails } from "../../../api/services/profileApi";
@@ -101,11 +101,15 @@ export default function EditProfile() {
                             options={avatars}
                             components={{
                                 Option: ({ innerProps, data }) => (
-                                    <div {...innerProps}>
+                                    <div className="options" {...innerProps}>
                                         <AvatarImage src={data.value} />
+                                        <span className="label">{data.label}</span>
                                     </div>
                                 )
+
                             }}
+
+                            styles={customStyles}
                         />
 
                         <label htmlFor="category" className="category">Category:</label>

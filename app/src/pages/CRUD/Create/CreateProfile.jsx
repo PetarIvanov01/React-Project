@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import useProfileState from "../../../hooks/profileReducer";
 
-import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect, FormContainerStyle } from "../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
+import { AvatarImage, AvatarSelectorContainer, CustomCategorySelect, CustomSelect, FormContainerStyle, customStyles } from "../../../styles/ViewsStyles/CRUDStyle/CreateProfile.style";
 import { avatars } from "../../../util/_mockAvatars";
 import { BlurredBackground } from "../../../styles/ViewsStyles/ProfileStyle/InformationalBox.style";
 
@@ -69,7 +68,7 @@ export default function CreateProfile() {
                                 id="username"
                                 name="username"
                                 placeholder="Username..."
-                                required=""
+                                required="true"
                                 onChange={setUsername}
                                 value={state.username} />
                         </InputField>
@@ -87,6 +86,7 @@ export default function CreateProfile() {
                                     </div>
                                 )
                             }}
+                            styles={customStyles}
                         />
 
                         <label htmlFor="category" className="category">Category:</label>
@@ -105,11 +105,20 @@ export default function CreateProfile() {
                         </CustomCategorySelect>
 
                         <TextArea>
-                            <textarea name="aboutMe" id="aboutMe" placeholder="About Me..." cols="30" rows="5" onChange={setAboutMe} value={state.aboutMe} ></textarea>
+                            <textarea name="aboutMe"
+                                required="true"
+                                id="aboutMe"
+                                placeholder="About Me..."
+                                cols="30"
+                                rows="5"
+                                onChange={setAboutMe}
+                                value={state.aboutMe} ></textarea>
                         </TextArea>
+
                         <ButtonStyle>
                             <button type="submit">Finished!</button>
                         </ButtonStyle>
+
                     </form>
                 </AvatarSelectorContainer>
 
