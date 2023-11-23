@@ -14,7 +14,8 @@ import {
     StyledParagraph,
     Desc,
     ProfileData,
-    FollowContainer
+    FollowContainer,
+    PersonalData
 } from "../../styles/ViewsStyles/ProfileStyle/Profile.style";
 import { EditProfileStyle } from "../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
 import { followProfile, getProfileDetails, unFollowProfile } from "../../api/services/profileApi";
@@ -69,7 +70,7 @@ export default function ProfileContainer() {
                 currentUserId: user.id,
                 profileId: profile.userId
             }
-            
+
             const result = await func(data);
             setProfileData(state => ({ ...state, followers: result.followers }));
 
@@ -86,8 +87,12 @@ export default function ProfileContainer() {
 
                 <ProfileData >
                     <StyledParagraph>Username: {profile.username}</StyledParagraph>
-                    {isOwner && <StyledParagraph>Email: {user.email}</StyledParagraph>}
+                    <StyledParagraph>Category: {profile.category}</StyledParagraph>
                 </ProfileData>
+                {isOwner &&
+                    <PersonalData>
+                        <StyledParagraph>Email: {user.email}</StyledParagraph>
+                    </PersonalData>}
 
                 <FollowersToggle followers={profile.followers} />
 

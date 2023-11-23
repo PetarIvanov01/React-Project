@@ -35,37 +35,44 @@ export const CardContainer = styled.div`
 
 export const Profile = styled.section`
 
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    gap: 1em;
     border: 3px solid #A196A1 ;
     margin: 2em 0;
     position: relative;
     background-color: #D9d9d9;
     border-radius: 25px;
-    display: flex;
-    gap: 1em;
-    align-items: center;
-
-    @media (max-width:620px) {
+    
+    @media (max-width:660px) {
         display: flex;
         flex-direction: column;
         max-width: 300px;
         margin: 0 auto;
         padding: 1em; 
     }
+
 `;
 
 export const StyledParagraph = styled.div`
     border-radius: 20px;
     padding: 5px 7px;
     background-color: #c5c8cb;
+    width: max-content;
 `;
 
 export const ProfileData = styled.div`
+
     font: var(--font-indie);
     display: flex;
     flex-direction: column;
     gap: 10px;
 
 `;
+
+export const PersonalData = styled.div`
+`
 
 export const Description = styled.section`
     position: relative;
@@ -141,13 +148,18 @@ export const FollowContainer = styled.div`
     top: 0;
     right: 10px;
 
+    &:hover {
+        transform: scale(1.05); 
+    }
+
 `;
 
 export const Followers = styled.div`
     font: var(--font-indie);
     cursor: pointer;
     margin: 0 auto;
-
+    position: relative; 
+    
 `;
 
 export const ShowFollowers = styled.div`
@@ -158,7 +170,7 @@ export const ShowFollowers = styled.div`
     position: absolute;
     margin-top: 10px;
     z-index: 1;
-    background-color: rgba(94, 106, 67, 0.9);
+    background-color:rgba(148, 138, 132, 0.84);
     padding: 1em;
     border-radius: 10px;
     
@@ -169,10 +181,13 @@ export const ShowFollowers = styled.div`
     & .user {
         display: flex;
         align-items: center;
-        justify-content: space-;
         gap:10px;
-        background-color: rgba(172, 134, 94, 1);
+        background-color: rgba(181, 138, 132, 1);
         border-radius: 30px;
+
+        &:hover {
+            transform: scale(1.05); 
+        }
 
         p {
             font-family: var(--font-agbalumo);
@@ -181,6 +196,7 @@ export const ShowFollowers = styled.div`
             padding-right: 5px;
         }
     }
-`
 
+    
+`
 
