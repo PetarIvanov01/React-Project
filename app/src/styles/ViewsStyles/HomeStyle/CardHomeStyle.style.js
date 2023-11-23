@@ -84,18 +84,20 @@ export const CardStyle = styled.div`
         }
 
         & a {
-                background-color: #d9d9d9;
-                padding: 5px 10px;
-                margin-bottom: 10px;
-                border-radius: 20px;
-                cursor: pointer;
-                text-decoration: none;
-                color: black;
-                font:var(--font-indie)
+            background-color: #d9d9d9;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            font:var(--font-indie)
         }
 
         & a:hover {
                 background-color: #bbbec2;
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         h4 {
@@ -103,6 +105,9 @@ export const CardStyle = styled.div`
             font-weight: 500;
         }
 
+        .short-desc {
+            font-size: 0.9em;
+        }
 
         @media (max-width: 360px ) {
 

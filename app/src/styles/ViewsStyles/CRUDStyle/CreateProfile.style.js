@@ -80,7 +80,7 @@ export const AvatarSelectorContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   & textarea {
     min-width: 250px;
   }
@@ -93,20 +93,53 @@ export const AvatarImage = styled.img`
   border: 2px solid #ccc;
 `;
 
-
 export const CustomSelect = styled(Select)`
   margin-bottom: 15px;
+
+  .options {
+    display: flex;
+    padding-left: 1em;
+    align-items: center;
+    padding-top: 5px;
+    gap:2em;
+    cursor: pointer;
+    background-color: #D1C8C8;
+
+    .label {
+      display: block;
+    }
+
+    &:hover {
+      background-color: #A9826F;
+    }
+  }
 `;
 
 export const CustomCategorySelect = styled.div`
 
-display: flex;
-align-items: center;
-gap: 2em;
+  display: flex;
+  align-items: center;
+  gap: 2em;
 
-label,input {
-  text-align: center;
-  margin: 0.7em 0;
-}
+  label,input {
+    text-align: center;
+    margin: 0.7em 0;
+  }
+`;
 
-`
+export const customStyles = {
+
+  control: (provided, state) => ({
+    ...provided,
+    border: '2px solid #D1C8C8',
+    borderRadius: '0px',
+    backgroundColor: '#D1C8C8',
+    opacity: '55%',
+    transition: 'border-color 0.3s ease',
+    
+    ':hover': {
+      borderColor: '#A9826F',
+    },
+
+  }),
+};

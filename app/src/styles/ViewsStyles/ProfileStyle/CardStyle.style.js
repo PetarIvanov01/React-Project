@@ -39,7 +39,7 @@ export const EditProfileStyle = styled.div`
     right: 3em;
 
     @media (max-width: 820px) {
-        top: 4em;
+        top: 5em;
         right: 4em;
     }
 `
@@ -58,11 +58,33 @@ export const EditGoalStyle = styled.div`
     & .owner-buttons {
         display: flex;        
         gap: 2em;
+        margin-right: 1em;
+            a {
+                &:hover {
+                transform: scale(1.05); 
+            }
+        }
     }
 
     .controllers {
         display: flex;
         gap: 1em;
         align-items: center;
+        
+    }
+`
+
+export const CommentsContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    
+    img {
+        display: block;
+        width: 20px;
+    }
+
+    &:hover {
+        transform: scale(1.05); 
     }
 `

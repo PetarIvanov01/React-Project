@@ -5,12 +5,17 @@ export const InputField = styled.div`
         flex-direction: column;
         align-items: center;
 
-        
         & input {
             background-color: #D1C8C8;
             opacity: 55%;
             min-width: 200px;
             padding: 10px 10px;
+            transition: border-color 0.3s ease; 
+
+            &:hover,
+            &:focus {
+                border-color: #A9826F; 
+            }
         }
 
         ::placeholder{
@@ -33,7 +38,13 @@ export const ButtonStyle = styled.div`
         padding: 10px 20px;
         border-radius: 5px;
         cursor: pointer;
+        transition: background-color 0.3s ease; 
+
+        &:hover {
+          background-color: #A9826F; 
+        }
     } 
+    
 `
 
 export const TextArea = styled.div`
@@ -52,5 +63,9 @@ export const TextArea = styled.div`
             background-color: #D1C8C8;
             opacity: 55%;
 
+            &:hover,
+            &:focus {
+            border-color: #A9826F; 
+            }
         }
 `

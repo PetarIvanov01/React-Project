@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const HeaderStyle = styled.header`
 
     font:var(--font-indie);
-    height: 70px;
+    height: 74px;
     background-color: #887d7d;
 
     @media(max-width:650px) {
@@ -35,17 +35,6 @@ export const HeaderStyle = styled.header`
 
         }
     }
-
-    & .logo {
-        margin-left: 8px;
-
-        & a {
-            border-radius: 45px;
-            background-color: #d9d9d9;
-            padding: 7px 15px;
-        }
-    }
-
 
     & .goals {
         position: absolute;
@@ -78,8 +67,6 @@ export const HeaderStyle = styled.header`
         width: 45px;
     }
 
-    
-
 `
 export const SignInStyle = styled.div`
 
@@ -100,6 +87,9 @@ export const SignInStyle = styled.div`
 `
 export const AnchorNavs = styled(NavLink)`
    
+    position: relative;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+       
     &:hover {
         background-color: rgba(219, 217, 131, 0.89);
         transform: translateY(-3px);
@@ -107,5 +97,29 @@ export const AnchorNavs = styled(NavLink)`
     }
     
 `
+export const LogoContainer = styled.div`
 
+    margin-left: 8px;
 
+    & a {
+        border-radius: 30px;
+        background-color: #d9d9d9;
+        padding: 8px 12px;
+        display: block;
+    }
+
+    .logo-icon {
+        display: flex;
+        width: 45px;
+        & img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @media(max-width: 650px) {
+        margin: 0 0.5em;
+        position: absolute;
+        left: 0;
+    }
+`;
