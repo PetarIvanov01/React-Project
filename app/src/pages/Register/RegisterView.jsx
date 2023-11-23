@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import useAuthForm from "../../hooks/authForm";
 
-import { RegisterFormStyle } from "./Register.style"
+import { AuthForm, ProfileActionMessage } from "../../styles/AuthForm.styled";
 import { ButtonStyle, InputField } from "../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 import { AuthErrorBox } from "../../styles/ViewsStyles/ErrorBoxs.style";
 
@@ -15,11 +16,10 @@ export default function RegisterView() {
         err: ''
     });
 
-
     const { onChangeHandler, onSubmitHandler } = useAuthForm(fields, setFields);
 
     return (
-        <RegisterFormStyle>
+        <AuthForm>
             <h2>Register</h2>
             {fields.err ? <AuthErrorBox> <p>{fields.err}</p> </AuthErrorBox> : ''}
 
@@ -28,8 +28,10 @@ export default function RegisterView() {
                     <input type="email"
                         id="email"
                         name="email"
+                        autoComplete="off"
+                        minLength={5}
                         placeholder="Email..."
-                        required=""
+                        required={true}
                         onChange={onChangeHandler}
                         value={fields.email} />
                 </InputField>
@@ -38,8 +40,10 @@ export default function RegisterView() {
                     <input type="password"
                         id="password"
                         name="password"
+                        autoComplete="off"
+                        minLength={5}
                         placeholder="Password..."
-                        required=""
+                        required={true}
                         onChange={onChangeHandler}
                         value={fields.password} />
                 </InputField>
@@ -49,8 +53,10 @@ export default function RegisterView() {
                         type="password"
                         id="confirmPassword"
                         name="confirmPassword"
+                        autoComplete="off"
+                        minLength={5}
                         placeholder="Confirm your password..."
-                        required=""
+                        required={true}
                         onChange={onChangeHandler}
                         value={fields.confirmPassword}
                     />
@@ -60,7 +66,10 @@ export default function RegisterView() {
                     <button type="submit">Register</button>
                 </ButtonStyle>
             </form>
-        </RegisterFormStyle>
+            <ProfileActionMessage>
+                <p>Already have a profile? <Link to={'/login'}>Sign In</Link>.</p>
+            </ProfileActionMessage>
+        </AuthForm>
 
     )
 }

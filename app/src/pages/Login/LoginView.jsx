@@ -1,8 +1,10 @@
 import { useState } from "react";
 import useAuthForm from "../../hooks/authForm";
-import { LoginFormStyle } from "./Login.style";
+
 import { ButtonStyle, InputField } from "../../styles/ViewsStyles/CRUDStyle/InputStyle.style";
 import { AuthErrorBox } from "../../styles/ViewsStyles/ErrorBoxs.style";
+import { Link } from "react-router-dom";
+import { AuthForm, ProfileActionMessage } from "../../styles/AuthForm.styled";
 
 export default function LoginView() {
 
@@ -16,7 +18,7 @@ export default function LoginView() {
     const { onChangeHandler, onSubmitHandler } = useAuthForm(fields, setFields);
 
     return (
-        <LoginFormStyle>
+        <AuthForm>
 
             <h2>Login</h2>
             {fields.err ? <AuthErrorBox> <p>{fields.err}</p> </AuthErrorBox> : ''}
@@ -26,8 +28,10 @@ export default function LoginView() {
                     <input type="email"
                         id="email"
                         name="email"
+                        minLength={5}
+                        autoComplete="off"
                         placeholder="Email..."
-                        required=""
+                        required={true}
                         onChange={onChangeHandler}
                         value={fields.email} />
                 </InputField>
@@ -35,9 +39,11 @@ export default function LoginView() {
                 <InputField>
                     <input type="password"
                         id="password"
+                        autoComplete="off"
                         name="password"
+                        minLength={5}
                         placeholder="Password..."
-                        required=""
+                        required={true}
                         onChange={onChangeHandler}
                         value={fields.password} />
                 </InputField>
@@ -45,11 +51,14 @@ export default function LoginView() {
                 <ButtonStyle>
                     <button type="submit">Login</button>
                 </ButtonStyle>
+
             </form>
 
-        </LoginFormStyle>
+            <ProfileActionMessage>
+                <p>Don't have a profile? <Link to={'/register'}>Sign Up</Link>.</p>
+            </ProfileActionMessage>
+        </AuthForm>
 
     )
 }
-
 
