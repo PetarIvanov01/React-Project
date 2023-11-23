@@ -16,7 +16,7 @@ export default function Card({
             <div className="profile">
                 <img
                     className="avatar"
-                    src={avatarImg.value || "/imgs/Avatars/Avatar-2.png"}
+                    src={avatarImg.value}
                     alt={avatarImg.label}
                 />
                 <p>{username || "Full Name"}</p>
@@ -26,18 +26,18 @@ export default function Card({
                 <ul>
                     <li>
                         <div className="category-li">
-                            <p>{category || "sport"}</p>
+                            <p>{category}</p>
                         </div>
                     </li>
                 </ul>
             </div>
             <div className="followers">
-                <p>Followers:{followers.length}</p>
+                <p>Followers: {followers.length}</p>
             </div>
             <div className="posts">
 
                 {goals?.length ?
-                    goals.map(e => <p key={e._id}>{e.title}: {cardDescCutter(e.description)}</p>)
+                    goals.map(e => <p key={e._id}>{e.title}: <span className="short-desc">{cardDescCutter(e.description)}</span></p>)
                     :
                     <h4>Ops, no content available!</h4>}
             </div>
