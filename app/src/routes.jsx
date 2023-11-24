@@ -8,6 +8,7 @@ import EditProfile from "./pages/CRUD/Edit/EditProfile";
 import EditGoalView from "./pages/CRUD/Edit/EditGoalView";
 import Logout from "./pages/Logout/LogoutFunc";
 import DeleteGoalView from "./pages/CRUD/Delete/DeleteGoalView";
+import Comments from "./pages/Profile/components/Comments/Comments";
 
 const HomeView = lazy(() => import("./pages/Home/HomeView"));
 const CatalogView = lazy(() => import("./pages/Catalog/Catalog"));
@@ -22,6 +23,18 @@ export const publicRoutes = [
     {
         path: '/goals',
         element: () => <CatalogView />
+    },
+    {
+        path: '/post/:postId/comments',
+        element: () => {
+           return <Comments />
+        }
+    },
+    {
+        path: '/profile/:userId/*',
+        element: () =>
+            <ProfileView />
+
     }
 ]
 export const authRouts = [
@@ -62,12 +75,7 @@ export const privateRoutes = [
             <EditGoalView />
 
     },
-    {
-        path: '/profile/:userId/*',
-        element: () =>
-            <ProfileView />
 
-    },
     {
         path: '/edit/profile/:userId',
         element: () =>
