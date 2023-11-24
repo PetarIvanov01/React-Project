@@ -8,11 +8,11 @@ async function request(url, option) {
         const response = await fetch(host + url, option);
 
         if (response.ok === false) {
-            if (response.status === 403) {
+            const error = await response.json();
+            if (response.status === 401 && error.type === 'TokenExpiredError') {
                 clearUserData();
             }
-            const error = await response.json();
-            throw new Error(error.message);
+            throw error;
         }
         if (response.status === 204) {
             return response

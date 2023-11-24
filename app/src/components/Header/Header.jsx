@@ -1,6 +1,7 @@
 import { useAuth } from "../../contexts/auth";
-import { HeaderStyle, SignInStyle,AnchorNavs } from "../../styles/layout/Header.style";
+import { HeaderStyle, SignInStyle, AnchorNavs, LogoContainer } from "../../styles/layout/Header.style";
 import { Link } from "react-router-dom";
+import logo from '/imgs/svg/logo.svg';
 
 export default function Header() {
 
@@ -11,11 +12,13 @@ export default function Header() {
     return (
         <HeaderStyle>
             <nav>
-                <div className="logo">
-                    <Link to="/" className="logo-icon">
-                        <img src="/imgs/Avatars/logo.png" alt="" />
-                    </Link>
-                </div>
+                <LogoContainer>
+                    <AnchorNavs className={status()} to="/" >
+                        <div className="logo-icon">
+                            <img src={logo} alt="" />
+                        </div>
+                    </AnchorNavs>
+                </LogoContainer>
                 <div className="goals">
                     <AnchorNavs className={status()} to="/goals">Browse</AnchorNavs>
                 </div>

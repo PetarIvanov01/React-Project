@@ -33,11 +33,11 @@ export default function FollowersToggle({ followers }) {
                 }
                 )
         }
-    }, [followers])
+    }, [followers]);
 
     async function onClickShowFollowers(e) {
         setToggle((state) => !state)
-    }
+    };
 
     function onClickNavigate(e) {
         e.stopPropagation();
@@ -47,7 +47,7 @@ export default function FollowersToggle({ followers }) {
         setToggle(false)
         navigate(`/profile/${userId}`, { replace: true })
 
-    }
+    };
 
     return (
         <Followers ref={followersContainerRef} onClick={onClickShowFollowers}>
@@ -64,4 +64,4 @@ export default function FollowersToggle({ followers }) {
             </ShowFollowers>
         </Followers>
     )
-}
+};
