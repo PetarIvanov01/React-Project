@@ -8,6 +8,10 @@ export const CardTopics = styled.div`
     flex-direction: column;
     text-align: center;
     border: 3px solid #A196A1;
+
+    @media (max-width:820px) {
+        max-width: 310px;
+    }
 `;
 
 export const TopicsImage = styled.img`
@@ -74,17 +78,3 @@ export const EditGoalStyle = styled.div`
     }
 `
 
-export const CommentsContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    
-    img {
-        display: block;
-        width: 20px;
-    }
-
-    &:hover {
-        transform: scale(1.05); 
-    }
-`

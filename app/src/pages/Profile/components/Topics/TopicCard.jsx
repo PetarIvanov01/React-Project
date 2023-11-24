@@ -7,6 +7,8 @@ import { useAuth } from "../../../../contexts/auth";
 import { CardTitle, CardTopics, DescriptionParagraph, EditGoalStyle, TopicDescription, TopicsImage } from "../../../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
 
 import LikePost from "../Likes/Like";
+import Comments from "../Comments/Comments";
+import { CommentButton } from "../../../../styles/ViewsStyles/ProfileStyle/Comments.style";
 
 export default function TopicCards({
     title,
@@ -57,6 +59,7 @@ export default function TopicCards({
                     <Link to={_id} onClick={() => handleLearnMoreClick({ image, title, description })}  >Learn more...</Link>
                     <div className="controllers">
                         <p>Likes: {likeInfo.likedUsers.length}</p>
+
                         {isOwner ?
                             <div className="owner-buttons">
                                 <Link to={`/edit/goal/${_id}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
@@ -69,8 +72,12 @@ export default function TopicCards({
                                 postId={_id}
                                 isLike={likeInfo.isLike}
                             />)
-
                         }
+                        <Link to={`/post/${_id}/comments`}  >
+                            <CommentButton >
+                                <img src="/imgs/svg/comments.svg" alt="comment" />
+                            </CommentButton>
+                        </Link>
                     </div>
                 </EditGoalStyle>
             </TopicDescription>

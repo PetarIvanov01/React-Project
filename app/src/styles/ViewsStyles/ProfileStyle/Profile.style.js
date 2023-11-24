@@ -136,9 +136,9 @@ export const Cards = styled.div`
     @media (max-width:820px) {
         flex-direction: column;
 
-        & * {
+        /* & * {
             max-width: 310px;
-        }
+        } */
     }
 `;
 
