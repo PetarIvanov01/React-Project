@@ -24,19 +24,21 @@ Make sure to have the [RESTful API](https://github.com/PetarIvanov01/RESTful-API
 
 ## Usage
 ### Home View
-![Home View Image](/readme-screenshots/Home-View.JPG)
+![Home View Image](/readme-screenshots/Home-View.png)
 ### Catalog View
-![Catalog View Image](/readme-screenshots/Catalog-View.JPG)
+![Catalog View Image](/readme-screenshots/Catalog-View.png)
 ### Register View
-![Register View Image](/readme-screenshots/Register-View.JPG)
+![Register View Image](/readme-screenshots/Register-View.png)
 ### Login View
-![Login View Image](/readme-screenshots/Login-View.JPG)
+![Login View Image](/readme-screenshots/Login-View.png)
 ### Create Profile View
-![Create Profile View Image](/readme-screenshots/Custom-Profile.JPG)
+![Create Profile View Image](/readme-screenshots/CustomizeProfile.png)
 ### Profile View
-![Profile View Image](/readme-screenshots/Own-Profile-View.JPG)
+![Profile View Image](/readme-screenshots/Profile-View.png)
+### Not Owner Profile View
+![Profile View Image](/readme-screenshots/Not-Owner-Profile.png)
 ### Goal Information
-![Goal Information View Image](/readme-screenshots/Read-Goal-View.JPG)
+![Goal Information View Image](/readme-screenshots/Post-View.png)
 
 ## Deployment
 Deployment details will be added in the future once I have learned how to deploy the web app.
