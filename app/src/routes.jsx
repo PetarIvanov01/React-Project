@@ -9,11 +9,14 @@ import EditGoalView from "./pages/CRUD/Edit/EditGoalView";
 import Logout from "./pages/Logout/LogoutFunc";
 import DeleteGoalView from "./pages/CRUD/Delete/DeleteGoalView";
 import Comments from "./pages/Profile/components/Comments/Comments";
+import { OnlyUser } from "./components/RouteGuards/OnlyUser";
+import { OnlyGuest } from "./components/RouteGuards/OnlyGuest";
+import { HasProfile } from "./components/RouteGuards/HasProfile";
+import { OwnerGuard } from "./components/RouteGuards/IsOwner";
 
 const HomeView = lazy(() => import("./pages/Home/HomeView"));
 const CatalogView = lazy(() => import("./pages/Catalog/Catalog"));
 const ProfileView = lazy(() => import("./pages/Profile/ProfileView"));
-
 
 export const publicRoutes = [
     {
@@ -26,48 +29,57 @@ export const publicRoutes = [
     },
     {
         path: '/post/:postId/comments',
-        element: () => {
-           return <Comments />
-        }
+        element: () => <Comments />
     },
     {
         path: '/profile/:userId/*',
-        element: () =>
-            <ProfileView />
-
+        element: () => <ProfileView />
     }
 ]
+
 export const authRouts = [
     {
         path: '/login',
-        element: () =>
-            <LoginView />
+        element: () => (
+            <OnlyGuest>
+                <LoginView />
+            </OnlyGuest>
+        )
     },
     {
         path: '/register',
-        element: () =>
-            <RegisterView />
+        element: () => (
+            <OnlyGuest>
+                <RegisterView />
+            </OnlyGuest>
+        )
 
     },
     {
         path: '/logout',
-        element: () =>
-            <Logout />
-
-    },
-    {
-        path: '/create/profile',
-        element: () =>
-            <CreateProfile />
-
+        element: () => (
+            <OnlyUser>
+                <Logout />
+            </OnlyUser>
+        )
     }
 ]
 
 export const privateRoutes = [
     {
+        path: '/create/profile',
+        element: () =>
+        (<HasProfile>
+            <CreateProfile />
+        </HasProfile>)
+
+    },
+    {
         path: '/create',
         element: () =>
+        (<OnlyUser>
             <CreateGoalView />
+        </OnlyUser>)
     },
     {
         path: '/edit/goal/:goalId',
@@ -79,7 +91,9 @@ export const privateRoutes = [
     {
         path: '/edit/profile/:userId',
         element: () =>
+        (<OwnerGuard>
             <EditProfile />
+        </OwnerGuard>)
 
     },
     {
