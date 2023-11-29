@@ -39,7 +39,7 @@ export default function EditGoalView() {
             isMounted = false;
         };
 
-    }, [goalId])
+    }, [goalId, throwToErrBoundry])
 
     function onChangeHandler(e) {
         setPost((state) => ({ ...state, [e.target.name]: e.target.value }))

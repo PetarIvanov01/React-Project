@@ -46,7 +46,7 @@ export default function EditProfile() {
             })
             .catch(throwToErrBoundry)
 
-    }, [userId, handleEditForm]);
+    }, [userId, handleEditForm, throwToErrBoundry]);
 
 
     async function onSubmitHandler(e) {

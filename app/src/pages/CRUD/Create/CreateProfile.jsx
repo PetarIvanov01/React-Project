@@ -59,7 +59,7 @@ export default function CreateProfile() {
             }
 
             <FormContainerStyle>
-
+                
                 <AvatarSelectorContainer>
                     <h2 >Customize your profile</h2>
                     <form onSubmit={onSubmitHandler}>
@@ -68,7 +68,7 @@ export default function CreateProfile() {
                                 id="username"
                                 name="username"
                                 placeholder="Username..."
-                                required="true"
+                                required
                                 onChange={setUsername}
                                 value={state.username} />
                         </InputField>
@@ -106,7 +106,7 @@ export default function CreateProfile() {
 
                         <TextArea>
                             <textarea name="aboutMe"
-                                required="true"
+                                required
                                 id="aboutMe"
                                 placeholder="About Me..."
                                 cols="30"

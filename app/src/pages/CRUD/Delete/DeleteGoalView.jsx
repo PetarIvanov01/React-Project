@@ -23,7 +23,7 @@ export default function DeleteGoalView() {
             .then(({ items }) => setPost(items))
             .catch(throwToErrBoundry);
 
-    }, [goalId])
+    }, [goalId, throwToErrBoundry])
 
 
     const onSubmitHandler = (e) => {
@@ -43,7 +43,7 @@ export default function DeleteGoalView() {
                 <InputField >
                     <input type="text" id="title" name="title" disabled defaultValue={post.title} />
                 </InputField>
-                
+
                 <InputField>
                     <input type="text" id="image" name="image" disabled defaultValue={post.image} />
                 </InputField>
