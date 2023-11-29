@@ -1,35 +1,35 @@
+import { useAuth } from "../../../../contexts/auth.jsx";
 import { CommentInput, CommentSubmitButton, CommentItem, CommentsList, CommentAvatar, CommentBox, CommentContainer, CommentContent, CommentHead, CommentMainLevel, CommentName, ExitButton, Header, CommentInputContainer, Container, CommentTimeStatus } from "../../../../styles/ViewsStyles/ProfileStyle/Comments.style";
 
 import { avatars } from '../../../../util/_mockAvatars.js'
-import { Link, useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 const sampleComments = [
     {
         id: 1,
         avatar: avatars[0].value,
-        author: 'Kiro Breika',
+        author: 'petar',
         time: '20 minutes ago',
         content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?',
     },
     {
         id: 2,
         avatar: avatars[1].value,
-        author: 'Minko Lajnata',
+        author: 'stoyan',
         time: '15 minutes ago',
         content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?',
     },
     {
         id: 3,
         avatar: avatars[2].value,
-        author: 'Stoyan Kukov',
+        author: 'emcho',
         time: '12 minutes ago',
         content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?',
     },
     {
         id: 4,
         avatar: avatars[3].value,
-        author: 'Pesho Ribata',
+        author: 'dani',
         time: '7 minutes ago',
         content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?',
     }, {
@@ -64,24 +64,54 @@ const sampleComments = [
 
 export default function Comments() {
 
+    const { user } = useAuth();
+    /*
     const { postId } = useParams();
 
-
-
+    const [commentsData, setCommentsData] = useState({
+        owner: null,
+        comments: [
+            {
+                author: {
+                    id: null,
+                    name: '',
+                    image: ''
+                },
+                posted:null,
+                text: '',
+                likes: [''],
+                replies: [
+                    {
+                        author: {
+                            id: null,
+                            name: '',
+                            image: ''
+                        },
+                        posted:null,
+                        text: '',
+                        likes: [''],
+                    }
+                ]
+            }
+        ]
+    });
+*/
     return (
 
         <Container>
-            <CommentInputContainer>
-                <h1>Write</h1>
-                <CommentInput
-                    // value={newComment}
-                    // onChange={handleCommentChange}
-                    placeholder="Type your comment here..."
-                />
-                <CommentSubmitButton >
-                    Submit
-                </CommentSubmitButton>
-            </CommentInputContainer>
+            {user.id &&
+                <CommentInputContainer>
+                    <h1>Write</h1>
+                    <CommentInput
+                        // value={newComment}
+                        // onChange={handleCommentChange}
+                        placeholder="Type your comment here..."
+                    />
+                    <CommentSubmitButton >
+                        Submit
+                    </CommentSubmitButton>
+                </CommentInputContainer>
+            }
             <Header >
                 <h1>Comments</h1>
                 <Link to={-1}><ExitButton src="/imgs/svg/close.svg" /></Link>
@@ -113,7 +143,7 @@ const Comment = ({ comment, isAuthor, isReply }) => (
                     </CommentName>
                     <CommentTimeStatus>
                         <span>{comment.time}</span>
-                        <img src='/imgs/Icons/notLiked.png' className="heart" />
+                        <img src='/imgs/Icons/notLiked.png' className="heart" alt="notLiked" />
                     </CommentTimeStatus>
                 </CommentHead>
                 <CommentContent $isreply={isReply}>{comment.content}</CommentContent>
