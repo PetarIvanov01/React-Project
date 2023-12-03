@@ -1,6 +1,5 @@
 import { useAuth } from "../../contexts/auth";
 import { HeaderStyle, SignInStyle, AnchorNavs, LogoContainer } from "../../styles/layout/Header.style";
-import { Link } from "react-router-dom";
 import logo from '/imgs/svg/logo.svg';
 
 export default function Header() {
