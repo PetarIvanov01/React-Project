@@ -1,4 +1,5 @@
 import * as api from "../requester"
+import { getUserData, setUserData } from "../user";
 
 const endpoints = {
 
@@ -11,6 +12,13 @@ const endpoints = {
 };
 
 export function createProfile(data) {
+
+    const currentJson = getUserData();
+    // setUserData({
+    //     ...currentJson,
+    //     customized: true
+    // })
+
     return api.post(endpoints.create, data);
 }
 
