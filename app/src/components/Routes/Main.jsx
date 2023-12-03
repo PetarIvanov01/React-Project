@@ -35,7 +35,7 @@ export default function Main() {
                             <Route key={route.path} path={route.path} element={route.element()} />
                         ))}
 
-                        {<Route path="*" element={<NotFound />} />}
+                        <Route path="*" element={<NotFound />} />
 
                     </Routes>
                 </ErrorBoundary>

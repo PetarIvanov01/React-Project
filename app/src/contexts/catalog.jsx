@@ -39,7 +39,7 @@ export default function GoalsProvider({ children, view }) {
 
         return () => setIsLoading(true);
 
-    }, [view, endpoint, setIsLoading]);
+    }, [view, endpoint, setIsLoading, throwToErrBoundry]);
 
     return (
         <HomeContext.Provider value={{ goals, pages }}>

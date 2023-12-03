@@ -1,6 +1,6 @@
 import { clearUserData, getUserData } from "./user.js";
 
-let host = 'http://localhost:5000/api/';
+let host = 'https://nodejs-api-8ohs.onrender.com/api/' || 'http://localhost:5000/api/';
 
 async function request(url, option) {
 
@@ -97,10 +97,9 @@ function setDataToLocaleSt(user) {
     const userData = {
         email: user.email,
         token: user.token,
-        id: user._id
+        id: user._id,
+        customized: user.customized
     }
-
-    // setUserData(userData);
 
     return userData;
 }

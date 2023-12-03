@@ -164,7 +164,7 @@ export const Followers = styled.div`
 
 export const ShowFollowers = styled.div`
 
-    display: ${({ $show }) => $show == 'true' ? 'flex' : 'none'};
+    display: ${({ $show }) => $show === 'true' ? 'flex' : 'none'};
     flex-direction: column;
     gap: 10px;
     position: absolute;
