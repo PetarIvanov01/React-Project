@@ -1,6 +1,10 @@
 import { clearUserData, getUserData } from "./user.js";
 
-let host = 'https://nodejs-api-8ohs.onrender.com/api/' || 'http://localhost:5000/api/';
+let host = 'http://localhost:5000/api/';
+
+if (import.meta.env.VITE_API_URL && import.meta.env.MODE === 'production') {
+    host = import.meta.env.VITE_API_URL;
+}
 
 async function request(url, option) {
 
