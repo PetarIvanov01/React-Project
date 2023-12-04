@@ -73,11 +73,11 @@ export default function TopicCards({
                                 isLike={likeInfo.isLike}
                             />)
                         }
-                        <Link to={`/post/${_id}/comments`}  >
-                            <CommentButton >
+                        <CommentButton >
+                            <Link to={`/post/${_id}/comments`}  >
                                 <img src="/imgs/svg/comments.svg" alt="comment" />
-                            </CommentButton>
-                        </Link>
+                            </Link>
+                        </CommentButton>
                     </div>
                 </EditGoalStyle>
             </TopicDescription>
