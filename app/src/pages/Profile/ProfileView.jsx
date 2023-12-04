@@ -15,7 +15,8 @@ import {
     Desc,
     ProfileData,
     FollowContainer,
-    PersonalData
+    PersonalData,
+    Controllers
 } from "../../styles/ViewsStyles/ProfileStyle/Profile.style";
 import { EditProfileStyle } from "../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
 import { followProfile, getProfileDetails, unFollowProfile } from "../../api/services/profileApi";
@@ -26,7 +27,7 @@ import FollowersToggle from "./components/Followers/FollowersToggle";
 
 export default function ProfileContainer() {
 
-    const throwToErrBoundry = useErrorBoundryAsync()
+    const throwToErrBoundry = useErrorBoundryAsync();
     const { userId } = useParams();
     const { user } = useAuth();
     const isLoaded = useRef(false);
@@ -57,7 +58,7 @@ export default function ProfileContainer() {
         return () => {
             isMounted = false;
         };
-    }, [userId]);
+    }, [userId, throwToErrBoundry]);
 
     const isFollowed = profile.followers.some(e => e === user.id);
     const isOwner = user.id === profile.userId;
@@ -89,32 +90,35 @@ export default function ProfileContainer() {
                     <StyledParagraph>Username: {profile.username}</StyledParagraph>
                     <StyledParagraph>Category: {profile.category}</StyledParagraph>
                 </ProfileData>
-                {isOwner &&
-                    <PersonalData>
-                        <StyledParagraph>Email: {user.email}</StyledParagraph>
-                    </PersonalData>}
 
-                <FollowersToggle followers={profile.followers} />
+                <Controllers>
+                    <FollowersToggle followers={profile.followers} />
 
-                {isOwner &&
-                    <EditProfileStyle>
-                        <Link to={`/edit/profile/${profile.userId}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
-                    </EditProfileStyle>
-                }
-
+                    {isOwner &&
+                        <EditProfileStyle>
+                            <Link to={`/edit/profile/${profile.userId}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
+                        </EditProfileStyle>
+                    }
+                </Controllers>
             </Profile>
 
             <Description >
-                <AboutMe >About Me</AboutMe>
+
+                <PersonalData>
+                    <AboutMe >About Me</AboutMe>
+                    {isOwner &&
+                        <AboutMe>Email: {user.email}</AboutMe>
+                    }
+                </PersonalData>
                 <Desc >{profile.aboutMe}</Desc>
                 {user.id && (
                     (isLoaded.current &&
                         <FollowContainer>
                             {isOwner ||
                                 (isFollowed ?
-                                    <Link onClick={(e) => onFollowClick(e, unFollowProfile)} ><img src="/imgs/Icons/unfollow.png" alt="unfollow Icon" /></Link>
+                                    <Link onClick={(e) => onFollowClick(e, unFollowProfile)} ><img src="/imgs/Icons/unfollow-sad.png" alt="unfollow Icon" /></Link>
                                     :
-                                    <Link onClick={(e) => onFollowClick(e, followProfile)} ><img src="/imgs/Icons/follow.png" alt="follow Icon" /></Link>
+                                    <Link onClick={(e) => onFollowClick(e, followProfile)} ><img src="/imgs/Icons/follow-hapy.png" alt="follow Icon" /></Link>
                                 )
                             }
                         </FollowContainer>
