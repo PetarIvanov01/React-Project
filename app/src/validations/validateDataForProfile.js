@@ -15,6 +15,10 @@ export default function validateData({
             errors.push({ message: 'Username must be at least 3 characters long.' });
         }
 
+        if (username.trim().length > 10) {
+            errors.push({ message: 'Username must be 10 characters or fewer.' });
+        }
+
         if (!category || category.length === 0) {
             errors.push({ message: 'Select at least one category.' });
         }
