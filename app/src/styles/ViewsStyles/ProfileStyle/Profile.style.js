@@ -59,7 +59,7 @@ export const StyledParagraph = styled.div`
     border-radius: 20px;
     padding: 5px 7px;
     background-color: #c5c8cb;
-    width: max-content;
+    /* width: max-content; */
 `;
 
 export const ProfileData = styled.div`
@@ -72,6 +72,8 @@ export const ProfileData = styled.div`
 `;
 
 export const PersonalData = styled.div`
+    display: flex;
+    justify-content: space-between;
 `
 
 export const Description = styled.section`
@@ -145,8 +147,17 @@ export const Cards = styled.div`
 export const FollowContainer = styled.div`
 
     position: absolute;
-    top: 0;
+    top: -10px;
     right: 10px;
+
+    & * {
+        display: block;
+    }
+
+    img {
+        height: 50px;
+        width:50px;
+    }
 
     &:hover {
         transform: scale(1.05); 
@@ -157,9 +168,12 @@ export const FollowContainer = styled.div`
 export const Followers = styled.div`
     font: var(--font-indie);
     cursor: pointer;
-    margin: 0 auto;
     position: relative; 
-    
+    transition: 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05); 
+    }
 `;
 
 export const ShowFollowers = styled.div`
@@ -195,8 +209,12 @@ export const ShowFollowers = styled.div`
             font-size: 13px;
             padding-right: 5px;
         }
-    }
-
-    
+    }   
+`
+export const Controllers = styled.div`
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1em;
 `
 

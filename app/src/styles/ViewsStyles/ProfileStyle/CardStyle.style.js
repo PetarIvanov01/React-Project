@@ -39,13 +39,6 @@ export const DescriptionParagraph = styled.p`
 `;
 
 export const EditProfileStyle = styled.div`
-    position: absolute;
-    right: 3em;
-
-    @media (max-width: 820px) {
-        top: 5em;
-        right: 4em;
-    }
 `
 export const EditGoalStyle = styled.div`
 
@@ -72,9 +65,9 @@ export const EditGoalStyle = styled.div`
 
     .controllers {
         display: flex;
-        gap: 1em;
+        gap: 0.8em;
         align-items: center;
-        
+        justify-content: center;
     }
 `
 
