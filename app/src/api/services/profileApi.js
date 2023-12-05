@@ -14,10 +14,10 @@ const endpoints = {
 export function createProfile(data) {
 
     const currentJson = getUserData();
-    // setUserData({
-    //     ...currentJson,
-    //     customized: true
-    // })
+    setUserData({
+        ...currentJson,
+        customized: true
+    })
 
     return api.post(endpoints.create, data);
 }
