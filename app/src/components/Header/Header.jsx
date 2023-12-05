@@ -14,7 +14,7 @@ export default function Header() {
                 <LogoContainer>
                     <AnchorNavs className={status()} to="/" >
                         <div className="logo-icon">
-                            <img src={logo} alt="" />
+                            <img src={logo} alt="logo" />
                         </div>
                     </AnchorNavs>
                 </LogoContainer>
