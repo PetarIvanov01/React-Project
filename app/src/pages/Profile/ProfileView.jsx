@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useAuth } from "../../contexts/auth";
 import useErrorBoundryAsync from "../../hooks/useErrorBoundryAsync";
@@ -14,16 +13,14 @@ import {
     StyledParagraph,
     Desc,
     ProfileData,
-    FollowContainer,
     PersonalData,
-    Controllers
 } from "../../styles/ViewsStyles/ProfileStyle/Profile.style";
-import { EditProfileStyle } from "../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
-import { followProfile, getProfileDetails, unFollowProfile } from "../../api/services/profileApi";
+import { getProfileDetails } from "../../api/services/profileApi";
 
 import TopicsContainer from "./components/Topics/Topics";
 import NoTopics from "./components/Topics/NoTopics";
-import FollowersToggle from "./components/Followers/FollowersToggle";
+import { FollowButtons } from "./components/Followers/FollowButtons";
+import { ProfileControls } from "./components/ProfileControls";
 
 export default function ProfileContainer() {
 
@@ -60,10 +57,13 @@ export default function ProfileContainer() {
         };
     }, [userId, throwToErrBoundry]);
 
-    const isFollowed = profile.followers.some(e => e === user.id);
     const isOwner = user.id === profile.userId;
 
-    async function onFollowClick(e, func) {
+    const isFollowedMemoized = useMemo(() => {
+        return profile.followers.some(e => e === user.id);
+    }, [profile.followers, user.id])
+
+    const onFollowClick = useCallback(async (e, func) => {
         e.preventDefault();
         try {
 
@@ -78,7 +78,7 @@ export default function ProfileContainer() {
         } catch (error) {
             throwToErrBoundry(error)
         }
-    }
+    }, [throwToErrBoundry, user.id, profile.userId])
 
     return (
         <CardContainer >
@@ -91,37 +91,31 @@ export default function ProfileContainer() {
                     <StyledParagraph>Category: {profile.category}</StyledParagraph>
                 </ProfileData>
 
-                <Controllers>
-                    <FollowersToggle followers={profile.followers} />
+                <ProfileControls
+                    followers={profile.followers}
+                    isOwner={isOwner}
+                    profileId={profile.userId}
+                    userId={user.id} />
 
-                    {isOwner &&
-                        <EditProfileStyle>
-                            <Link to={`/edit/profile/${profile.userId}`}><img src="/imgs/svg/edit.svg" alt="Edit Icon" /></Link>
-                        </EditProfileStyle>
-                    }
-                </Controllers>
             </Profile>
 
             <Description >
 
                 <PersonalData>
                     <AboutMe >About Me</AboutMe>
-                    {isOwner &&
+                    {(user.id && isOwner) &&
                         <AboutMe>Email: {user.email}</AboutMe>
                     }
                 </PersonalData>
+
                 <Desc >{profile.aboutMe}</Desc>
+
                 {user.id && (
                     (isLoaded.current &&
-                        <FollowContainer>
-                            {isOwner ||
-                                (isFollowed ?
-                                    <Link onClick={(e) => onFollowClick(e, unFollowProfile)} ><img src="/imgs/Icons/unfollow-sad.png" alt="unfollow Icon" /></Link>
-                                    :
-                                    <Link onClick={(e) => onFollowClick(e, followProfile)} ><img src="/imgs/Icons/follow-hapy.png" alt="follow Icon" /></Link>
-                                )
-                            }
-                        </FollowContainer>
+                        <FollowButtons
+                            onFollowClick={onFollowClick}
+                            isFollowed={isFollowedMemoized}
+                            isOwner={isOwner} />
                     )
                 )
                 }
