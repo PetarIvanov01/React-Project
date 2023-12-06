@@ -81,8 +81,9 @@ export default function CreateProfile() {
                             options={avatars}
                             components={{
                                 Option: ({ innerProps, data }) => (
-                                    <div {...innerProps}>
+                                    <div className="options" {...innerProps}>
                                         <AvatarImage src={data.value} />
+                                        <span className="label">{data.label}</span>
                                     </div>
                                 )
                             }}
