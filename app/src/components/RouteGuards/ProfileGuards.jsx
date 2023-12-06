@@ -6,10 +6,12 @@ export const HasProfile = ({ children }) => {
     const { user } = useAuth();
 
     if (!user.id) {
+
         return <Navigate to={'/login'} replace />;
     }
 
     if (user.customized) {
+
         return <Navigate to={'/'} replace />;
     }
 
@@ -19,3 +21,21 @@ export const HasProfile = ({ children }) => {
         </>
     );
 };
+
+export const WithoutProfile = ({ children }) => {
+
+    const { user } = useAuth()
+
+    if (user.id) {
+
+        if (user.customized === false) {
+            return <Navigate to={'/create/profile'} replace />;
+        }
+
+    }
+    return (
+        <>
+            {children ? children : <Outlet />}
+        </>
+    );
+}
