@@ -11,7 +11,7 @@ import DeleteGoalView from "./pages/CRUD/Delete/DeleteGoalView";
 import Comments from "./pages/Profile/components/Comments/Comments";
 import { OnlyUser } from "./components/RouteGuards/OnlyUser";
 import { OnlyGuest } from "./components/RouteGuards/OnlyGuest";
-import { HasProfile } from "./components/RouteGuards/HasProfile";
+import { HasProfile, WithoutProfile } from "./components/RouteGuards/ProfileGuards";
 import { OwnerGuard } from "./components/RouteGuards/IsOwner";
 
 const HomeView = lazy(() => import("./pages/Home/HomeView"));
@@ -21,11 +21,19 @@ const ProfileView = lazy(() => import("./pages/Profile/ProfileView"));
 export const publicRoutes = [
     {
         path: '/',
-        element: () => <HomeView />
+        element: () => (
+            <WithoutProfile>
+                <HomeView />
+            </WithoutProfile>
+        )
     },
     {
         path: '/goals',
-        element: () => <CatalogView />
+        element: () => (
+            <WithoutProfile>
+                <CatalogView />
+            </WithoutProfile>
+        )
     },
     {
         path: '/post/:postId/comments',
@@ -33,7 +41,11 @@ export const publicRoutes = [
     },
     {
         path: '/profile/:userId/*',
-        element: () => <ProfileView />
+        element: () => (
+            <WithoutProfile>
+                <ProfileView />
+            </WithoutProfile>
+        )
     }
 ]
 
@@ -53,7 +65,6 @@ export const authRouts = [
                 <RegisterView />
             </OnlyGuest>
         )
-
     },
     {
         path: '/logout',
@@ -72,7 +83,6 @@ export const privateRoutes = [
         (<HasProfile>
             <CreateProfile />
         </HasProfile>)
-
     },
     {
         path: '/create',
@@ -85,7 +95,6 @@ export const privateRoutes = [
         path: '/edit/goal/:goalId',
         element: () =>
             <EditGoalView />
-
     },
 
     {
@@ -94,12 +103,10 @@ export const privateRoutes = [
         (<OwnerGuard>
             <EditProfile />
         </OwnerGuard>)
-
     },
     {
         path: '/delete/goal/:goalId',
         element: () =>
             <DeleteGoalView />
-
     }
 ]
