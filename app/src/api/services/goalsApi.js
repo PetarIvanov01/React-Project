@@ -9,7 +9,8 @@ const endpoints = {
     delete: (id) => `goals/${id}`,
     home: "goals/home?limit=2",
     like: 'goals/like',
-    unlike: 'goals/un-like'
+    unlike: 'goals/un-like',
+    comments: (postId) => `goals/${postId}/comments`
 
 };
 
@@ -48,4 +49,16 @@ export async function likeGoal(data) {
 export async function unLikeGoal(data) {
 
     return api.post(endpoints.unlike, data)
+}
+export async function getComments(postId) {
+
+    const request = await api.get(endpoints.comments(postId));
+
+    return request.comments?.length !== 0 ? request.comments : [];
+}
+export async function postComment(postId, payload) {
+
+    const comment = await api.post(endpoints.comments(postId), payload)
+    
+    return comment
 }
