@@ -93,6 +93,7 @@ export const CommentContainer = styled.div`
 
   margin: 0 auto 15px;
   max-width: 668px;
+  min-width: 300px;
   padding: 0 10px 0 5px;
   max-height: 60vh; 
   overflow-y: auto; 
@@ -118,8 +119,9 @@ export const ExitButton = styled.img`
 export const CommentsList = styled.ul`
   margin-top: 30px;
   position: relative;
+  min-width: 100px;
 
-  &::before {
+  /* &::before {
     content: '';
     width: 2px;
     height: 100%;
@@ -139,7 +141,7 @@ export const CommentsList = styled.ul`
     height: 7px;
     border: 3px solid rgba(69, 65, 67, 1);
     border-radius: 50%;
-  }
+  } */
 `;
 
 export const CommentItem = styled.li`
@@ -157,12 +159,21 @@ export const CommentItem = styled.li`
 `;
 
 export const CommentMainLevel = styled.div`
+  min-width: 100px;
   display: flex;
 `;
 
 export const CommentAvatar = styled.div`
+
   max-width: ${({ $isreply }) => ($isreply === 'true' ? '60px' : '70px')};
   max-height: ${({ $isreply }) => ($isreply === 'true' ? '55px' : '65px')};
+
+  /* min-width: ${({ $isreply }) => ($isreply === 'true' ? '30px' : '50px')}; */
+  /* min-height: ${({ $isreply }) => ($isreply === 'true' ? '30px' : '35px')}; */
+
+  width: 60px;
+  height: 55px;
+
   position: relative;
   z-index: 99;
   float: left;
@@ -178,14 +189,18 @@ export const CommentAvatar = styled.div`
 `;
 
 export const CommentBox = styled.div`
+  width: 100%;
   max-width: ${({ $isreply }) => ($isreply === 'true' ? '610px' : '680px')};
+  min-width:${({ $isreply }) => ($isreply === 'true' ? '200px' : '280px')};
   float: right;
   position: relative;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-  margin-left: ${({ $isreply }) => ($isreply === 'true' ? '68px' : '10px')};
+  /* margin-left: ${({ $isreply }) => ($isreply === 'true' ? '68px' : '10px')}; */
+  margin-left: 28px;
 `;
 
 export const CommentHead = styled.div`
+  width: 100%;
   background: #fcfcfc;
   padding: 10px 12px;
   border-bottom: 1px solid #e5e5e5;
