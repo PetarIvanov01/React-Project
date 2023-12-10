@@ -41,7 +41,6 @@ export default function CommentProvider({ children }) {
         onClickResetForm,
         onClickSetReplyForm,
         reply,
-        reply.parentId
     ]);
 
     return (

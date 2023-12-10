@@ -27,9 +27,9 @@ export const WithoutProfile = ({ children }) => {
 
     const user = getUserData();
 
-    if (user.id) {
+    if (user?.id) {
 
-        if (user.customized === false) {
+        if (user?.customized === false) {
             return <Navigate to={'/create/profile'} replace />;
         }
 
