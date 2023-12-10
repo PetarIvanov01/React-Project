@@ -1,37 +1,42 @@
 import { useAuth } from "../../../../contexts/auth.jsx";
+import { useCommentsContext } from "../../../../contexts/comments.jsx";
 
-import {
-    ExitButton,
-    Header,
-    Container,
-} from "../../../../styles/ViewsStyles/ProfileStyle/Comments.style";
-
-import { Link } from "react-router-dom";
 import ComponentInputComponent from "./CommentInput.jsx";
 import CommentContainerList from "./CommentContainer.jsx";
-import useComments from "../../../../hooks/useComments.jsx";
+
+import { NoCommentsMessage, NoUserMessage, RegisterLink } from "../../../../styles/ViewsStyles/FeaturesStyle/Comments/NoComments.style.js";
+import { Container } from "../../../../styles/ViewsStyles/FeaturesStyle/Comments/Container.style.js";
+import { SpinnerStyle } from "../../../../components/SuspenseSpinner.jsx";
 
 export default function Comments() {
 
     const { user } = useAuth();
-
-    const { comments, addComment } = useComments();
+    const { commentsLength, loading } = useCommentsContext()
 
     return (
-
         <Container>
 
-            {user.id && <ComponentInputComponent addComment={addComment} />}
+            {user.id ? (
+                <ComponentInputComponent />
+            ) : (
+                <NoUserMessage>
+                    Join our community!{" "}
+                    <RegisterLink to="/register">Create an account</RegisterLink> to start commenting.
+                </NoUserMessage>
+            )}
 
-            <Header >
-                <h1>Comments</h1>
-                <Link to={-1}><ExitButton src="/imgs/svg/close.svg" /></Link>
-            </Header>
-
-            <CommentContainerList comments={comments} user={user} />
+            {loading ?
+                <SpinnerStyle />
+                :
+                (
+                    commentsLength === 0 ? (
+                        <NoCommentsMessage>No comments yet! Add one :)</NoCommentsMessage>
+                    )
+                        :
+                        <CommentContainerList user={user} />
+                )}
 
         </Container>
     )
-}
-
+};
 
