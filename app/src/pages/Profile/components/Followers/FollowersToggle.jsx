@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Followers, StyledParagraph, ShowFollowers } from "../../../../styles/ViewsStyles/ProfileStyle/Profile.style";
 
 import { getFollowers } from "../../../../api/services/profileApi";
+import useErrorBoundryAsync from "../../../../hooks/useErrorBoundryAsync";
 
 export default function FollowersToggle({ followers }) {
 
+    const throwToErrBoundry = useErrorBoundryAsync();
     const navigate = useNavigate();
     const [followersData, setFollowersData] = useState([]);
     const [toggle, setToggle] = useState(false);
@@ -32,8 +34,9 @@ export default function FollowersToggle({ followers }) {
                     setFollowersData(result)
                 }
                 )
+                .catch(throwToErrBoundry)
         }
-    }, [followers]);
+    }, [followers,throwToErrBoundry]);
 
     async function onClickShowFollowers(e) {
         setToggle((state) => !state)

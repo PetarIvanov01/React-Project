@@ -7,8 +7,7 @@ import { useAuth } from "../../../../contexts/auth";
 import { CardTitle, CardTopics, DescriptionParagraph, EditGoalStyle, TopicDescription, TopicsImage } from "../../../../styles/ViewsStyles/ProfileStyle/CardStyle.style";
 
 import LikePost from "../Likes/Like";
-import Comments from "../Comments/Comments";
-import { CommentButton } from "../../../../styles/ViewsStyles/ProfileStyle/Comments.style";
+import { CommentButton } from "../../../../styles/ViewsStyles/FeaturesStyle/Comments/CommentForm.style";
 
 export default function TopicCards({
     title,
@@ -53,7 +52,9 @@ export default function TopicCards({
             </CardTitle>
 
             <TopicDescription>
+                
                 <DescriptionParagraph>{shortDesc}</DescriptionParagraph>
+
                 <EditGoalStyle>
 
                     <Link to={_id} onClick={() => handleLearnMoreClick({ image, title, description })}  >Learn more...</Link>
@@ -80,6 +81,7 @@ export default function TopicCards({
                         </CommentButton>
                     </div>
                 </EditGoalStyle>
+
             </TopicDescription>
 
         </CardTopics>

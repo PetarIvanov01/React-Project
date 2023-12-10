@@ -7,6 +7,7 @@ export const OwnerGuard = ({ children }) => {
     const { userId } = useParams();
 
     if (user.id !== userId) {
+        //eslint-disable-next-line
         throw {
             type: 'NotAuthorized'
         }
