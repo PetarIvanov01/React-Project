@@ -13,6 +13,7 @@ import { OnlyUser } from "./components/RouteGuards/OnlyUser";
 import { OnlyGuest } from "./components/RouteGuards/OnlyGuest";
 import { HasProfile, WithoutProfile } from "./components/RouteGuards/ProfileGuards";
 import { OwnerGuard } from "./components/RouteGuards/IsOwner";
+import CommentProvider from "./contexts/comments";
 
 const HomeView = lazy(() => import("./pages/Home/HomeView"));
 const CatalogView = lazy(() => import("./pages/Catalog/Catalog"));
@@ -37,7 +38,11 @@ export const publicRoutes = [
     },
     {
         path: '/post/:postId/comments',
-        element: () => <Comments />
+        element: () =>
+            <CommentProvider>
+                <Comments />
+            </CommentProvider>
+
     },
     {
         path: '/profile/:userId/*',
