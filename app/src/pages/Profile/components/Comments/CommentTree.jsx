@@ -27,8 +27,6 @@ function ReusableComment({
     isReplyOnParrent
 }) {
 
-    console.log(isReplyOnParrent);
-
     const handleReplyClick = () => {
         onClickSetReplyForm({ name: comment.ownerIdProfile?.username, parentId: comment._id });
     };

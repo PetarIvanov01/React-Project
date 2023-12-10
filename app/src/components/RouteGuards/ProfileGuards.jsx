@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../contexts/auth";
+import { getUserData } from "../../api/user";
 
 export const HasProfile = ({ children }) => {
 
@@ -24,7 +25,7 @@ export const HasProfile = ({ children }) => {
 
 export const WithoutProfile = ({ children }) => {
 
-    const { user } = useAuth()
+    const user = getUserData();
 
     if (user.id) {
 
