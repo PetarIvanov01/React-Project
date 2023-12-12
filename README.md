@@ -1,4 +1,4 @@
-# Blog for Goals
+# Blog for Goals - https://react-goals-network.web.app/
 
 ## Project Overview
 Blog for Goals is a web application designed to allow users to share their personal goals with others. This project serves as a learning experience, focusing on best practices and delivering a good user experience (UX) and user interface (UI).
